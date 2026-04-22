@@ -5,18 +5,19 @@ const { updateHolesFromCgolf, previewChanges } = require('../services/osm-write'
 
 const router = Router();
 
-// GET /api/holes?lat=…&lng=…&radius=5
+// GET /api/holes?osmId=way/…&lat=…&lng=…&radius=5
 router.get('/', async (req, res) => {
+  const osmId = req.query.osmId || null;
   const lat = parseFloat(req.query.lat);
   const lng = parseFloat(req.query.lng);
   const radius = Math.min(parseFloat(req.query.radius) || 5, 10);
 
-  if (isNaN(lat) || isNaN(lng)) {
-    return res.status(400).json({ error: 'lat et lng requis' });
+  if (!osmId && (isNaN(lat) || isNaN(lng))) {
+    return res.status(400).json({ error: 'osmId ou lat+lng requis' });
   }
 
   try {
-    const { holes, tees: rawTees, greens: rawGreens } = await fetchHoles(lat, lng, radius);
+    const { holes, tees: rawTees, greens: rawGreens } = await fetchHoles(osmId, lat, lng, radius);
     const quality = analyzeHolesQuality(holes);
     const { tees, greens } = analyzeTeeGreenQuality(holes, rawTees, rawGreens);
     res.json({ holes, quality, tees, greens });

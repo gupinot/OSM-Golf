@@ -1,0 +1,36 @@
+{
+  "way/47473334": [
+    {
+      "cgolfName": "Golf Country club de Fourqueux Parcours Rouge Fourqueux",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-2-fourqueux-78112",
+      "cgolfLat": 48.88541,
+      "cgolfLng": 2.057039,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/58.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf Country club de Fourqueux Parcours Blanc-Bleu Fourqueux",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-country-club-de-fourqueux-78112",
+      "cgolfLat": 48.88541,
+      "cgolfLng": 2.057039,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/57.jpg",
+      "matchScore": 40
+    },
+    {
+      "cgolfName": "Golf de Joyenval Parcours Marly  Chambourcy",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-marly-chambourcy-78240",
+      "cgolfLat": 48.890944,
+      "cgolfLng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/115.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Joyenval Parcours Retz Chambourcy",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-retz-chambourcy-78240",
+      "cgolfLat": 48.890944,
+      "cgolfLng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/116.jpg",
+      "matchScore": 0
+    }
+  ]
+}

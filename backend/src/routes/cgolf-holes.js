@@ -1,16 +1,16 @@
 const { Router } = require('express');
 const fetch = require('node-fetch');
-const { fetchCgolfHoles, analyzeScorecard } = require('../services/cgolf');
+const { fetchCgolfHoles, analyzeScorecard, getCustomSources, saveCustomSource, deleteCustomSource } = require('../services/cgolf');
 
 const router = Router();
 
-// GET /api/cgolf-holes?osmId=way/139128639
+// GET /api/cgolf-holes?osmId=way/139128639&name=Golf+de+X&lat=…&lng=…
 router.get('/', async (req, res) => {
-  const { osmId } = req.query;
+  const { osmId, name, lat, lng } = req.query;
   if (!osmId) return res.status(400).json({ error: 'osmId requis' });
 
   try {
-    const data = await fetchCgolfHoles(osmId);
+    const data = await fetchCgolfHoles(osmId, name, parseFloat(lat), parseFloat(lng));
     if (!data) return res.json({ found: false });
     res.json({ found: true, matches: data });
   } catch (err) {
@@ -19,9 +19,9 @@ router.get('/', async (req, res) => {
 });
 
 // POST /api/cgolf-holes/analyze
-// Body: { url: "https://..." } OR { fileData: "<base64>", mimeType: "image/jpeg", fileName: "score.jpg" }
+// Body: { url, fileData, mimeType, fileName, osmId?, courseKey? }
 router.post('/analyze', async (req, res) => {
-  const { url, fileData, mimeType, fileName } = req.body || {};
+  const { url, fileData, mimeType, fileName, osmId, courseKey } = req.body || {};
   if (!url && !fileData) return res.status(400).json({ error: 'url ou fileData requis' });
 
   try {
@@ -43,10 +43,30 @@ router.post('/analyze', async (req, res) => {
 
     const detectedMime = mimeType || 'image/jpeg';
     const holes = await analyzeScorecard(imgBuffer, detectedMime);
+
+    if (osmId && courseKey) {
+      saveCustomSource(osmId, courseKey, holes, sourceName);
+    }
+
     res.json({ holes, sourceName });
   } catch (err) {
     res.status(502).json({ error: err.message });
   }
+});
+
+// GET /api/cgolf-holes/custom-sources?osmId=way/123
+router.get('/custom-sources', (req, res) => {
+  const { osmId } = req.query;
+  if (!osmId) return res.status(400).json({ error: 'osmId requis' });
+  res.json(getCustomSources(osmId));
+});
+
+// DELETE /api/cgolf-holes/custom-source?osmId=way/123&courseKey=Parcours
+router.delete('/custom-source', (req, res) => {
+  const { osmId, courseKey } = req.query;
+  if (!osmId || !courseKey) return res.status(400).json({ error: 'osmId et courseKey requis' });
+  deleteCustomSource(osmId, courseKey);
+  res.json({ ok: true });
 });
 
 module.exports = router;

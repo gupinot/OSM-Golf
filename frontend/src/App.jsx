@@ -26,12 +26,12 @@ export default function App() {
     setCgolfError(null);
     setCgolfLoading(true);
 
-    fetchHoles(course.lat, course.lng)
+    fetchHoles(course.osmId, course.lat, course.lng)
       .then(data => setHolesData(data))
       .catch(err => setHolesError(err.message))
       .finally(() => setHolesLoading(false));
 
-    fetchCgolfHoles(course.osmId)
+    fetchCgolfHoles(course.osmId, course.name, course.lat, course.lng)
       .then(data => setCgolfData(data))
       .catch(err => setCgolfError(err.message))
       .finally(() => setCgolfLoading(false));
@@ -41,7 +41,7 @@ export default function App() {
     if (!selectedCourse) return;
     setHolesError(null);
     setHolesLoading(true);
-    fetchHoles(selectedCourse.lat, selectedCourse.lng)
+    fetchHoles(selectedCourse.osmId, selectedCourse.lat, selectedCourse.lng)
       .then(data => setHolesData(data))
       .catch(err => setHolesError(err.message))
       .finally(() => setHolesLoading(false));

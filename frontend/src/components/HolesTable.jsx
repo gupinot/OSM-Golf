@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { analyzeCustomScorecard } from '../services/api.js';
+import { useState, useEffect, useRef } from 'react';
+import { analyzeCustomScorecard, fetchPersistedCustomSources, removePersistedCustomSource } from '../services/api.js';
 
 const ALL_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
 
@@ -58,12 +58,20 @@ export default function HolesTable({
 }) {
   const [customSources, setCustomSources] = useState({});
 
+  useEffect(() => {
+    if (!course?.osmId) return;
+    fetchPersistedCustomSources(course.osmId).then(saved => {
+      if (Object.keys(saved).length > 0) setCustomSources(saved);
+    });
+  }, [course?.osmId]);
+
   if (!course) return null;
 
   function setCustomSource(courseKey, result) {
     setCustomSources(prev => ({ ...prev, [courseKey]: result }));
   }
   function clearCustomSource(courseKey) {
+    removePersistedCustomSource(course.osmId, courseKey);
     setCustomSources(prev => { const n = { ...prev }; delete n[courseKey]; return n; });
   }
 
@@ -150,6 +158,8 @@ export default function HolesTable({
                       <CustomSourceInput
                         hasDefault={!!defaultMatch}
                         isCustom={!!custom}
+                        osmId={course.osmId}
+                        courseKey={courseKey}
                         onResult={result => setCustomSource(courseKey, result)}
                         onReset={() => clearCustomSource(courseKey)}
                       />
@@ -558,7 +568,7 @@ function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound, comparison })
   );
 }
 
-function CustomSourceInput({ hasDefault, isCustom, onResult, onReset }) {
+function CustomSourceInput({ hasDefault, isCustom, osmId, courseKey, onResult, onReset }) {
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -570,7 +580,7 @@ function CustomSourceInput({ hasDefault, isCustom, onResult, onReset }) {
     setLoading(true);
     setError(null);
     try {
-      const result = await analyzeCustomScorecard(payload);
+      const result = await analyzeCustomScorecard({ ...payload, osmId, courseKey });
       onResult(result);
       setOpen(false);
       setUrl('');

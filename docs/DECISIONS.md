@@ -125,6 +125,34 @@
 
 ---
 
+## 2026-04-22 — Filtre géographique golf=hole par zone leisure=golf_course
+
+**Choix :** La requête Overpass `fetchHoles` utilise d'abord `area(areaId)` (areaId = 2400000000+wayId ou 3600000000+relationId). Si l'aire Overpass n'est pas indexée (retourne 0 éléments), fallback : requête radius + récupération de la géométrie du way via `fetchBoundary` + filtrage point-in-polygon côté backend. Fonction `deriveCourse(tags)` extrait le nom de sous-parcours depuis `name` ("Vert n°16 - Bois joli" → "Vert") quand le tag `course` est absent.
+
+**Raison :** Éviter de ramener les trous des golfs voisins. L'index d'aires Overpass ne couvre pas toujours les ways (ex: Golf de Saint-Cloud `way/22752042`). Le filtrage polygon côté backend garantit la précision sans dépendre de l'index Overpass.
+
+---
+
+## 2026-04-22 — Retry Overpass sur erreurs transitoires
+
+**Choix :** `query()` réessaie jusqu'à 5 fois sur le même endpoint pour les erreurs 504/503/429 avec backoff exponentiel (1s→2s→4s→8s→10s). Passage à l'endpoint suivant uniquement après épuisement des 5 essais. Erreurs non-transitoires (400, etc.) : sortie immédiate.
+
+**Raison :** Les endpoints Overpass retournent des 504 intermittents. Réessayer sur le même endpoint avant de basculer sur le suivant est plus respectueux et efficace.
+
+---
+
+## 2026-04-22 — Matching cgolf.fr dynamique en Node.js (suppression match_results.json)
+
+**Choix :** Remplacement du script Python `analyze_osm_cgolf.py` par un service Node.js dans `cgolf.js`. Scraping cgolf.fr à la demande par région géographique proche du golf sélectionné (rayon 200km sur centres de région prédéfinis). Double cache :
+- `cgolf_regions_cache.json` : parcours cgolf par région scraped (réutilisé pour tous les golfs de la région)
+- `cgolf_match_cache.json` : résultats de matching par osmId
+
+Matching : token set ratio sur noms normalisés (stopwords supprimés) + filtre géo (fuzzy ≥60 ET ≤10km, ou ≤3km géo seul). Dépendance `cheerio` ajoutée pour parsing HTML.
+
+**Raison :** Le `match_results.json` pré-généré était limité à Lyon. La nouvelle approche fonctionne pour n'importe quel golf en France, au fil des recherches, sans script batch à relancer.
+
+---
+
 ## 2026-04-22 — Comparaison visuelle OSM ↔ scorecard par cellule
 
 **Choix :** Mise en évidence colorée cellule par cellule entre le tableau OSM et le tableau scorecard :

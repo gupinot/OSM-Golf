@@ -1,0 +1,1555 @@
+{
+  "/parcours/golfs-ile-de-france": [
+    {
+      "name": "Le Golf National Parcours l’Albatros Guyancourt",
+      "lat": 48.750699,
+      "lng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/54.jpg",
+      "url": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-albatros-guyancourt-78280"
+    },
+    {
+      "name": "Le Golf National Parcours l’Aigle Guyancourt",
+      "lat": 48.750699,
+      "lng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/55.jpg",
+      "url": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-aigle-guyancourt-78280"
+    },
+    {
+      "name": "Le Golf National Parcours l’Oiselet Guyancourt",
+      "lat": 48.750699,
+      "lng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/56.jpg",
+      "url": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-oiselet-guyancourt-78280"
+    },
+    {
+      "name": "Golf Country club de Fourqueux Parcours Blanc-Bleu Fourqueux",
+      "lat": 48.88541,
+      "lng": 2.057039,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/57.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-de-fourqueux-78112"
+    },
+    {
+      "name": "Golf Country club de Fourqueux Parcours Rouge Fourqueux",
+      "lat": 48.88541,
+      "lng": 2.057039,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/58.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-fourqueux-78112"
+    },
+    {
+      "name": "Golf Isabella Plaisir",
+      "lat": 48.794566,
+      "lng": 1.940012,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/59.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-isabella-plaisir-78370"
+    },
+    {
+      "name": "Exclusiv Golf de Feucherolles Feucherolles",
+      "lat": 48.871143,
+      "lng": 1.983246,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/61.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-feucherolles-78810"
+    },
+    {
+      "name": "Golf de Saint-Marc Jouy-en-Josas",
+      "lat": 48.754046,
+      "lng": 2.152983,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/62.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-marc-jouy-en-josas-78350"
+    },
+    {
+      "name": "Golf de La Boulie Parcours La Vallée Versailles",
+      "lat": 48.784745,
+      "lng": 2.151322,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/64.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-boulie-parcours-la-vallee-versailles-78000"
+    },
+    {
+      "name": "Golf de La Boulie Parcours La forêt Versailles",
+      "lat": 48.783105,
+      "lng": 2.147202,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/65.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-boulie-parcours-la-foret-versailles-78000"
+    },
+    {
+      "name": "Golf Blue Green de Villennes-sur-Seine Villennes-sur-Seine",
+      "lat": 48.932443,
+      "lng": 1.992024,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/66.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-villennes-sur-seine-78670"
+    },
+    {
+      "name": "Golf de Saint-Aubin Parcours Le Mesnil Saint-Aubin",
+      "lat": 48.718601,
+      "lng": 2.144486,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/68.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-aubin-91190"
+    },
+    {
+      "name": "Golf de Saint-Aubin Parcours Les Bouleaux Saint-Aubin",
+      "lat": 48.718601,
+      "lng": 2.144486,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/69.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-2-saint-aubin-91190"
+    },
+    {
+      "name": "Exclusiv Golf de Béthemont Poissy",
+      "lat": 48.909458,
+      "lng": 1.998176,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/85.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-bethemont-poissy-78300"
+    },
+    {
+      "name": "Golf Base Loisirs de Saint-Quentin-en-Yvelines Parcours Bleu Trappes",
+      "lat": 48.787781,
+      "lng": 1.992553,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/86.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-base-loisirs-de-saint-quentin-en-yvelines-parcours-bleu-trappes-78190"
+    },
+    {
+      "name": "Golf Base Loisirs de Saint-Quentin-en-Yvelines Parcours Rouge Trappes",
+      "lat": 48.787781,
+      "lng": 1.992553,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/87.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-base-loisirs-de-saint-quentin-en-yvelines-parcours-rouge-trappes-78190"
+    },
+    {
+      "name": "Blue Green Golf de Villeray  Saint-Pierre-du-Perray",
+      "lat": 48.60171,
+      "lng": 2.533226,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/88.jpg",
+      "url": "https://www.cgolf.fr/detail/blue-green-golf-de-villeray-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf de Sénart Parcours Les Cygnes Saint-Pierre-du-Perray",
+      "lat": 48.623924,
+      "lng": 2.520658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/136.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-senart-parcours-les-cygnes-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf de Sénart Parcours L’Arbalète Saint-Pierre-du-Perray",
+      "lat": 48.623924,
+      "lng": 2.520658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/137.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-senart-parcours-l-arbalete-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf et Tennis du Haras de Jardy Vaucresson",
+      "lat": 48.829099,
+      "lng": 2.157472,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/89.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-et-tennis-du-haras-de-jardy-vaucresson-92420"
+    },
+    {
+      "name": "Golf Haras Lupin du Stade Français Vaucresson",
+      "lat": 48.844931,
+      "lng": 2.165063,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/90.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-haras-lupin-du-stade-francais-vaucresson-92420"
+    },
+    {
+      "name": "Golf de Saint-Cloud Parcours Vert Garches",
+      "lat": 48.850188,
+      "lng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/91.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-vert-garches-92380"
+    },
+    {
+      "name": "Golf de Saint-Cloud Parcours Jaune Garches",
+      "lat": 48.850188,
+      "lng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/92.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-jaune-garches-92380"
+    },
+    {
+      "name": "Golf de Paris Country Club Parcours 9 trous Saint-Cloud",
+      "lat": 48.858349,
+      "lng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/93.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-paris-country-club-saint-cloud-92210"
+    },
+    {
+      "name": "Golf de Paris Country Club Parcours Pitch and Putt Saint-Cloud",
+      "lat": 48.858349,
+      "lng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/94.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-paris-country-club-parcours-pitch-and-putt-saint-cloud-92210"
+    },
+    {
+      "name": "Golf de Saint-Germain-Lès-Corbeil Saint-Germain-lès-Corbeil",
+      "lat": 48.637054,
+      "lng": 2.488831,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/101.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-germain-les-corbeil-91250"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours La Rivière Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/102.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-la-riviere-civry-la-foret-78910"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours Les Vallons Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/103.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-les-vallons-civry-la-foret-78910"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours Le 360 Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/104.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-le-360-civry-la-foret-78910"
+    },
+    {
+      "name": "Exclusiv Golf de Rochefort Rochefort-en-Yvelines",
+      "lat": 48.586909,
+      "lng": 1.996768,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/105.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-rochefort-en-yvelines-78730"
+    },
+    {
+      "name": "Golf Blue Green Guerville Guerville",
+      "lat": 48.95916,
+      "lng": 1.757768,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/106.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-guerville-78930"
+    },
+    {
+      "name": "Golf de Marivaux  Janvry",
+      "lat": 48.62795,
+      "lng": 2.167523,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/107.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-marivaux-janvry-91640"
+    },
+    {
+      "name": "Golf de Val Grand Bondoufle",
+      "lat": 48.604129,
+      "lng": 2.38422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/108.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-val-grand-bondoufle-91070"
+    },
+    {
+      "name": "Golf d'Etiolles Parcours Les Cerfs Etiolles",
+      "lat": 48.643499,
+      "lng": 2.470621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/109.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-etiolles-91450"
+    },
+    {
+      "name": "Golf d'Etiolles Parcours Les Chênes Etiolles",
+      "lat": 48.643499,
+      "lng": 2.470621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/110.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-etiolles-91450"
+    },
+    {
+      "name": "Golf de Saint-Nom-La-Bretèche Parcours Bleu Saint-Nom-la-Bretèche",
+      "lat": 48.851975,
+      "lng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/111.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-nom-la-breteche-78860"
+    },
+    {
+      "name": "Golf de Saint-Nom-La-Bretèche Parcours Rouge Saint-Nom-la-Bretèche",
+      "lat": 48.851975,
+      "lng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/112.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-saint-nom-la-breteche-78860"
+    },
+    {
+      "name": "Golf de Saint-Germain Parcours Le Grand Parcours Saint-Germain-en-Laye",
+      "lat": 48.918327,
+      "lng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/113.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-le-grand-parcours-saint-germain-en-laye-78100"
+    },
+    {
+      "name": "Golf de Saint-Germain Parcours des Genêts Saint-Germain-en-Laye",
+      "lat": 48.918327,
+      "lng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/114.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-genets-saint-germain-en-laye-78100"
+    },
+    {
+      "name": "Golf de Joyenval Parcours Marly  Chambourcy",
+      "lat": 48.890944,
+      "lng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/115.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-marly-chambourcy-78240"
+    },
+    {
+      "name": "Golf de Joyenval Parcours Retz Chambourcy",
+      "lat": 48.890944,
+      "lng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/116.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-retz-chambourcy-78240"
+    },
+    {
+      "name": "Golf du Château de la Chouette  Gaillon-sur-Montcient",
+      "lat": 49.025627,
+      "lng": 1.884262,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/127.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-la-chouette-gaillon-sur-montcient-78250"
+    },
+    {
+      "name": "Golf de Fontainebleau  Fontainebleau",
+      "lat": 48.394794,
+      "lng": 2.68048,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/154.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-fontainebleau-77300"
+    },
+    {
+      "name": "Golf Blue Green Bellefontaine Parcours Le Bellefontaine  Bellefontaine",
+      "lat": 49.091521,
+      "lng": 2.454658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/190.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-bellefontaine-95270a"
+    },
+    {
+      "name": "Golf Blue Green Bellefontaine Parcours Le Plessis Bellefontaine",
+      "lat": 49.091521,
+      "lng": 2.454658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/191.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-le-plessis-golf-de-bellefontaine-95270a"
+    },
+    {
+      "name": "Garden Golf Gadancourt  Gadancourt",
+      "lat": 49.10115,
+      "lng": 1.863032,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/192.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-gadancourt-95450"
+    },
+    {
+      "name": "Golf Club d’Ableiges Parcours Les Etangs Ableiges",
+      "lat": 49.081954,
+      "lng": 1.983718,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/193.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-les-etangs-golf-club-ableiges-95450b"
+    },
+    {
+      "name": "Golf Club d’Ableiges Parcours Le Vexin Ableiges",
+      "lat": 49.081954,
+      "lng": 1.983718,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/194.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-le-vexin-golf-club-ableiges-95450b"
+    },
+    {
+      "name": "Golf de Domont-Montmorency  Parcours Les Chataigniers  Domont",
+      "lat": 49.021222,
+      "lng": 2.310665,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/195.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montmorency-parcours-les-chataigniers-domont-95330"
+    },
+    {
+      "name": "Golf de l’Isle Adam L'Isle-Adam",
+      "lat": 49.12093,
+      "lng": 2.262653,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/197.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-l-isle-adam-95290"
+    },
+    {
+      "name": "Gold de Maudétour-en-Vexin Maudétour-en-Vexin",
+      "lat": 49.097488,
+      "lng": 1.773029,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/198.jpg",
+      "url": "https://www.cgolf.fr/detail/gold-de-maudetour-en-vexin-95420"
+    },
+    {
+      "name": "Golf de Seraincourt Seraincourt",
+      "lat": 49.020957,
+      "lng": 1.871643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/199.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-seraincourt-95450a"
+    },
+    {
+      "name": "Golf de Villarceaux Parcours Grand Parcours Chaussy",
+      "lat": 49.116272,
+      "lng": 1.705272,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/200.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villarceaux-chaussy-95710"
+    },
+    {
+      "name": "Golf de Villarceaux Parcours Les Chevreuils Chaussy",
+      "lat": 49.116272,
+      "lng": 1.705272,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/201.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villarceaux-2-chaussy-95710"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours des Lacs Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/202.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-des-lacs-luzarches-95270"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours de la Forêt  Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/203.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-de-la-foret-luzarches-95270"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours l’Arbalétrier Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/204.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-l-arbaletrier-luzarches-95270"
+    },
+    {
+      "name": "Garden Golf Cergy Pontoise Vauréal",
+      "lat": 49.038442,
+      "lng": 2.01263,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/205.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-cergy-pontoise-vaureal-95490"
+    },
+    {
+      "name": "Exclusiv Golf de Coudray Parcours Les Marroniers Le Coudray-Montceaux",
+      "lat": 48.564922,
+      "lng": 2.511817,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/128.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-coudray-parcours-les-marroniers-le-coudray-montceaux-91830"
+    },
+    {
+      "name": "Exclusiv Golf de Coudray Parcours La Guiche Le Coudray-Montceaux",
+      "lat": 48.564922,
+      "lng": 2.511817,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/129.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-coudray-parcours-la-guiche-le-coudray-montceaux-91830"
+    },
+    {
+      "name": "Golf de Courson Stade Français Parcours Vert-Noir  Courson-Monteloup",
+      "lat": 48.598378,
+      "lng": 2.127646,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/130.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-courson-stade-francais-parcours-vert-noir-courson-monteloup-91680"
+    },
+    {
+      "name": "Golf de Courson Stade Français Parcours Lilas-Orange  Courson-Monteloup",
+      "lat": 48.598378,
+      "lng": 2.127646,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/131.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-courson-stade-francais-parcours-lilas-orange-courson-monteloup-91680"
+    },
+    {
+      "name": "Golf de Forges-les-Bains Forges-les-Bains",
+      "lat": 48.632059,
+      "lng": 2.080777,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/132.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-forges-les-bains-91470"
+    },
+    {
+      "name": "Golf de Gif-Chevry Gif-sur-Yvette",
+      "lat": 48.686439,
+      "lng": 2.119799,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/133.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-gif-chevry-gif-sur-yvette-91190"
+    },
+    {
+      "name": "Golf de Mennecy Chevannes Chevannes",
+      "lat": 48.533757,
+      "lng": 2.451748,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/134.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-mennecy-chevannes-91750"
+    },
+    {
+      "name": "Golf de Maisons-Laffitte Maisons-Laffitte",
+      "lat": 48.956543,
+      "lng": 2.17214,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/138.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-maisons-laffitte-78600"
+    },
+    {
+      "name": "Golf de Villacoublay-Air Vélizy-Villacoublay",
+      "lat": 48.76581,
+      "lng": 2.204133,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/139.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villacoublay-air-velizy-villacoublay-78140"
+    },
+    {
+      "name": "Golf des Boucles de Seine Moisson",
+      "lat": 49.063046,
+      "lng": 1.677939,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/140.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-boucles-de-seine-moisson-78840"
+    },
+    {
+      "name": "Golf des Boucles de Seine Parcours Pitch and Putt Moisson",
+      "lat": 49.063046,
+      "lng": 1.677939,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/141.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-boucles-de-seine-parcours-pitch-and-putt-moisson-78840"
+    },
+    {
+      "name": "Golf du Prieuré Parcours Ouest Sailly",
+      "lat": 49.053216,
+      "lng": 1.791946,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/142.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-prieure-parcours-ouest-sailly-78440"
+    },
+    {
+      "name": "Golf du Prieuré Parcours Est Sailly",
+      "lat": 49.053216,
+      "lng": 1.791946,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/143.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-prieure-parcours-est-sailly-78440"
+    },
+    {
+      "name": "Golf du Tremblay sur Mauldre Parcours Château Bertin Le Tremblay-sur-Mauldre",
+      "lat": 48.772425,
+      "lng": 1.874687,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/144.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-le-tremblay-sur-mauldre-78490"
+    },
+    {
+      "name": "Golf du Tremblay sur Mauldre Parcours Le Parc Anglais Le Tremblay-sur-Mauldre",
+      "lat": 48.772425,
+      "lng": 1.874687,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/145.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-irlandais-le-tremblay-sur-mauldre-78490"
+    },
+    {
+      "name": "Ile Fleurie Golf Club  Chatou",
+      "lat": 48.902513,
+      "lng": 2.178059,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/146.jpg",
+      "url": "https://www.cgolf.fr/detail/ile-fleurie-golf-club-chatou-78400"
+    },
+    {
+      "name": "Crecy Golf Parcours Montpichet Crécy-la-Chapelle",
+      "lat": 48.844536,
+      "lng": 2.944342,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/147.jpg",
+      "url": "https://www.cgolf.fr/detail/crecy-golf-parcours-montpichet-crecy-la-chapelle-77580"
+    },
+    {
+      "name": "Crecy Golf Parcours Vignoly Crécy-la-Chapelle",
+      "lat": 48.844536,
+      "lng": 2.944342,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/148.jpg",
+      "url": "https://www.cgolf.fr/detail/crecy-golf-parcours-vignoly-crecy-la-chapelle-77580"
+    },
+    {
+      "name": "Exclusiv Golf du Château de Cély  Cély-en-Bière",
+      "lat": 48.466579,
+      "lng": 2.524834,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/149.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-du-chateau-de-cely-cely-en-biere-77930"
+    },
+    {
+      "name": "Golf de La Croix des Anges Réau",
+      "lat": 48.609454,
+      "lng": 2.626201,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/150.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-croix-des-anges-reau-77550"
+    },
+    {
+      "name": "Golf Clément Ader Gretz-Armainvilliers",
+      "lat": 48.746062,
+      "lng": 2.712896,
+      "scorecardImgUrl": null,
+      "url": "https://www.cgolf.fr/detail/golf-clement-ader-gretz-armainvilliers-77220"
+    },
+    {
+      "name": "Golf de Bussy-Guermantes Marne-La-Vallée Parcours La Jonchère  Bussy-Saint-Georges",
+      "lat": 48.85072,
+      "lng": 2.722485,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/152.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-bussy-guermantes-bussy-saint-georges-77600"
+    },
+    {
+      "name": "Golf de Bussy-Guermantes Marne-La-Vallée Parcours La Gondoire Bussy-Saint-Georges",
+      "lat": 48.85072,
+      "lng": 2.722485,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/153.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-bussy-guermantes-marne-la-vallee-parcours-la-gondoire-bussy-saint-georges-77600"
+    },
+    {
+      "name": "Golf de Montereau la Forteresse  Thoury-Férottes",
+      "lat": 48.298662,
+      "lng": 2.954147,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/155.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montereau-la-forteresse-thoury-ferottes-77940"
+    },
+    {
+      "name": "Golf de la Marsaudière  Chevry-Cossigny",
+      "lat": 48.745291,
+      "lng": 2.696826,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/156.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-marsaudiere-chevry-cossigny-77173"
+    },
+    {
+      "name": "Golf de Lésigny-Réveillon Lésigny",
+      "lat": 48.728212,
+      "lng": 2.609706,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/157.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-reveillon-lesigny-77150"
+    },
+    {
+      "name": "Golf de Lésigny-Réveillon Lésigny",
+      "lat": 48.728212,
+      "lng": 2.609706,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/158.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-reveillon-2-lesigny-77150"
+    },
+    {
+      "name": "Golf de Lésigny-Réveillon  Lésigny",
+      "lat": 48.728212,
+      "lng": 2.609706,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/159.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-reveillon-3-lesigny-77150"
+    },
+    {
+      "name": "Golf de Torcy Torcy",
+      "lat": 48.863881,
+      "lng": 2.660896,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/160.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-torcy-77200"
+    },
+    {
+      "name": "Golf Blue Green Marolles-en-Brie Marolles-en-Brie",
+      "lat": 48.728475,
+      "lng": 2.543879,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/161.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-marolles-en-brie-94440"
+    },
+    {
+      "name": "Golf d’Ormesson  Ormesson-sur-Marne",
+      "lat": 48.785956,
+      "lng": 2.550278,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/162.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-ormesson-ormesson-sur-marne-94490"
+    }
+  ],
+  "/parcours/golfs-normandie": [
+    {
+      "name": "Golf Club de Strasbourg Parcours Blanc-Rouge Illkirch-Graffenstaden",
+      "lat": 48.506233,
+      "lng": 7.732044,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/554.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-strasbourg-parcours-blanc-rouge-illkirch-graffenstaden-67400"
+    },
+    {
+      "name": "Golf Club de Strasbourg Parcours Jaune Illkirch-Graffenstaden",
+      "lat": 48.506233,
+      "lng": 7.732044,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/563.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-strasbourg-parcours-jaune-illkirch-graffenstaden-67400"
+    },
+    {
+      "name": "Golf Club Le Mont Saint-Jean Les Rousses",
+      "lat": 46.483428,
+      "lng": 6.074961,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/547.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-le-mont-saint-jean-les-rousses-39220"
+    },
+    {
+      "name": "Golf du Rochat Les Rousses",
+      "lat": 46.48786,
+      "lng": 6.078031,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/548.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-rochat-les-rousses-39220"
+    },
+    {
+      "name": "Golf de Reims Gueux",
+      "lat": 49.249081,
+      "lng": 3.897267,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/539.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-reims-gueux-51390"
+    },
+    {
+      "name": "Golf de Wimereux Wimereux",
+      "lat": 50.788043,
+      "lng": 1.612085,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/533.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-wimereux-62930"
+    },
+    {
+      "name": "Golf d'Hardelot Parcours des Dunes  Hardelot-Plage",
+      "lat": 50.625531,
+      "lng": 1.608643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/531.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-dunes-hardelot-plage-62152"
+    },
+    {
+      "name": "Golf d'Hardelot Parcours des Pins  Hardelot-Plage",
+      "lat": 50.625531,
+      "lng": 1.608643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/532.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-pins-hardelot-plage-62152"
+    },
+    {
+      "name": "Golf et Country Club de la Côte d’Opale Ruminghem",
+      "lat": 50.847414,
+      "lng": 2.151552,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/530.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-et-country-club-de-la-cote-d-opale-ruminghem-62370"
+    },
+    {
+      "name": "Arras Golf Club Parcours La Vallée  Anzin-Saint-Aubin",
+      "lat": 50.31308,
+      "lng": 2.739159,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/528.jpg",
+      "url": "https://www.cgolf.fr/detail/arras-golf-club-parcours-la-vallee-anzin-saint-aubin-62223"
+    },
+    {
+      "name": "Arras Golf Club Parcours Les Aubépines Anzin-Saint-Aubin",
+      "lat": 50.31308,
+      "lng": 2.739159,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/529.jpg",
+      "url": "https://www.cgolf.fr/detail/arras-golf-club-parcours-les-aubepines-anzin-saint-aubin-62223"
+    },
+    {
+      "name": "Golf du Touquet Parcours La Fôret  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/525.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-la-foret-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Golf du Touquet Parcours La Mer  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/526.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-la-mer-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Golf du Touquet Parcours Le Manoir  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/527.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-le-manoir-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Aa Saint-Omer Golf Club Parcours du Val Lumbres",
+      "lat": 50.711855,
+      "lng": 2.086666,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/523.jpg",
+      "url": "https://www.cgolf.fr/detail/saint-omer-golf-club-parcours-du-val-lumbres-62380"
+    },
+    {
+      "name": "Aa Saint-Omer Golf Club Parcours Haute Drève  Lumbres",
+      "lat": 50.711855,
+      "lng": 2.086666,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/524.jpg",
+      "url": "https://www.cgolf.fr/detail/saint-omer-golf-club-parcours-haute-dreve-lumbres-62380"
+    },
+    {
+      "name": "Golf Sporting Club de Vichy Bellerive-sur-Allier",
+      "lat": 46.125986,
+      "lng": 3.408901,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/508.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-sporting-club-de-vichy-bellerive-sur-allier-03700"
+    },
+    {
+      "name": "Golf de La Grange aux Ormes Parcours Le Bois Brûlé Marly",
+      "lat": 49.077413,
+      "lng": 6.153486,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/493.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-grange-aux-ormes-parcours-le-bois-brule-marly-57155"
+    },
+    {
+      "name": "Golf de La Grange aux Ormes  Parcours Le Breuil Marly",
+      "lat": 49.077413,
+      "lng": 6.153486,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/494.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-grange-aux-ormes-parcours-le-breuil-marly-57155"
+    },
+    {
+      "name": "Golf Club de Limoges Limoges",
+      "lat": 45.811581,
+      "lng": 1.289042,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/478.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-limoges-87000"
+    },
+    {
+      "name": "Golf Club de Toulouse Vieille-Toulouse",
+      "lat": 43.534854,
+      "lng": 1.437427,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/440.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-toulouse-vieille-toulouse-31320"
+    },
+    {
+      "name": "Golf de Beaune Levernois Levernois",
+      "lat": 46.992679,
+      "lng": 4.883539,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/383.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-beaune-levernois-21200"
+    },
+    {
+      "name": "Lyon Salvagny Golf Club Parcours Les Etangs  La Tour-de-Salvagny",
+      "lat": 45.822364,
+      "lng": 4.704386,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/350.jpg",
+      "url": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-les-etangs-la-tour-de-salvagny-69890"
+    },
+    {
+      "name": "Lyon Salvagny Golf Club Parcours Le Château  La Tour-de-Salvagny",
+      "lat": 45.822364,
+      "lng": 4.704386,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/351.jpg",
+      "url": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-le-chateau-la-tour-de-salvagny-69890"
+    },
+    {
+      "name": "Beaujolais Golf Club  Lucenay",
+      "lat": 45.921456,
+      "lng": 4.709305,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/349.jpg",
+      "url": "https://www.cgolf.fr/detail/beaujolais-golf-club-lucenay-69480"
+    },
+    {
+      "name": "Golf de Lyon Verger Parcours 18 trous Saint-Symphorien-d'Ozon",
+      "lat": 45.65019,
+      "lng": 4.87307,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/347.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-lyon-verger-saint-symphorien-d-ozon-69360"
+    },
+    {
+      "name": "Golf de Lyon Verger Parcours Le Prés 9 Saint-Symphorien-d'Ozon",
+      "lat": 45.65019,
+      "lng": 4.87307,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/348.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-lyon-verger-parcours-le-pres-9-saint-symphorien-d-ozon-69360"
+    },
+    {
+      "name": "Golf Blue Green Grand Lyon Chassieu Chassieu",
+      "lat": 45.740007,
+      "lng": 4.94857,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/346.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-grand-lyon-chassieu-69680"
+    },
+    {
+      "name": "Golf Blue Green Saint-Étienne  Saint-Etienne",
+      "lat": 45.45448,
+      "lng": 4.367229,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/342.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-saint-etienne-42000"
+    },
+    {
+      "name": "Golf Blue Green Saint-Étienne Parcours Pitch and Putt  Saint-Etienne",
+      "lat": 45.45448,
+      "lng": 4.367229,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/343.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-parcours-pitch-and-putt-saint-etienne-42000"
+    },
+    {
+      "name": "Golf des Etangs  Savigneux",
+      "lat": 45.622337,
+      "lng": 4.103542,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/341.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-etangs-savigneux-42600"
+    },
+    {
+      "name": "Golf Club du Forez  Craintilleux",
+      "lat": 45.576858,
+      "lng": 4.212445,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/340.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-du-forez-craintilleux-42210"
+    },
+    {
+      "name": "Golf du Lac d’Annecy  Talloires",
+      "lat": 45.850333,
+      "lng": 6.202182,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/337.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-lac-d-annecy-talloires-74290"
+    },
+    {
+      "name": "Golf Club Valence Saint Didier  Charpey",
+      "lat": 44.941586,
+      "lng": 5.05762,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/325.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-valence-saint-didier-charpey-26300"
+    },
+    {
+      "name": "Golf Albon Senaud Parcours Les Seigneurs  Albon",
+      "lat": 45.232792,
+      "lng": 4.842864,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/324.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-senaud-parcours-les-seigneurs-albon-26140"
+    },
+    {
+      "name": "Golf de la Valdaine Montboucher-sur-Jabron",
+      "lat": 44.541104,
+      "lng": 4.800793,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/323.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-valdaine-montboucher-sur-jabron-26740"
+    },
+    {
+      "name": "Golf des Chanalets Bourg-lès-Valence",
+      "lat": 44.977345,
+      "lng": 4.90935,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/322.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-chanalets-bourg-les-valence-26500"
+    },
+    {
+      "name": "Golf du Domaine Saint-Clair  Saint-Clair",
+      "lat": 45.276393,
+      "lng": 4.698094,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/321.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-domaine-saint-clair-07430"
+    },
+    {
+      "name": "Golf du Gouverneur Parcours Le Breuil Monthieux",
+      "lat": 45.966379,
+      "lng": 4.932137,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/317.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-le-breuil-monthieux-01390"
+    },
+    {
+      "name": "Golf du Gouverneur Parcours Montaplan Monthieux",
+      "lat": 45.966379,
+      "lng": 4.932137,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/318.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-montaplan-monthieux-01390"
+    },
+    {
+      "name": "Garden Golf Mionnay Mionnay",
+      "lat": 45.895719,
+      "lng": 4.966835,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/307.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-mionnay-01390a"
+    },
+    {
+      "name": "Garden Golf Mionnay Parcours Golflower  Mionnay",
+      "lat": 45.895719,
+      "lng": 4.966835,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/308.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-parcours-golfower-mionnay-01390a"
+    },
+    {
+      "name": "Champ de Bataille Golf Club Le Neubourg",
+      "lat": 49.163464,
+      "lng": 0.857461,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/275.jpg",
+      "url": "https://www.cgolf.fr/detail/champs-de-bataille-golf-club-le-neubourg-27110"
+    },
+    {
+      "name": "Golf Club de Borgo Borgo (2B) - Corse",
+      "lat": 42.55489,
+      "lng": 9.46736,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/224.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-borgo-20290"
+    },
+    {
+      "name": "Murtoli Golf Links Sartène (2A) - Corse",
+      "lat": 41.515862,
+      "lng": 8.948881,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/223.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-domaine-de-murtoli-sartene-20100"
+    },
+    {
+      "name": "CSA-BA 126 Golf  Ventiseri (2B) - Corse",
+      "lat": 41.92599,
+      "lng": 9.3935,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/222.jpg",
+      "url": "https://www.cgolf.fr/detail/csa-ba-126-golf-ventiseri-20240b"
+    },
+    {
+      "name": "Giga Golf Club Porticcio (2A) - Corse",
+      "lat": 41.908384,
+      "lng": 8.822535,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/221.jpg",
+      "url": "https://www.cgolf.fr/detail/giga-golf-club-porticcio-20128"
+    },
+    {
+      "name": "Garden Golf Cergy Pontoise Vauréal",
+      "lat": 49.038442,
+      "lng": 2.01263,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/205.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-cergy-pontoise-vaureal-95490"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours des Lacs Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/202.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-des-lacs-luzarches-95270"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours de la Forêt  Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/203.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-de-la-foret-luzarches-95270"
+    },
+    {
+      "name": "Golf Hôtel de Mont-Griffon Parcours l’Arbalétrier Luzarches",
+      "lat": 49.111856,
+      "lng": 2.403188,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/204.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-hotel-de-mont-griffon-parcours-l-arbaletrier-luzarches-95270"
+    },
+    {
+      "name": "Golf de Villarceaux Parcours Grand Parcours Chaussy",
+      "lat": 49.116272,
+      "lng": 1.705272,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/200.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villarceaux-chaussy-95710"
+    },
+    {
+      "name": "Golf de Villarceaux Parcours Les Chevreuils Chaussy",
+      "lat": 49.116272,
+      "lng": 1.705272,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/201.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villarceaux-2-chaussy-95710"
+    },
+    {
+      "name": "Golf de Seraincourt Seraincourt",
+      "lat": 49.020957,
+      "lng": 1.871643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/199.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-seraincourt-95450a"
+    },
+    {
+      "name": "Gold de Maudétour-en-Vexin Maudétour-en-Vexin",
+      "lat": 49.097488,
+      "lng": 1.773029,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/198.jpg",
+      "url": "https://www.cgolf.fr/detail/gold-de-maudetour-en-vexin-95420"
+    },
+    {
+      "name": "Golf de l’Isle Adam L'Isle-Adam",
+      "lat": 49.12093,
+      "lng": 2.262653,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/197.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-l-isle-adam-95290"
+    },
+    {
+      "name": "Golf de Domont-Montmorency  Parcours Les Chataigniers  Domont",
+      "lat": 49.021222,
+      "lng": 2.310665,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/195.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montmorency-parcours-les-chataigniers-domont-95330"
+    },
+    {
+      "name": "Golf Club d’Ableiges Parcours Les Etangs Ableiges",
+      "lat": 49.081954,
+      "lng": 1.983718,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/193.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-les-etangs-golf-club-ableiges-95450b"
+    },
+    {
+      "name": "Golf Club d’Ableiges Parcours Le Vexin Ableiges",
+      "lat": 49.081954,
+      "lng": 1.983718,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/194.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-le-vexin-golf-club-ableiges-95450b"
+    },
+    {
+      "name": "Garden Golf Gadancourt  Gadancourt",
+      "lat": 49.10115,
+      "lng": 1.863032,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/192.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-gadancourt-95450"
+    },
+    {
+      "name": "Golf Blue Green Bellefontaine Parcours Le Bellefontaine  Bellefontaine",
+      "lat": 49.091521,
+      "lng": 2.454658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/190.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-bellefontaine-95270a"
+    },
+    {
+      "name": "Golf Blue Green Bellefontaine Parcours Le Plessis Bellefontaine",
+      "lat": 49.091521,
+      "lng": 2.454658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/191.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-le-plessis-golf-de-bellefontaine-95270a"
+    },
+    {
+      "name": "Golf de Fontainebleau  Fontainebleau",
+      "lat": 48.394794,
+      "lng": 2.68048,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/154.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-fontainebleau-77300"
+    },
+    {
+      "name": "Golf du Château de la Chouette  Gaillon-sur-Montcient",
+      "lat": 49.025627,
+      "lng": 1.884262,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/127.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-la-chouette-gaillon-sur-montcient-78250"
+    },
+    {
+      "name": "Golf de Reginu Speloncato (2B) - Corse",
+      "lat": 42.603484,
+      "lng": 8.973983,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/126.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-reginu-speloncato-20226"
+    },
+    {
+      "name": "Golf de Lezza Porto-Vecchio (2A) - Corse",
+      "lat": 41.531367,
+      "lng": 9.262923,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/125.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-lezza-porto-vecchio-20137"
+    },
+    {
+      "name": "Golf de Villeneuve-Loubet Villeneuve-Loubet",
+      "lat": 43.663005,
+      "lng": 7.096803,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/124.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villeneuve-loubet-06270"
+    },
+    {
+      "name": "Golf Club de Salouël Salouël",
+      "lat": 49.865148,
+      "lng": 2.259898,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/123.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-salouel-80480"
+    },
+    {
+      "name": "Golf Club de Nampont-Saint-Martin Parcours Le Belvédère Nampont",
+      "lat": 50.348035,
+      "lng": 1.739482,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/121.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-parcours-le-belvedere-nampont-80120a"
+    },
+    {
+      "name": "Golf Club de Nampont-Saint-Martin Parcours Les Cygnes Nampont",
+      "lat": 50.348035,
+      "lng": 1.739482,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/122.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-parcours-les-cygnes-nampont-80120a"
+    },
+    {
+      "name": "Golf Club d’Amiens Querrieu",
+      "lat": 49.924433,
+      "lng": 2.393362,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/120.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-d-amiens-querrieu-80115"
+    },
+    {
+      "name": "Golf d’Abbeville Parcours La Chouette Hulotte Grand-Laviers",
+      "lat": 50.140194,
+      "lng": 1.798743,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/119.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-abbeville-parcours-la-chouette-hulotte-grand-laviers-80132"
+    },
+    {
+      "name": "Golf de Belle-Dune Fort-Mahon-Plage",
+      "lat": 50.333132,
+      "lng": 1.56518,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/118.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-belle-dune-fort-mahon-plage-80120"
+    },
+    {
+      "name": "Golf de Carcassonne Carcassonne",
+      "lat": 43.189578,
+      "lng": 2.334472,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/117.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-carcassonne-11000"
+    },
+    {
+      "name": "Golf de Joyenval Parcours Marly  Chambourcy",
+      "lat": 48.890944,
+      "lng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/115.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-marly-chambourcy-78240"
+    },
+    {
+      "name": "Golf de Joyenval Parcours Retz Chambourcy",
+      "lat": 48.890944,
+      "lng": 2.028812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/116.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-joyenval-parcours-retz-chambourcy-78240"
+    },
+    {
+      "name": "Golf de Saint-Germain Parcours Le Grand Parcours Saint-Germain-en-Laye",
+      "lat": 48.918327,
+      "lng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/113.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-le-grand-parcours-saint-germain-en-laye-78100"
+    },
+    {
+      "name": "Golf de Saint-Germain Parcours des Genêts Saint-Germain-en-Laye",
+      "lat": 48.918327,
+      "lng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/114.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-genets-saint-germain-en-laye-78100"
+    },
+    {
+      "name": "Golf de Saint-Nom-La-Bretèche Parcours Bleu Saint-Nom-la-Bretèche",
+      "lat": 48.851975,
+      "lng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/111.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-nom-la-breteche-78860"
+    },
+    {
+      "name": "Golf de Saint-Nom-La-Bretèche Parcours Rouge Saint-Nom-la-Bretèche",
+      "lat": 48.851975,
+      "lng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/112.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-saint-nom-la-breteche-78860"
+    },
+    {
+      "name": "Golf d'Etiolles Parcours Les Cerfs Etiolles",
+      "lat": 48.643499,
+      "lng": 2.470621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/109.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-etiolles-91450"
+    },
+    {
+      "name": "Golf d'Etiolles Parcours Les Chênes Etiolles",
+      "lat": 48.643499,
+      "lng": 2.470621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/110.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-etiolles-91450"
+    },
+    {
+      "name": "Golf de Val Grand Bondoufle",
+      "lat": 48.604129,
+      "lng": 2.38422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/108.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-val-grand-bondoufle-91070"
+    },
+    {
+      "name": "Golf de Marivaux  Janvry",
+      "lat": 48.62795,
+      "lng": 2.167523,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/107.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-marivaux-janvry-91640"
+    },
+    {
+      "name": "Golf Blue Green Guerville Guerville",
+      "lat": 48.95916,
+      "lng": 1.757768,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/106.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-guerville-78930"
+    },
+    {
+      "name": "Exclusiv Golf de Rochefort Rochefort-en-Yvelines",
+      "lat": 48.586909,
+      "lng": 1.996768,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/105.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-de-rochefort-en-yvelines-78730"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours La Rivière Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/102.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-la-riviere-civry-la-foret-78910"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours Les Vallons Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/103.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-les-vallons-civry-la-foret-78910"
+    },
+    {
+      "name": "La Vaucouleurs Golf Club Parcours Le 360 Civry-la-Forêt",
+      "lat": 48.880486,
+      "lng": 1.61987,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/104.jpg",
+      "url": "https://www.cgolf.fr/detail/la-vaucouleurs-golf-club-parcours-le-360-civry-la-foret-78910"
+    },
+    {
+      "name": "Golf de Saint-Germain-Lès-Corbeil Saint-Germain-lès-Corbeil",
+      "lat": 48.637054,
+      "lng": 2.488831,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/101.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-germain-les-corbeil-91250"
+    },
+    {
+      "name": "Golf Club de Langogne Langogne",
+      "lat": 44.717221,
+      "lng": 3.825634,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/100.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-langogne-48300"
+    },
+    {
+      "name": "Golf des Gorges du Tarn Parcours du Sabot   La Canourgue",
+      "lat": 44.412757,
+      "lng": 3.2349,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/99.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-gorges-du-tarn-parcours-du-sabot-la-canourgue-48500"
+    },
+    {
+      "name": "Golf de Falgos Saint-Laurent-de-Cerdans",
+      "lat": 42.366028,
+      "lng": 2.580621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/98.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-falgos-saint-laurent-de-cerdans-66260"
+    },
+    {
+      "name": "Golf de Saint Cyprien Parcours Etang Canigou Saint-Cyprien",
+      "lat": 42.638493,
+      "lng": 3.016705,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/96.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-etang-canigou-golf-de-saint-cyprien-66750"
+    },
+    {
+      "name": "Golf de Saint Cyprien Parcours La Forêt Saint-Cyprien",
+      "lat": 42.638493,
+      "lng": 3.016705,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/97.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-la-foret-golf-de-saint-cyprien-66750"
+    },
+    {
+      "name": "Golf Club d'Uzès Uzès",
+      "lat": 43.983256,
+      "lng": 4.433523,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/95.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-d--uzes-30700"
+    },
+    {
+      "name": "Golf de Paris Country Club Parcours 9 trous Saint-Cloud",
+      "lat": 48.858349,
+      "lng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/93.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-paris-country-club-saint-cloud-92210"
+    },
+    {
+      "name": "Golf de Paris Country Club Parcours Pitch and Putt Saint-Cloud",
+      "lat": 48.858349,
+      "lng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/94.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-paris-country-club-parcours-pitch-and-putt-saint-cloud-92210"
+    },
+    {
+      "name": "Golf de Saint-Cloud Parcours Vert Garches",
+      "lat": 48.850188,
+      "lng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/91.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-vert-garches-92380"
+    },
+    {
+      "name": "Golf de Saint-Cloud Parcours Jaune Garches",
+      "lat": 48.850188,
+      "lng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/92.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-jaune-garches-92380"
+    },
+    {
+      "name": "Golf et Tennis du Haras de Jardy Vaucresson",
+      "lat": 48.829099,
+      "lng": 2.157472,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/89.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-et-tennis-du-haras-de-jardy-vaucresson-92420"
+    },
+    {
+      "name": "Golf Haras Lupin du Stade Français Vaucresson",
+      "lat": 48.844931,
+      "lng": 2.165063,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/90.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-haras-lupin-du-stade-francais-vaucresson-92420"
+    },
+    {
+      "name": "Blue Green Golf de Villeray  Saint-Pierre-du-Perray",
+      "lat": 48.60171,
+      "lng": 2.533226,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/88.jpg",
+      "url": "https://www.cgolf.fr/detail/blue-green-golf-de-villeray-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf de Sénart Parcours Les Cygnes Saint-Pierre-du-Perray",
+      "lat": 48.623924,
+      "lng": 2.520658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/136.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-senart-parcours-les-cygnes-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf de Sénart Parcours L’Arbalète Saint-Pierre-du-Perray",
+      "lat": 48.623924,
+      "lng": 2.520658,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/137.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-senart-parcours-l-arbalete-saint-pierre-du-perray-91280"
+    },
+    {
+      "name": "Golf Base Loisirs de Saint-Quentin-en-Yvelines Parcours Bleu Trappes",
+      "lat": 48.787781,
+      "lng": 1.992553,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/86.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-base-loisirs-de-saint-quentin-en-yvelines-parcours-bleu-trappes-78190"
+    },
+    {
+      "name": "Golf Base Loisirs de Saint-Quentin-en-Yvelines Parcours Rouge Trappes",
+      "lat": 48.787781,
+      "lng": 1.992553,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/87.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-base-loisirs-de-saint-quentin-en-yvelines-parcours-rouge-trappes-78190"
+    }
+  ],
+  "/parcours/golfs-centre": [
+    {
+      "name": "Golf du Val-de-l’Indre Villedieu-sur-Indre",
+      "lat": 46.848492,
+      "lng": 1.550168,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/60.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-val-de-l-indre-villedieu-sur-indre-36320"
+    },
+    {
+      "name": "Golf Les Dryades Pouligny-Notre-Dame",
+      "lat": 46.485429,
+      "lng": 2.008534,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/67.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-les-dryades-pouligny-notre-dame-36160"
+    },
+    {
+      "name": "Bourges Golf Club Bourges",
+      "lat": 47.053392,
+      "lng": 2.411455,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/171.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-bourges-18000"
+    },
+    {
+      "name": "Bourges Golf Club Bourges",
+      "lat": 47.053392,
+      "lng": 2.411455,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/172.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-2-bourges-18000"
+    },
+    {
+      "name": "Golf de Sancerre  Sancerre",
+      "lat": 47.348604,
+      "lng": 2.86496,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/173.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-sancerre-18300"
+    },
+    {
+      "name": "Golf de Sancerre Sancerre",
+      "lat": 47.348604,
+      "lng": 2.86496,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/174.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-2-sancerre-18300"
+    },
+    {
+      "name": "Golf de La Picardière  Vierzon",
+      "lat": 47.240985,
+      "lng": 2.132708,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/175.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-picardiere-vierzon-18100"
+    },
+    {
+      "name": "Golf de Marcilly Marcilly-en-Villette",
+      "lat": 47.783482,
+      "lng": 2.013286,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/176.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-marcilly-marcilly-en-villette-45240"
+    },
+    {
+      "name": "Golf de Sologne  La Ferté-Saint-Aubin",
+      "lat": 47.731214,
+      "lng": 1.88526,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/178.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-sologne-la-ferte-saint-aubin-45240"
+    },
+    {
+      "name": "Les Aisses Golf Parcours Les Aisses   La Ferté-Saint-Aubin",
+      "lat": 47.691854,
+      "lng": 1.966138,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/184.jpg",
+      "url": "https://www.cgolf.fr/detail/les-aisses-golf-parcours-les-aisses-la-ferte-saint-aubin-45240"
+    },
+    {
+      "name": "Les Aisses Golf Parcours La Canne   La Ferté-Saint-Aubin",
+      "lat": 47.691854,
+      "lng": 1.966138,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/185.jpg",
+      "url": "https://www.cgolf.fr/detail/les-aisses-golf-parcours-la-canne-la-ferte-saint-aubin-45240"
+    },
+    {
+      "name": "Golf de Sully-sur-Loire Parcours Faisans-Chevreuils  Sully-sur-Loire",
+      "lat": 47.745342,
+      "lng": 2.322543,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/179.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-faisans-chevreuils-golf-de-sully-sur-loire-45600"
+    },
+    {
+      "name": "Domaine et Golf de Vaugouard  Fontenay-sur-Loing",
+      "lat": 48.068329,
+      "lng": 2.773746,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/180.jpg",
+      "url": "https://www.cgolf.fr/detail/domaine-et-golf-de-vaugouard-fontenay-sur-loing-45210"
+    },
+    {
+      "name": "Golf d’Orléans-Donnery Donnery",
+      "lat": 47.900773,
+      "lng": 2.10043,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/181.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-orleans-donnery-45450"
+    },
+    {
+      "name": "Golf d’Orléans-Limère  Ardon",
+      "lat": 47.820125,
+      "lng": 1.909224,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/182.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-orleans-limere-ardon-45160"
+    },
+    {
+      "name": "Golf du Château d’Augerville  Augerville-la-Rivière",
+      "lat": 48.249417,
+      "lng": 2.442159,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/183.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-d-augerville-augerville-la-riviere-45330"
+    },
+    {
+      "name": "Golf du Château de Cheverny Cheverny",
+      "lat": 47.487951,
+      "lng": 1.461805,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/212.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-cheverny-41700"
+    },
+    {
+      "name": "Golf du Bois d’ô Parcours Genêts-Etang  Saint-Maixme-Hauterive",
+      "lat": 48.590689,
+      "lng": 1.207531,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/213.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-bois-d-o-parcours-genets-etang-saint-maixme-hauterive-28170"
+    },
+    {
+      "name": "Golf du Bois d’ô Parcours Pommiers-Genêts  Saint-Maixme-Hauterive",
+      "lat": 48.590689,
+      "lng": 1.207531,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/214.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-bois-d-o-parcours-pommiers-genets-saint-maixme-hauterive-28170"
+    },
+    {
+      "name": "Golf du Château de Maintenon  Maintenon",
+      "lat": 48.585742,
+      "lng": 1.586552,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/215.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-maintenon-28130"
+    },
+    {
+      "name": "Golf du Perche Souancé-au-Perche",
+      "lat": 48.26457,
+      "lng": 0.872191,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/216.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-perche-souance-au-perche-28400"
+    },
+    {
+      "name": "Le Golf Parc Robert Hersan La Chaussée-d'Ivry",
+      "lat": 48.884155,
+      "lng": 1.473831,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/217.jpg",
+      "url": "https://www.cgolf.fr/detail/le-golf-parc-robert-hersan-la-chaussee-d-ivry-28260"
+    },
+    {
+      "name": "Golf Blue Green Tours Ardrée  Saint-Antoine-du-Rocher",
+      "lat": 47.484517,
+      "lng": 0.641406,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/218.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-tours-ardree-saint-antoine-du-rocher-37360"
+    },
+    {
+      "name": "Golf de Touraine  Ballan-Miré",
+      "lat": 47.33579,
+      "lng": 0.590586,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/219.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-touraine-ballan-mire-37510"
+    },
+    {
+      "name": "Château Golf des Sept Tours  Courcelles-de-Touraine",
+      "lat": 47.482269,
+      "lng": 0.359762,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/220.jpg",
+      "url": "https://www.cgolf.fr/detail/chateau-golf-des-sept-tours-courcelles-de-touraine-37330"
+    }
+  ]
+}

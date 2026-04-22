@@ -37,6 +37,16 @@ export default function App() {
       .finally(() => setCgolfLoading(false));
   }
 
+  function handleRefreshHoles() {
+    if (!selectedCourse) return;
+    setHolesError(null);
+    setHolesLoading(true);
+    fetchHoles(selectedCourse.lat, selectedCourse.lng)
+      .then(data => setHolesData(data))
+      .catch(err => setHolesError(err.message))
+      .finally(() => setHolesLoading(false));
+  }
+
   const courses = searchResults?.courses ?? [];
 
   return (
@@ -67,6 +77,7 @@ export default function App() {
 
         <section className="content">
           <HolesTable
+            key={selectedCourse?.osmId}
             course={selectedCourse}
             holesData={holesData}
             holesLoading={holesLoading}
@@ -74,6 +85,7 @@ export default function App() {
             cgolfData={cgolfData}
             cgolfLoading={cgolfLoading}
             cgolfError={cgolfError}
+            onRefreshHoles={handleRefreshHoles}
           />
         </section>
       </main>

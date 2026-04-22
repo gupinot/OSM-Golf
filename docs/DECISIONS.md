@@ -80,6 +80,30 @@
 
 ---
 
+## 2026-04-22 — Bouton "Éditer OSM" sur le panneau trous
+
+**Choix :** Lien `✏️ Éditer OSM` dans le header du panneau trous, ouvre `https://www.openstreetmap.org/edit#map=17/{lat}/{lng}` dans un nouvel onglet.
+
+**Raison :** Accès direct à l'éditeur OSM centré sur le golf sélectionné, sans avoir à naviguer manuellement.
+
+---
+
+## 2026-04-22 — Lien vers la page cgolf.fr dans le panneau scorecard
+
+**Choix :** Bouton `↗` dans le titre du panneau cgolf.fr, visible uniquement quand `match.cgolfUrl` est disponible, ouvre la page cgolf dans un nouvel onglet.
+
+**Raison :** Accès rapide à la source de référence pour vérification visuelle.
+
+---
+
+## 2026-04-22 — Source de scorecard personnalisée (URL ou fichier local)
+
+**Choix :** Bouton `+ Autre source` dans le panneau cgolf permettant de fournir soit une URL d'image soit un fichier local (drag&drop ou sélection). Appelle `POST /api/cgolf-holes/analyze` qui réutilise `analyzeScorecard` (Gemini Vision). Le résultat remplace le `match` cgolf.fr pour le sous-parcours concerné. Un bouton `× Réinitialiser` revient à la source cgolf.fr. État `customSources` (map courseKey → résultat) dans `HolesTable`, réinitialisé via `key={osmId}` à chaque changement de golf.
+
+**Raison :** Certains golfs ne sont pas référencés sur cgolf.fr, ou leur scorecard peut être disponible ailleurs (site officiel, photo). Permet l'analyse et la comparaison OSM avec n'importe quelle source d'image.
+
+---
+
 ## 2026-04-22 — Matching multi-parcours sur même osm_id
 
 **Choix :** `fetchCgolfHoles` retourne un tableau de tous les matches pour un `osm_id` (`.filter()` au lieu de `.find()`). Côté frontend, `findCgolfForCourse(cgolfData, courseKey)` sélectionne l'entrée cgolf dont `cgolfName` ou `cgolfUrl` contient le `courseKey` OSM (ex : "Montaplan" → parcours Montaplan).

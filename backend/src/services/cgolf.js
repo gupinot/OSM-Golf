@@ -26,7 +26,7 @@ function getMatchResults() {
   return matchResultsCache;
 }
 
-async function analyzeScorecard(imgBuffer) {
+async function analyzeScorecard(imgBuffer, mimeType = 'image/jpeg') {
   const { GoogleGenAI } = require('@google/genai');
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -35,7 +35,7 @@ async function analyzeScorecard(imgBuffer) {
     model: 'gemini-2.5-flash',
     contents: [{
       parts: [
-        { inlineData: { mimeType: 'image/jpeg', data: imgBuffer.toString('base64') } },
+        { inlineData: { mimeType, data: imgBuffer.toString('base64') } },
         { text: SCORECARD_PROMPT },
       ],
     }],
@@ -83,4 +83,4 @@ async function fetchCgolfHoles(osmId) {
   return valid.length ? valid : null;
 }
 
-module.exports = { fetchCgolfHoles };
+module.exports = { fetchCgolfHoles, analyzeScorecard };

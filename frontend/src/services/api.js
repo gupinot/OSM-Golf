@@ -26,3 +26,13 @@ export async function fetchCgolfHoles(osmId) {
   if (!res.ok) throw new Error((await res.json()).error);
   return res.json();
 }
+
+export async function analyzeCustomScorecard(payload) {
+  const res = await fetch('/api/cgolf-holes/analyze', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error((await res.json()).error);
+  return res.json();
+}

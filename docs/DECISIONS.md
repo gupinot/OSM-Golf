@@ -162,3 +162,14 @@ Matching : token set ratio sur noms normalisés (stopwords supprimés) + filtre 
 Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, handicap, distances }` avec statuts `missing-in-osm | missing-in-cgolf | mismatch | ok`. Appliqué via `cellClass(status, side)` dans `OsmUnifiedTable` (colonnes `golf=hole` uniquement) et `CgolfPanel`.
 
 **Raison :** Permettre d'identifier d'un coup d'œil les écarts entre OSM et la scorecard officielle, sans avoir à comparer ligne par ligne manuellement.
+
+---
+
+## 2026-04-22 — Inférence du nom de parcours par préfixe commun des tags `name`
+
+**Choix :** Suppression du pattern-matching par trou (`deriveCourse`). Remplacement par une analyse globale post-boucle (`inferCourseFromNames`) :
+1. Pour chaque trou sans tag `course`, extraire les candidats de préfixe depuis `name` (avant ` n°NNN` ou ` - NNN` ou ` – NNN`)
+2. Compter le nombre de trous partageant chaque candidat
+3. N'assigner le candidat comme `course` que s'il apparaît dans ≥ 2 trous
+
+**Raison :** Le pattern-matching fixe échouait pour des formats variés (ex : "Blanc - 8" pour Golf de Fourqueux). L'approche globale est robuste : si plusieurs trous partagent un même préfixe, c'est nécessairement le nom du parcours, sans supposer un format précis.

@@ -75,12 +75,31 @@ out center tags;
 }
 
 // "Vert n°16 - Bois joli" → "Vert" ; "Jaune n°10 - ..." → "Jaune"
-function deriveCourse(tags) {
-  if (tags.course?.trim()) return tags.course.trim();
-  const name = tags.name?.trim();
-  if (!name) return '';
-  const m = name.match(/^(.+?)\s+n°\d+/i);
-  return m ? m[1].trim() : '';
+function extractNameCandidates(name) {
+  const candidates = new Set();
+  const m1 = name.match(/^(.+?)\s+n°\s*\d+/i);
+  if (m1) candidates.add(m1[1].trim());
+  const m2 = name.match(/^(.+?)\s+[-–]\s+\d+/);
+  if (m2) candidates.add(m2[1].trim());
+  return candidates;
+}
+
+function inferCourseFromNames(holes) {
+  const counts = new Map();
+  for (const hole of holes) {
+    if (hole.course || !hole._rawName) continue;
+    for (const c of extractNameCandidates(hole._rawName)) {
+      counts.set(c, (counts.get(c) || 0) + 1);
+    }
+  }
+  for (const hole of holes) {
+    if (!hole.course && hole._rawName) {
+      for (const c of extractNameCandidates(hole._rawName)) {
+        if ((counts.get(c) || 0) >= 2) { hole.course = c; break; }
+      }
+    }
+    delete hole._rawName;
+  }
 }
 
 async function fetchBoundary(osmId) {
@@ -201,7 +220,8 @@ out body geom;
       holes.push({
         osmWayId: e.id,
         ref: (tags.ref || '').trim(),
-        course: deriveCourse(tags),
+        course: (tags.course || '').trim(),
+        _rawName: (tags.name || '').trim(),
         par: (tags.par || '').trim(),
         handicap: (tags.handicap || '').trim(),
         distances: distTags,
@@ -222,6 +242,7 @@ out body geom;
     }
   }
 
+  inferCourseFromNames(holes);
   return { holes, tees, greens };
 }
 

@@ -32,5 +32,91 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/116.jpg",
       "matchScore": 0
     }
+  ],
+  "relation/9926146": [
+    {
+      "cgolfName": "Golf de Paris Country Club Parcours 9 trous Saint-Cloud",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-paris-country-club-saint-cloud-92210",
+      "cgolfLat": 48.858349,
+      "cgolfLng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/93.jpg",
+      "matchScore": 29
+    },
+    {
+      "cgolfName": "Golf de Paris Country Club Parcours Pitch and Putt Saint-Cloud",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-paris-country-club-parcours-pitch-and-putt-saint-cloud-92210",
+      "cgolfLat": 48.858349,
+      "cgolfLng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/94.jpg",
+      "matchScore": 25
+    },
+    {
+      "cgolfName": "Golf de Saint-Cloud Parcours Vert Garches",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-vert-garches-92380",
+      "cgolfLat": 48.850188,
+      "cgolfLng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/91.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Saint-Cloud Parcours Jaune Garches",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-jaune-garches-92380",
+      "cgolfLat": 48.850188,
+      "cgolfLng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/92.jpg",
+      "matchScore": 0
+    }
+  ],
+  "way/22752042": [
+    {
+      "cgolfName": "Golf de Saint-Cloud Parcours Vert Garches",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-vert-garches-92380",
+      "cgolfLat": 48.850188,
+      "cgolfLng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/91.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf de Saint-Cloud Parcours Jaune Garches",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-cloud-parcours-jaune-garches-92380",
+      "cgolfLat": 48.850188,
+      "cgolfLng": 2.181347,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/92.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf de Paris Country Club Parcours 9 trous Saint-Cloud",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-paris-country-club-saint-cloud-92210",
+      "cgolfLat": 48.858349,
+      "cgolfLng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/93.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf de Paris Country Club Parcours Pitch and Putt Saint-Cloud",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-paris-country-club-parcours-pitch-and-putt-saint-cloud-92210",
+      "cgolfLat": 48.858349,
+      "cgolfLng": 2.204408,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/94.jpg",
+      "matchScore": 44
+    },
+    {
+      "cgolfName": "Golf Haras Lupin du Stade Français Vaucresson",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-haras-lupin-du-stade-francais-vaucresson-92420",
+      "cgolfLat": 48.844931,
+      "cgolfLng": 2.165063,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/90.jpg",
+      "matchScore": 0
+    }
+  ],
+  "way/166523254": [
+    {
+      "cgolfName": "Ile Fleurie Golf Club  Chatou",
+      "cgolfUrl": "https://www.cgolf.fr/detail/ile-fleurie-golf-club-chatou-78400",
+      "cgolfLat": 48.902513,
+      "cgolfLng": 2.178059,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/146.jpg",
+      "matchScore": 80
+    }
   ]
 }

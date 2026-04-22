@@ -62,25 +62,54 @@ async function fetchHoles(lat, lng, radiusKm = 5) {
   const radiusM = radiusKm * 1000;
   const ql = `
 [out:json][timeout:30];
-way["golf"="hole"](around:${radiusM},${lat},${lng});
-out tags;
+(
+  way["golf"="hole"](around:${radiusM},${lat},${lng});
+  way["golf"="tee"](around:${radiusM},${lat},${lng});
+  node["golf"="tee"](around:${radiusM},${lat},${lng});
+  way["golf"="green"](around:${radiusM},${lat},${lng});
+);
+out body geom;
 `;
   const data = await query(ql, `fetchHoles(${lat},${lng},${radiusKm}km)`);
-  return data.elements.map(e => {
+
+  const holes = [];
+  const tees = [];
+  const greens = [];
+
+  for (const e of data.elements) {
     const tags = e.tags || {};
-    const distTags = {};
-    for (const [k, v] of Object.entries(tags)) {
-      if (k.startsWith('dist:')) distTags[k.replace('dist:', '')] = v;
+    const golf = tags.golf;
+
+    if (golf === 'hole' && e.type === 'way') {
+      const distTags = {};
+      for (const [k, v] of Object.entries(tags)) {
+        if (k.startsWith('dist:')) distTags[k.replace('dist:', '')] = v;
+      }
+      holes.push({
+        osmWayId: e.id,
+        ref: (tags.ref || '').trim(),
+        course: (tags.course || '').trim(),
+        par: (tags.par || '').trim(),
+        handicap: (tags.handicap || '').trim(),
+        distances: distTags,
+        lastPoint: e.geometry?.length ? e.geometry[e.geometry.length - 1] : null,
+      });
+    } else if (golf === 'tee') {
+      tees.push({
+        ref: (tags.ref || '').trim(),
+        course: (tags.course || '').trim(),
+        color: (tags.tee || tags['golf:tee'] || '').trim(),
+      });
+    } else if (golf === 'green' && e.type === 'way') {
+      greens.push({
+        ref: (tags.ref || '').trim(),
+        course: (tags.course || '').trim(),
+        geometry: e.geometry || [],
+      });
     }
-    return {
-      osmWayId: e.id,
-      ref: (tags.ref || '').trim(),
-      course: (tags.course || '').trim(),
-      par: (tags.par || '').trim(),
-      handicap: (tags.handicap || '').trim(),
-      distances: distTags,
-    };
-  });
+  }
+
+  return { holes, tees, greens };
 }
 
 function parseCourses(elements, refLat, refLng) {

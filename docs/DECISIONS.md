@@ -62,6 +62,24 @@
 
 ---
 
+## 2026-04-22 — Analyse qualité golf=tee et golf=green
+
+**Choix :** Nouvelle requête Overpass unifiée (`out body geom`) récupérant en une passe `golf=hole` + `golf=tee` (way et node) + `golf=green` avec géométrie complète. Analyse côté backend (`analyzeTeeGreenQuality`) :
+- Tees : map `course|ref → { black, white, yellow, blue, red }` (présence d'une zone tee par couleur)
+- Greens : map `course|ref → 'tagged' | 'untagged' | 'missing'` avec point-in-polygon (ray casting) pour détecter les greens existants sans tag `ref`
+
+**Raison :** Complète le diagnostic qualité OSM au-delà des seuls `golf=hole` — permet d'identifier les tees et greens manquants ou mal taggés.
+
+---
+
+## 2026-04-22 — Tableau OSM unifié (golf=hole + golf=tee + golf=green)
+
+**Choix :** Un seul `<table>` avec deux lignes d'en-tête groupées (colspan/rowspan) : `golf=hole` (7 cols), `golf=tee` (5 cols), `golf=green` (1 col). Le tableau cgolf reçoit également une ligne de groupe (`scorecard`) pour aligner les lignes de données verticalement. Hauteurs fixes via CSS (`thead tr: 28px`, `tbody tr: 32px`).
+
+**Raison :** Lecture horizontale naturelle par trou ; alignement visuel garanti entre OSM et cgolf.fr.
+
+---
+
 ## 2026-04-22 — Matching multi-parcours sur même osm_id
 
 **Choix :** `fetchCgolfHoles` retourne un tableau de tous les matches pour un `osm_id` (`.filter()` au lieu de `.find()`). Côté frontend, `findCgolfForCourse(cgolfData, courseKey)` sélectionne l'entrée cgolf dont `cgolfName` ou `cgolfUrl` contient le `courseKey` OSM (ex : "Montaplan" → parcours Montaplan).

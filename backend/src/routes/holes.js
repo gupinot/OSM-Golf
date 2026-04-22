@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { fetchHoles } = require('../services/overpass');
-const { analyzeHolesQuality } = require('../services/quality');
+const { analyzeHolesQuality, analyzeTeeGreenQuality } = require('../services/quality');
 
 const router = Router();
 
@@ -15,9 +15,10 @@ router.get('/', async (req, res) => {
   }
 
   try {
-    const holes = await fetchHoles(lat, lng, radius);
+    const { holes, tees: rawTees, greens: rawGreens } = await fetchHoles(lat, lng, radius);
     const quality = analyzeHolesQuality(holes);
-    res.json({ holes, quality });
+    const { tees, greens } = analyzeTeeGreenQuality(holes, rawTees, rawGreens);
+    res.json({ holes, quality, tees, greens });
   } catch (err) {
     res.status(502).json({ error: err.message });
   }

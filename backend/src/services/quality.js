@@ -49,4 +49,47 @@ function holeSort(a, b) {
   return (a.ref || '').localeCompare(b.ref || '');
 }
 
-module.exports = { analyzeHolesQuality };
+const TEE_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
+
+function analyzeTeeGreenQuality(holes, rawTees, rawGreens) {
+  const teeMap = {};
+  for (const tee of rawTees) {
+    if (!tee.ref) continue;
+    const key = `${tee.course}|${tee.ref}`;
+    if (!teeMap[key]) teeMap[key] = {};
+    for (const color of tee.color.split(';').map(c => c.trim()).filter(Boolean)) {
+      if (TEE_COLORS.includes(color)) teeMap[key][color] = true;
+    }
+  }
+
+  const taggedGreenKeys = new Set(
+    rawGreens.filter(g => g.ref).map(g => `${g.course}|${g.ref}`)
+  );
+
+  const greenMap = {};
+  for (const hole of holes) {
+    const key = `${hole.course}|${hole.ref}`;
+    if (!hole.ref) { greenMap[key] = 'missing'; continue; }
+    if (taggedGreenKeys.has(key)) { greenMap[key] = 'tagged'; continue; }
+    const inside = hole.lastPoint && rawGreens.some(g => pointInPolygon(hole.lastPoint, g.geometry));
+    greenMap[key] = inside ? 'untagged' : 'missing';
+  }
+
+  return { tees: teeMap, greens: greenMap };
+}
+
+function pointInPolygon(point, polygon) {
+  if (!polygon || polygon.length < 3) return false;
+  const { lat, lon } = point;
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].lon, yi = polygon[i].lat;
+    const xj = polygon[j].lon, yj = polygon[j].lat;
+    if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+module.exports = { analyzeHolesQuality, analyzeTeeGreenQuality };

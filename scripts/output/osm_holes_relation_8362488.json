@@ -1,0 +1,532 @@
+[
+  {
+    "osm_way_id": 595067807,
+    "ref": "14",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "1",
+    "dist_tags": {
+      "dist:black": "401",
+      "dist:white": "382",
+      "dist:yellow": "362"
+    }
+  },
+  {
+    "osm_way_id": 595067808,
+    "ref": "2",
+    "course": "Le Breuil",
+    "par": "3",
+    "handicap": "12",
+    "dist_tags": {
+      "dist:black": "166",
+      "dist:white": "166",
+      "dist:yellow": "139"
+    }
+  },
+  {
+    "osm_way_id": 595067824,
+    "ref": "16",
+    "course": "Le Breuil",
+    "par": "3",
+    "handicap": "7",
+    "dist_tags": {
+      "dist:black": "198",
+      "dist:white": "181",
+      "dist:yellow": "159"
+    }
+  },
+  {
+    "osm_way_id": 595067825,
+    "ref": "3",
+    "course": "Montaplan",
+    "par": "5",
+    "handicap": "2",
+    "dist_tags": {
+      "dist:black": "457",
+      "dist:white": "457",
+      "dist:yellow": "432"
+    }
+  },
+  {
+    "osm_way_id": 595067826,
+    "ref": "4",
+    "course": "Montaplan",
+    "par": "3",
+    "handicap": "12",
+    "dist_tags": {
+      "dist:black": "187",
+      "dist:white": "161",
+      "dist:yellow": "133"
+    }
+  },
+  {
+    "osm_way_id": 595067827,
+    "ref": "6",
+    "course": "Montaplan",
+    "par": "5",
+    "handicap": "18",
+    "dist_tags": {
+      "dist:black": "476",
+      "dist:white": "476",
+      "dist:yellow": "443"
+    }
+  },
+  {
+    "osm_way_id": 595067828,
+    "ref": "5",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "18",
+    "dist_tags": {
+      "dist:black": "328",
+      "dist:white": "328",
+      "dist:yellow": "300"
+    }
+  },
+  {
+    "osm_way_id": 595067829,
+    "ref": "7",
+    "course": "Montaplan",
+    "par": "3",
+    "handicap": "16",
+    "dist_tags": {
+      "dist:black": "160",
+      "dist:white": "160",
+      "dist:yellow": "144"
+    }
+  },
+  {
+    "osm_way_id": 595067830,
+    "ref": "2",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "6",
+    "dist_tags": {
+      "dist:black": "356",
+      "dist:white": "356",
+      "dist:yellow": "312"
+    }
+  },
+  {
+    "osm_way_id": 595067831,
+    "ref": "",
+    "course": "training hole",
+    "par": "4",
+    "handicap": "1",
+    "dist_tags": {
+      "dist:black": "245",
+      "dist:white": "245",
+      "dist:yellow": "245"
+    }
+  },
+  {
+    "osm_way_id": 595067832,
+    "ref": "15",
+    "course": "Le Breuil",
+    "par": "5",
+    "handicap": "9",
+    "dist_tags": {
+      "dist:black": "484",
+      "dist:white": "463",
+      "dist:yellow": "443"
+    }
+  },
+  {
+    "osm_way_id": 595067833,
+    "ref": "11",
+    "course": "Le Breuil",
+    "par": "3",
+    "handicap": "17",
+    "dist_tags": {
+      "dist:black": "175",
+      "dist:white": "158",
+      "dist:yellow": "143"
+    }
+  },
+  {
+    "osm_way_id": 595067834,
+    "ref": "10",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "11",
+    "dist_tags": {
+      "dist:black": "355",
+      "dist:white": "338",
+      "dist:yellow": "329"
+    }
+  },
+  {
+    "osm_way_id": 595067835,
+    "ref": "17",
+    "course": "Le Breuil",
+    "par": "5",
+    "handicap": "15",
+    "dist_tags": {
+      "dist:black": "495",
+      "dist:white": "468",
+      "dist:yellow": "447"
+    }
+  },
+  {
+    "osm_way_id": 595067836,
+    "ref": "18",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "5",
+    "dist_tags": {
+      "dist:black": "405",
+      "dist:white": "384",
+      "dist:yellow": "366"
+    }
+  },
+  {
+    "osm_way_id": 595067837,
+    "ref": "17",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "5",
+    "dist_tags": {
+      "dist:black": "349",
+      "dist:white": "349",
+      "dist:yellow": "314"
+    }
+  },
+  {
+    "osm_way_id": 595067838,
+    "ref": "15",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "7",
+    "dist_tags": {
+      "dist:black": "306",
+      "dist:white": "306",
+      "dist:yellow": "286"
+    }
+  },
+  {
+    "osm_way_id": 595067839,
+    "ref": "13",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "3",
+    "dist_tags": {
+      "dist:black": "377",
+      "dist:white": "377",
+      "dist:yellow": "355"
+    }
+  },
+  {
+    "osm_way_id": 595067840,
+    "ref": "12",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "9",
+    "dist_tags": {
+      "dist:black": "335",
+      "dist:white": "335",
+      "dist:yellow": "320"
+    }
+  },
+  {
+    "osm_way_id": 595067841,
+    "ref": "11",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "1",
+    "dist_tags": {
+      "dist:black": "425",
+      "dist:white": "425",
+      "dist:yellow": "391"
+    }
+  },
+  {
+    "osm_way_id": 595067842,
+    "ref": "10",
+    "course": "Montaplan",
+    "par": "3",
+    "handicap": "13",
+    "dist_tags": {
+      "dist:black": "185",
+      "dist:white": "185",
+      "dist:yellow": "173"
+    }
+  },
+  {
+    "osm_way_id": 595067843,
+    "ref": "9",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "4",
+    "dist_tags": {
+      "dist:black": "389",
+      "dist:white": "389",
+      "dist:yellow": "350"
+    }
+  },
+  {
+    "osm_way_id": 595067844,
+    "ref": "8",
+    "course": "Montaplan",
+    "par": "5",
+    "handicap": "10",
+    "dist_tags": {
+      "dist:black": "465",
+      "dist:white": "465",
+      "dist:yellow": "423"
+    }
+  },
+  {
+    "osm_way_id": 595067845,
+    "ref": "14",
+    "course": "Montaplan",
+    "par": "3",
+    "handicap": "17",
+    "dist_tags": {
+      "dist:black": "133",
+      "dist:white": "133",
+      "dist:yellow": "112"
+    }
+  },
+  {
+    "osm_way_id": 595067846,
+    "ref": "16",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "11",
+    "dist_tags": {
+      "dist:black": "372",
+      "dist:white": "372",
+      "dist:yellow": "336"
+    }
+  },
+  {
+    "osm_way_id": 595067847,
+    "ref": "1",
+    "course": "training hole",
+    "par": "3",
+    "handicap": "2",
+    "dist_tags": {
+      "dist:black": "195",
+      "dist:white": "195",
+      "dist:yellow": "170"
+    }
+  },
+  {
+    "osm_way_id": 595067848,
+    "ref": "1",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "8",
+    "dist_tags": {
+      "dist:black": "333",
+      "dist:red": "284",
+      "dist:white": "333",
+      "dist:yellow": "312"
+    }
+  },
+  {
+    "osm_way_id": 595067849,
+    "ref": "18",
+    "course": "Montaplan",
+    "par": "4",
+    "handicap": "15",
+    "dist_tags": {
+      "dist:black": "302",
+      "dist:white": "302",
+      "dist:yellow": "302"
+    }
+  },
+  {
+    "osm_way_id": 595067850,
+    "ref": "9",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "4",
+    "dist_tags": {
+      "dist:black": "358",
+      "dist:white": "349",
+      "dist:yellow": "333"
+    }
+  },
+  {
+    "osm_way_id": 595067851,
+    "ref": "8",
+    "course": "Le Breuil",
+    "par": "5",
+    "handicap": "16",
+    "dist_tags": {
+      "dist:black": "482",
+      "dist:white": "453",
+      "dist:yellow": "436"
+    }
+  },
+  {
+    "osm_way_id": 595067852,
+    "ref": "7",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "14",
+    "dist_tags": {
+      "dist:black": "376",
+      "dist:blue": "317",
+      "dist:white": "358",
+      "dist:yellow": "341"
+    }
+  },
+  {
+    "osm_way_id": 595067853,
+    "ref": "5",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "2",
+    "dist_tags": {
+      "dist:black": "408",
+      "dist:white": "387",
+      "dist:yellow": "363"
+    }
+  },
+  {
+    "osm_way_id": 595067854,
+    "ref": "4",
+    "course": "Le Breuil",
+    "par": "3",
+    "handicap": "10",
+    "dist_tags": {
+      "dist:black": "186",
+      "dist:white": "165",
+      "dist:yellow": "154"
+    }
+  },
+  {
+    "osm_way_id": 595067855,
+    "ref": "3",
+    "course": "Le Breuil",
+    "par": "5",
+    "handicap": "18",
+    "dist_tags": {
+      "dist:black": "462",
+      "dist:white": "457",
+      "dist:yellow": "422"
+    }
+  },
+  {
+    "osm_way_id": 595067856,
+    "ref": "13",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "13",
+    "dist_tags": {
+      "dist:black": "340",
+      "dist:white": "319",
+      "dist:yellow": "301"
+    }
+  },
+  {
+    "osm_way_id": 595067857,
+    "ref": "12",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "3",
+    "dist_tags": {
+      "dist:black": "368",
+      "dist:white": "347",
+      "dist:yellow": "323"
+    }
+  },
+  {
+    "osm_way_id": 595067858,
+    "ref": "1",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "8",
+    "dist_tags": {
+      "dist:black": "377",
+      "dist:white": "358",
+      "dist:yellow": "345"
+    }
+  },
+  {
+    "osm_way_id": 595067859,
+    "ref": "6",
+    "course": "Le Breuil",
+    "par": "4",
+    "handicap": "6",
+    "dist_tags": {
+      "dist:black": "396",
+      "dist:white": "374",
+      "dist:yellow": "352"
+    }
+  },
+  {
+    "osm_way_id": 1200021780,
+    "ref": "9",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021781,
+    "ref": "8",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021782,
+    "ref": "7",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021783,
+    "ref": "6",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021784,
+    "ref": "5",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021785,
+    "ref": "3",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021786,
+    "ref": "2",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021787,
+    "ref": "4",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1200021788,
+    "ref": "1",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  }
+]

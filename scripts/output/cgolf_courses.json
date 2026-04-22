@@ -1,0 +1,362 @@
+[
+  {
+    "name": "Golf de Miribel-Jonage Vaulx-en-Velin",
+    "lat": 45.798495,
+    "lng": 4.941694,
+    "url": "https://www.cgolf.fr/detail/golf-de-miribel-jonage-vaulx-en-velin-69120",
+    "region": "rhone-alpes",
+    "distance_km": 9.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/592.jpg"
+  },
+  {
+    "name": "Golf Blue Green Grand Lyon Chassieu Chassieu",
+    "lat": 45.740007,
+    "lng": 4.94857,
+    "url": "https://www.cgolf.fr/detail/golf-blue-green-grand-lyon-chassieu-69680",
+    "region": "rhone-alpes",
+    "distance_km": 9.2,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/346.jpg"
+  },
+  {
+    "name": "Lyon Salvagny Golf Club Parcours Les Etangs  La Tour-de-Salvagny",
+    "lat": 45.822364,
+    "lng": 4.704386,
+    "url": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-les-etangs-la-tour-de-salvagny-69890",
+    "region": "rhone-alpes",
+    "distance_km": 12.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/350.jpg"
+  },
+  {
+    "name": "Lyon Salvagny Golf Club Parcours Le Château  La Tour-de-Salvagny",
+    "lat": 45.822364,
+    "lng": 4.704386,
+    "url": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-le-chateau-la-tour-de-salvagny-69890",
+    "region": "rhone-alpes",
+    "distance_km": 12.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/351.jpg"
+  },
+  {
+    "name": "Golf Club d'Aix-les-Bains Aix-les-Bains",
+    "lat": 45.664753,
+    "lng": 4.907032,
+    "url": "https://www.cgolf.fr/detail/golf-club-aix-les-bains-73100",
+    "region": "rhone-alpes",
+    "distance_km": 12.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/355.jpg"
+  },
+  {
+    "name": "Golf de Lyon Verger Parcours 18 trous Saint-Symphorien-d'Ozon",
+    "lat": 45.65019,
+    "lng": 4.87307,
+    "url": "https://www.cgolf.fr/detail/golf-de-lyon-verger-saint-symphorien-d-ozon-69360",
+    "region": "rhone-alpes",
+    "distance_km": 13.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/347.jpg"
+  },
+  {
+    "name": "Golf de Lyon Verger Parcours Le Prés 9 Saint-Symphorien-d'Ozon",
+    "lat": 45.65019,
+    "lng": 4.87307,
+    "url": "https://www.cgolf.fr/detail/golf-de-lyon-verger-parcours-le-pres-9-saint-symphorien-d-ozon-69360",
+    "region": "rhone-alpes",
+    "distance_km": 13.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/348.jpg"
+  },
+  {
+    "name": "Garden Golf Mionnay Mionnay",
+    "lat": 45.895719,
+    "lng": 4.966835,
+    "url": "https://www.cgolf.fr/detail/garden-golf-mionnay-01390a",
+    "region": "rhone-alpes",
+    "distance_km": 17.8,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/307.jpg"
+  },
+  {
+    "name": "Garden Golf Mionnay Parcours Golflower  Mionnay",
+    "lat": 45.895719,
+    "lng": 4.966835,
+    "url": "https://www.cgolf.fr/detail/garden-golf-parcours-golfower-mionnay-01390a",
+    "region": "rhone-alpes",
+    "distance_km": 17.8,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/308.jpg"
+  },
+  {
+    "name": "Beaujolais Golf Club  Lucenay",
+    "lat": 45.921456,
+    "lng": 4.709305,
+    "url": "https://www.cgolf.fr/detail/beaujolais-golf-club-lucenay-69480",
+    "region": "rhone-alpes",
+    "distance_km": 20.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/349.jpg"
+  },
+  {
+    "name": "Golf Club de Lyon Parcours Les Sangliers Villette-d'Anthon",
+    "lat": 45.804762,
+    "lng": 5.11069,
+    "url": "https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-sangliers-villette-d-anthon-38280",
+    "region": "rhone-alpes",
+    "distance_km": 21.8,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/344.jpg"
+  },
+  {
+    "name": "Golf Club de Lyon Parcours Les Brocards  Villette-d'Anthon",
+    "lat": 45.804762,
+    "lng": 5.11069,
+    "url": "https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-brocards-villette-d-anthon-38280",
+    "region": "rhone-alpes",
+    "distance_km": 21.8,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/345.jpg"
+  },
+  {
+    "name": "Golf du Gouverneur Parcours Le Breuil Monthieux",
+    "lat": 45.966379,
+    "lng": 4.932137,
+    "url": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-le-breuil-monthieux-01390",
+    "region": "rhone-alpes",
+    "distance_km": 23.7,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/317.jpg"
+  },
+  {
+    "name": "Golf du Gouverneur Parcours Montaplan Monthieux",
+    "lat": 45.966379,
+    "lng": 4.932137,
+    "url": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-montaplan-monthieux-01390",
+    "region": "rhone-alpes",
+    "distance_km": 23.7,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/318.jpg"
+  },
+  {
+    "name": "Golf du Clou Villars-les-Dombes",
+    "lat": 45.974971,
+    "lng": 5.014191,
+    "url": "https://www.cgolf.fr/detail/golf-du-clou-villars-les-dombes-01330",
+    "region": "rhone-alpes",
+    "distance_km": 27.2,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/315.jpg"
+  },
+  {
+    "name": "Golf Public des 3 Vallons L'Isle-d'Abeau",
+    "lat": 45.598678,
+    "lng": 5.208846,
+    "url": "https://www.cgolf.fr/detail/golf-public-des-3-vallons-l-isle-d-abeau-38080",
+    "region": "rhone-alpes",
+    "distance_km": 34.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/583.jpg"
+  },
+  {
+    "name": "Golf Public des 3 Vallons Pitch and Putt L'Isle-d'Abeau",
+    "lat": 45.598678,
+    "lng": 5.208846,
+    "url": "https://www.cgolf.fr/detail/golf-des-trois-vallons-pitch-and-putt-l-isle-d-abeau-38080",
+    "region": "rhone-alpes",
+    "distance_km": 34.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/584.jpg"
+  },
+  {
+    "name": "Golf de La Sorelle Villette-sur-Ain",
+    "lat": 45.999861,
+    "lng": 5.258742,
+    "url": "https://www.cgolf.fr/detail/golf-de-la-sorelle-villette-sur-ain-01320",
+    "region": "rhone-alpes",
+    "distance_km": 42.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/314.jpg"
+  },
+  {
+    "name": "Golf Club de Méribel  Méribel",
+    "lat": 45.405584,
+    "lng": 4.576935,
+    "url": "https://www.cgolf.fr/detail/golf-club-de-meribel-73550",
+    "region": "rhone-alpes",
+    "distance_km": 44.7,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/353.jpg"
+  },
+  {
+    "name": "Golf de la Bresse  Condeissiat",
+    "lat": 46.141287,
+    "lng": 5.107018,
+    "url": "https://www.cgolf.fr/detail/golf-de-la-bresse-condeissiat-01400",
+    "region": "rhone-alpes",
+    "distance_km": 46.9,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/310.jpg"
+  },
+  {
+    "name": "Golf de la Bresse Parcours 6 trous Condeissiat",
+    "lat": 46.141287,
+    "lng": 5.107018,
+    "url": "https://www.cgolf.fr/detail/golf-de-la-bresse-parcours-6-trous-condeissiat-01400",
+    "region": "rhone-alpes",
+    "distance_km": 46.9,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/311.jpg"
+  },
+  {
+    "name": "Golf Blue Green Saint-Étienne  Saint-Etienne",
+    "lat": 45.45448,
+    "lng": 4.367229,
+    "url": "https://www.cgolf.fr/detail/golf-blue-green-saint-etienne-42000",
+    "region": "rhone-alpes",
+    "distance_km": 50.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/342.jpg"
+  },
+  {
+    "name": "Golf Blue Green Saint-Étienne Parcours Pitch and Putt  Saint-Etienne",
+    "lat": 45.45448,
+    "lng": 4.367229,
+    "url": "https://www.cgolf.fr/detail/golf-blue-green-parcours-pitch-and-putt-saint-etienne-42000",
+    "region": "rhone-alpes",
+    "distance_km": 50.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/343.jpg"
+  },
+  {
+    "name": "Golf Club du Forez  Craintilleux",
+    "lat": 45.576858,
+    "lng": 4.212445,
+    "url": "https://www.cgolf.fr/detail/golf-club-du-forez-craintilleux-42210",
+    "region": "rhone-alpes",
+    "distance_km": 52.7,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/340.jpg"
+  },
+  {
+    "name": "Golf du Domaine Saint-Clair  Saint-Clair",
+    "lat": 45.276393,
+    "lng": 4.698094,
+    "url": "https://www.cgolf.fr/detail/golf-du-domaine-saint-clair-07430",
+    "region": "rhone-alpes",
+    "distance_km": 55.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/321.jpg"
+  },
+  {
+    "name": "Golf de la Commanderie Crottet",
+    "lat": 46.29116,
+    "lng": 4.900172,
+    "url": "https://www.cgolf.fr/detail/golf-de-la-commanderie-crottet-01290",
+    "region": "rhone-alpes",
+    "distance_km": 58.8,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/312.jpg"
+  },
+  {
+    "name": "Golf des Etangs  Savigneux",
+    "lat": 45.622337,
+    "lng": 4.103542,
+    "url": "https://www.cgolf.fr/detail/golf-des-etangs-savigneux-42600",
+    "region": "rhone-alpes",
+    "distance_km": 59.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/341.jpg"
+  },
+  {
+    "name": "Golf Albon Senaud Parcours Les Seigneurs  Albon",
+    "lat": 45.232792,
+    "lng": 4.842864,
+    "url": "https://www.cgolf.fr/detail/golf-senaud-parcours-les-seigneurs-albon-26140",
+    "region": "rhone-alpes",
+    "distance_km": 59.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/324.jpg"
+  },
+  {
+    "name": "Superflu Golf Club Saint-Romain-le-Puy",
+    "lat": 45.553606,
+    "lng": 4.136377,
+    "url": "https://www.cgolf.fr/detail/superflu-golf-club-saint-romain-le-puy-42610",
+    "region": "rhone-alpes",
+    "distance_km": 59.2,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/586.jpg"
+  },
+  {
+    "name": "Golf Club Domaine de Champlong Villerest",
+    "lat": 45.997322,
+    "lng": 4.015628,
+    "url": "https://www.cgolf.fr/detail/golf-club-domaine-de-champlong-villerest-42300",
+    "region": "rhone-alpes",
+    "distance_km": 68.6,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/587.jpg"
+  },
+  {
+    "name": "Golf Club Domaine de Champlong Parcours Pitch and Putt Villerest",
+    "lat": 45.997322,
+    "lng": 4.015628,
+    "url": "https://www.cgolf.fr/detail/golf-club-domaine-de-champlong-parcours-pitch-and-putt-villerest-42300",
+    "region": "rhone-alpes",
+    "distance_km": 68.6,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/588.jpg"
+  },
+  {
+    "name": "Golf de Mâcon La Salle La Salle",
+    "lat": 46.402159,
+    "lng": 4.836198,
+    "url": "https://www.cgolf.fr/detail/golf-de-macon-la-salle-71260",
+    "region": "bourgogne",
+    "distance_km": 71.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/391.jpg"
+  },
+  {
+    "name": "Golf de Mâcon La Salle Parcours Pitch and Putt La Salle",
+    "lat": 46.402159,
+    "lng": 4.836198,
+    "url": "https://www.cgolf.fr/detail/golf-de-macon-parcours-pitch-and-putt-la-salle-71260",
+    "region": "bourgogne",
+    "distance_km": 71.0,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/392.jpg"
+  },
+  {
+    "name": "Golf de Grenoble Charmeil Saint-Quentin-sur-Isère",
+    "lat": 45.288332,
+    "lng": 5.556132,
+    "url": "https://www.cgolf.fr/detail/golf-de-grenoble-charmeil-saint-quentin-sur-isere-38210",
+    "region": "rhone-alpes",
+    "distance_km": 77.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/327.jpg"
+  },
+  {
+    "name": "Golf des Chanalets Bourg-lès-Valence",
+    "lat": 44.977345,
+    "lng": 4.90935,
+    "url": "https://www.cgolf.fr/detail/golf-des-chanalets-bourg-les-valence-26500",
+    "region": "rhone-alpes",
+    "distance_km": 87.7,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/322.jpg"
+  },
+  {
+    "name": "Golf du Chambon-sur-Lignon Le Chambon-sur-Lignon",
+    "lat": 45.03666,
+    "lng": 4.322295,
+    "url": "https://www.cgolf.fr/detail/golf-du-le-chambon-sur-lignon-43400",
+    "region": "auvergne",
+    "distance_km": 90.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/507.jpg"
+  },
+  {
+    "name": "Golf du Château de la Frédière Céron",
+    "lat": 46.2884,
+    "lng": 3.942777,
+    "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-la-frediere-ceron-71110",
+    "region": "bourgogne",
+    "distance_km": 90.3,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/390.jpg"
+  },
+  {
+    "name": "Golf Club Valence Saint Didier  Charpey",
+    "lat": 44.941586,
+    "lng": 5.05762,
+    "url": "https://www.cgolf.fr/detail/golf-club-valence-saint-didier-charpey-26300",
+    "region": "rhone-alpes",
+    "distance_km": 93.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/325.jpg"
+  },
+  {
+    "name": "Golf Blue Green Grenoble Seyssins Seyssins",
+    "lat": 45.155473,
+    "lng": 5.692686,
+    "url": "https://www.cgolf.fr/detail/golf-blue-green-grenoble-seyssins-38180",
+    "region": "rhone-alpes",
+    "distance_km": 95.1,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/581.jpg"
+  },
+  {
+    "name": "Golf de Corrençon-en-Vercors  Corrençon-en-Vercors",
+    "lat": 45.024349,
+    "lng": 5.516939,
+    "url": "https://www.cgolf.fr/detail/golf-de-correncon-en-vercors-38250",
+    "region": "rhone-alpes",
+    "distance_km": 97.9,
+    "scorecard_img_url": "https://www.cgolf.fr/gallery/parcours/326.jpg"
+  }
+]

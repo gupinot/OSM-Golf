@@ -1,0 +1,74 @@
+[
+  {
+    "osm_way_id": 1460053516,
+    "ref": "1",
+    "course": "",
+    "par": "4",
+    "handicap": "18",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053517,
+    "ref": "2",
+    "course": "",
+    "par": "4",
+    "handicap": "16",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053518,
+    "ref": "3",
+    "course": "",
+    "par": "5",
+    "handicap": "2",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053519,
+    "ref": "4",
+    "course": "",
+    "par": "3",
+    "handicap": "14",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053520,
+    "ref": "5",
+    "course": "",
+    "par": "4",
+    "handicap": "4",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053521,
+    "ref": "6",
+    "course": "",
+    "par": "3",
+    "handicap": "10",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053522,
+    "ref": "7",
+    "course": "",
+    "par": "3",
+    "handicap": "8",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053523,
+    "ref": "8",
+    "course": "",
+    "par": "4",
+    "handicap": "6",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 1460053524,
+    "ref": "9",
+    "course": "",
+    "par": "5",
+    "handicap": "12",
+    "dist_tags": {}
+  }
+]

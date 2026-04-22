@@ -1,0 +1,302 @@
+[
+  {
+    "osm_way_id": 440880561,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880562,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880564,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880565,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880566,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880567,
+    "ref": "",
+    "course": "",
+    "par": "",
+    "handicap": "",
+    "dist_tags": {}
+  },
+  {
+    "osm_way_id": 440880568,
+    "ref": "10",
+    "course": "",
+    "par": "4",
+    "handicap": "6",
+    "dist_tags": {
+      "dist:black": "369",
+      "dist:blue": "318",
+      "dist:red": "295",
+      "dist:white": "369",
+      "dist:yellow": "341"
+    }
+  },
+  {
+    "osm_way_id": 440880569,
+    "ref": "11",
+    "course": "",
+    "par": "4",
+    "handicap": "13",
+    "dist_tags": {
+      "dist:black": "271",
+      "dist:blue": "259",
+      "dist:red": "199",
+      "dist:white": "271",
+      "dist:yellow": "264"
+    }
+  },
+  {
+    "osm_way_id": 440880570,
+    "ref": "12",
+    "course": "",
+    "par": "3",
+    "handicap": "11",
+    "dist_tags": {
+      "dist:black": "153",
+      "dist:blue": "107",
+      "dist:red": "102",
+      "dist:white": "153",
+      "dist:yellow": "134"
+    }
+  },
+  {
+    "osm_way_id": 440880571,
+    "ref": "13",
+    "course": "",
+    "par": "5",
+    "handicap": "12",
+    "dist_tags": {
+      "dist:black": "448",
+      "dist:blue": "378",
+      "dist:red": "378",
+      "dist:white": "448",
+      "dist:yellow": "412"
+    }
+  },
+  {
+    "osm_way_id": 440880572,
+    "ref": "14",
+    "course": "",
+    "par": "4",
+    "handicap": "4",
+    "dist_tags": {
+      "dist:black": "379",
+      "dist:blue": "313",
+      "dist:red": "292",
+      "dist:white": "379",
+      "dist:yellow": "351"
+    }
+  },
+  {
+    "osm_way_id": 440880573,
+    "ref": "15",
+    "course": "",
+    "par": "4",
+    "handicap": "17",
+    "dist_tags": {
+      "dist:black": "307",
+      "dist:blue": "260",
+      "dist:red": "231",
+      "dist:white": "307",
+      "dist:yellow": "292"
+    }
+  },
+  {
+    "osm_way_id": 440880574,
+    "ref": "16",
+    "course": "",
+    "par": "3",
+    "handicap": "15",
+    "dist_tags": {
+      "dist:black": "190",
+      "dist:blue": "172",
+      "dist:red": "139",
+      "dist:white": "190",
+      "dist:yellow": "179"
+    }
+  },
+  {
+    "osm_way_id": 440880575,
+    "ref": "17",
+    "course": "",
+    "par": "4",
+    "handicap": "2",
+    "dist_tags": {
+      "dist:black": "372",
+      "dist:blue": "298",
+      "dist:red": "298",
+      "dist:white": "372",
+      "dist:yellow": "339"
+    }
+  },
+  {
+    "osm_way_id": 440880576,
+    "ref": "18",
+    "course": "",
+    "par": "5",
+    "handicap": "8",
+    "dist_tags": {
+      "dist:black": "480",
+      "dist:blue": "415",
+      "dist:red": "363",
+      "dist:white": "480",
+      "dist:yellow": "457"
+    }
+  },
+  {
+    "osm_way_id": 440880577,
+    "ref": "1",
+    "course": "",
+    "par": "4",
+    "handicap": "18",
+    "dist_tags": {
+      "dist:black": "311",
+      "dist:blue": "227",
+      "dist:red": "227",
+      "dist:white": "311",
+      "dist:yellow": "266"
+    }
+  },
+  {
+    "osm_way_id": 440880578,
+    "ref": "2",
+    "course": "",
+    "par": "4",
+    "handicap": "16",
+    "dist_tags": {
+      "dist:black": "285",
+      "dist:blue": "212",
+      "dist:red": "212",
+      "dist:white": "285",
+      "dist:yellow": "244"
+    }
+  },
+  {
+    "osm_way_id": 440880579,
+    "ref": "3",
+    "course": "",
+    "par": "5",
+    "handicap": "14",
+    "dist_tags": {
+      "dist:black": "459",
+      "dist:blue": "390",
+      "dist:red": "383",
+      "dist:white": "459",
+      "dist:yellow": "439"
+    }
+  },
+  {
+    "osm_way_id": 440880580,
+    "ref": "4",
+    "course": "",
+    "par": "4",
+    "handicap": "9",
+    "dist_tags": {
+      "dist:black": "366",
+      "dist:blue": "308",
+      "dist:red": "308",
+      "dist:white": "366",
+      "dist:yellow": "331"
+    }
+  },
+  {
+    "osm_way_id": 440880581,
+    "ref": "5",
+    "course": "",
+    "par": "3",
+    "handicap": "10",
+    "dist_tags": {
+      "dist:black": "158",
+      "dist:blue": "115",
+      "dist:red": "107",
+      "dist:white": "158",
+      "dist:yellow": "135"
+    }
+  },
+  {
+    "osm_way_id": 440880582,
+    "ref": "6",
+    "course": "",
+    "par": "4",
+    "handicap": "1",
+    "dist_tags": {
+      "dist:black": "405",
+      "dist:blue": "360",
+      "dist:red": "324",
+      "dist:white": "405",
+      "dist:yellow": "360"
+    }
+  },
+  {
+    "osm_way_id": 440880583,
+    "ref": "7",
+    "course": "",
+    "par": "4",
+    "handicap": "7",
+    "dist_tags": {
+      "dist:black": "360",
+      "dist:blue": "284",
+      "dist:red": "275",
+      "dist:white": "360",
+      "dist:yellow": "317"
+    }
+  },
+  {
+    "osm_way_id": 440880584,
+    "ref": "8",
+    "course": "",
+    "par": "3",
+    "handicap": "5",
+    "dist_tags": {
+      "dist:black": "194",
+      "dist:blue": "161",
+      "dist:red": "125",
+      "dist:white": "194",
+      "dist:yellow": "184"
+    }
+  },
+  {
+    "osm_way_id": 440880585,
+    "ref": "9",
+    "course": "",
+    "par": "5",
+    "handicap": "3",
+    "dist_tags": {
+      "dist:black": "502",
+      "dist:blue": "408",
+      "dist:red": "400",
+      "dist:white": "502",
+      "dist:yellow": "454"
+    }
+  }
+]

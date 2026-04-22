@@ -1,0 +1,389 @@
+[
+  {
+    "osm_id": "way/144880540",
+    "name": "Golf de Lyon Tassin",
+    "city": "",
+    "lat": 45.763163,
+    "lng": 4.7504644,
+    "distance_km": 6.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/139128639",
+    "name": "Golf de Chassieu",
+    "city": "",
+    "lat": 45.7389359,
+    "lng": 4.9461177,
+    "distance_km": 9.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/114449252",
+    "name": "Parcours de golf de L'ATOL'",
+    "city": "",
+    "lat": 45.7995435,
+    "lng": 4.9456781,
+    "distance_km": 9.4,
+    "holes": null
+  },
+  {
+    "osm_id": "way/297670966",
+    "name": "Lyon Salvagny Golf Club",
+    "city": "",
+    "lat": 45.8251157,
+    "lng": 4.7088399,
+    "distance_km": 12.0,
+    "holes": null
+  },
+  {
+    "osm_id": "relation/17667965",
+    "name": "Golf de Lyon Verger",
+    "city": "",
+    "lat": 45.6481606,
+    "lng": 4.8739568,
+    "distance_km": 13.2,
+    "holes": null
+  },
+  {
+    "osm_id": "way/10416296",
+    "name": "Garden Golf de Mionnay",
+    "city": "",
+    "lat": 45.8941728,
+    "lng": 4.965986,
+    "distance_km": 17.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/45898890",
+    "name": "Golf du Beaujolais",
+    "city": "",
+    "lat": 45.9214336,
+    "lng": 4.7129231,
+    "distance_km": 19.9,
+    "holes": null
+  },
+  {
+    "osm_id": "way/117975437",
+    "name": "Golf Club de Lyon",
+    "city": "",
+    "lat": 45.8051044,
+    "lng": 5.1098527,
+    "distance_km": 21.7,
+    "holes": null
+  },
+  {
+    "osm_id": "relation/8362488",
+    "name": "Golf du Gouverneur",
+    "city": "",
+    "lat": 45.968462,
+    "lng": 4.9353185,
+    "distance_km": 24.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/152789935",
+    "name": "Golf du Clou",
+    "city": "",
+    "lat": 45.9729017,
+    "lng": 5.0143119,
+    "distance_km": 27.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/142244633",
+    "name": "Golf des 3 vallons",
+    "city": "",
+    "lat": 45.6010677,
+    "lng": 5.21145,
+    "distance_km": 34.4,
+    "holes": null
+  },
+  {
+    "osm_id": "way/233449525",
+    "name": "Golf de la Sorelle",
+    "city": "",
+    "lat": 46.0003407,
+    "lng": 5.259635,
+    "distance_km": 42.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/190706755",
+    "name": "Golf de la Bresse",
+    "city": "Condeissiat",
+    "lat": 46.1384716,
+    "lng": 5.1069263,
+    "distance_km": 46.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/70119265",
+    "name": "Golf de la Bièvre",
+    "city": "",
+    "lat": 45.3974128,
+    "lng": 5.1755527,
+    "distance_km": 48.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/168759964",
+    "name": "Golf de Saint-Étienne",
+    "city": "",
+    "lat": 45.456458,
+    "lng": 4.3653098,
+    "distance_km": 50.1,
+    "holes": null
+  },
+  {
+    "osm_id": "way/365618199",
+    "name": "Golf des bords de Loire",
+    "city": "Andrézieux-Bouthéon",
+    "lat": 45.5323368,
+    "lng": 4.2538481,
+    "distance_km": 52.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/248190244",
+    "name": "Golf du Forez",
+    "city": "",
+    "lat": 45.5777121,
+    "lng": 4.2115767,
+    "distance_km": 52.7,
+    "holes": null
+  },
+  {
+    "osm_id": "way/75616005",
+    "name": "Golf d'Annonay-Gourdan",
+    "city": "",
+    "lat": 45.2744457,
+    "lng": 4.6935549,
+    "distance_km": 55.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/177619889",
+    "name": "Golf du Château de Faverges",
+    "city": "",
+    "lat": 45.5904563,
+    "lng": 5.5340675,
+    "distance_km": 57.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/229076870",
+    "name": "Golf public de Bourg-en-Bresse",
+    "city": "",
+    "lat": 46.1891316,
+    "lng": 5.2616851,
+    "distance_km": 57.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/194283742",
+    "name": "Golf de la Commanderie",
+    "city": "",
+    "lat": 46.2887932,
+    "lng": 4.8974494,
+    "distance_km": 58.5,
+    "holes": null
+  },
+  {
+    "osm_id": "way/172915824",
+    "name": "Golf des Étangs",
+    "city": "",
+    "lat": 45.622494,
+    "lng": 4.1031162,
+    "distance_km": 59.0,
+    "holes": null
+  },
+  {
+    "osm_id": "way/42265503",
+    "name": "Golf d'Albon",
+    "city": "",
+    "lat": 45.2305868,
+    "lng": 4.8446973,
+    "distance_km": 59.3,
+    "holes": null
+  },
+  {
+    "osm_id": "way/1394444131",
+    "name": "Superflu Golf Club",
+    "city": "",
+    "lat": 45.5515354,
+    "lng": 4.1353909,
+    "distance_km": 59.3,
+    "holes": null
+  },
+  {
+    "osm_id": "way/425968946",
+    "name": "Golf Club Domaine de Champlong",
+    "city": "",
+    "lat": 45.9968345,
+    "lng": 4.0163781,
+    "distance_km": 68.5,
+    "holes": null
+  },
+  {
+    "osm_id": "way/482619986",
+    "name": "Golf",
+    "city": "",
+    "lat": 46.3423342,
+    "lng": 5.1452243,
+    "distance_km": 68.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/195646412",
+    "name": "Golf de Mâcon La Salle",
+    "city": "",
+    "lat": 46.4040394,
+    "lng": 4.837109,
+    "distance_km": 71.2,
+    "holes": null
+  },
+  {
+    "osm_id": "way/103553037",
+    "name": "Golf de Grenoble Charmeil",
+    "city": "",
+    "lat": 45.2882838,
+    "lng": 5.5465674,
+    "distance_km": 76.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/897996163",
+    "name": "Golf du Haut Bugey",
+    "city": "",
+    "lat": 46.2503878,
+    "lng": 5.5645326,
+    "distance_km": 78.1,
+    "holes": null
+  },
+  {
+    "osm_id": "way/444928155",
+    "name": "Putting-Golf de Tence",
+    "city": "",
+    "lat": 45.1214401,
+    "lng": 4.3047233,
+    "distance_km": 82.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/164818549",
+    "name": "Golf Club Aix les Bains",
+    "city": "",
+    "lat": 45.6640243,
+    "lng": 5.9049021,
+    "distance_km": 83.8,
+    "holes": null
+  },
+  {
+    "osm_id": "way/785647219",
+    "name": "Golf des Chanalets",
+    "city": "",
+    "lat": 44.9794684,
+    "lng": 4.9110755,
+    "distance_km": 87.4,
+    "holes": null
+  },
+  {
+    "osm_id": "relation/10321739",
+    "name": "Golf du Chambon-sur-Lignon",
+    "city": "",
+    "lat": 45.0333781,
+    "lng": 4.3204117,
+    "distance_km": 90.7,
+    "holes": null
+  },
+  {
+    "osm_id": "way/1393697408",
+    "name": "Golf Granier Apremont",
+    "city": "",
+    "lat": 45.5176517,
+    "lng": 5.9642781,
+    "distance_km": 91.9,
+    "holes": null
+  },
+  {
+    "osm_id": "way/460186822",
+    "name": "Golf de Valence Saint-Didier",
+    "city": "",
+    "lat": 44.9450535,
+    "lng": 5.0590806,
+    "distance_km": 92.7,
+    "holes": null
+  },
+  {
+    "osm_id": "way/1420914309",
+    "name": "Golf de Montrottier",
+    "city": "",
+    "lat": 45.8979692,
+    "lng": 6.0449501,
+    "distance_km": 94.9,
+    "holes": null
+  },
+  {
+    "osm_id": "way/95149376",
+    "name": "Golf Driving Range",
+    "city": "",
+    "lat": 45.1573507,
+    "lng": 5.6946389,
+    "distance_km": 95.1,
+    "holes": null
+  },
+  {
+    "osm_id": "way/95458066",
+    "name": "Golf de Seyssins",
+    "city": "",
+    "lat": 45.1545861,
+    "lng": 5.6926466,
+    "distance_km": 95.2,
+    "holes": null
+  },
+  {
+    "osm_id": "way/184458423",
+    "name": "Golf de Porte-de-Savoie",
+    "city": "",
+    "lat": 45.5015792,
+    "lng": 6.0198777,
+    "distance_km": 96.6,
+    "holes": null
+  },
+  {
+    "osm_id": "way/211885973",
+    "name": "Golf de Corrençon",
+    "city": "",
+    "lat": 45.0176138,
+    "lng": 5.5141311,
+    "distance_km": 98.5,
+    "holes": null
+  },
+  {
+    "osm_id": "way/211254416",
+    "name": "golf de Cunlhat",
+    "city": "",
+    "lat": 45.6375945,
+    "lng": 3.5634716,
+    "distance_km": 99.8,
+    "holes": null
+  },
+  {
+    "osm_id": "way/131923892",
+    "name": "Golf de Gonville",
+    "city": "",
+    "lat": 46.2117078,
+    "lng": 5.9633586,
+    "distance_km": 100.3,
+    "holes": null
+  },
+  {
+    "osm_id": "way/125967213",
+    "name": "Golf International de Grenoble",
+    "city": "",
+    "lat": 45.1264881,
+    "lng": 5.7527761,
+    "distance_km": 100.7,
+    "holes": null
+  }
+]

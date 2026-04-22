@@ -1,0 +1,54 @@
+osm_name,osm_city,osm_id,distance_km,cgolf_found,match_score,cgolf_name,cgolf_url,holes_count,has_par,has_hcp,has_dist
+Golf de Lyon Tassin,,way/144880540,6.6,non,0,,,0,non,non,non
+Golf de Chassieu,,way/139128639,9.0,oui,100.0,Golf Blue Green Grand Lyon Chassieu Chassieu,https://www.cgolf.fr/detail/golf-blue-green-grand-lyon-chassieu-69680,0,?,?,?
+Parcours de golf de L'ATOL',,way/114449252,9.4,oui,60,Golf de Miribel-Jonage Vaulx-en-Velin,https://www.cgolf.fr/detail/golf-de-miribel-jonage-vaulx-en-velin-69120,0,?,?,?
+Lyon Salvagny Golf Club,,way/297670966,12.0,oui,100.0,Lyon Salvagny Golf Club Parcours Les Etangs  La Tour-de-Salvagny,https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-les-etangs-la-tour-de-salvagny-69890,0,?,?,?
+Lyon Salvagny Golf Club,,way/297670966,12.0,oui,100.0,Lyon Salvagny Golf Club Parcours Le Château  La Tour-de-Salvagny,https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-le-chateau-la-tour-de-salvagny-69890,0,?,?,?
+Golf de Lyon Verger,,relation/17667965,13.2,oui,100.0,Golf de Lyon Verger Parcours 18 trous Saint-Symphorien-d'Ozon,https://www.cgolf.fr/detail/golf-de-lyon-verger-saint-symphorien-d-ozon-69360,0,?,?,?
+Golf de Lyon Verger,,relation/17667965,13.2,oui,100.0,Golf de Lyon Verger Parcours Le Prés 9 Saint-Symphorien-d'Ozon,https://www.cgolf.fr/detail/golf-de-lyon-verger-parcours-le-pres-9-saint-symphorien-d-ozon-69360,0,?,?,?
+Garden Golf de Mionnay,,way/10416296,17.6,oui,100.0,Garden Golf Mionnay Mionnay,https://www.cgolf.fr/detail/garden-golf-mionnay-01390a,0,?,?,?
+Garden Golf de Mionnay,,way/10416296,17.6,oui,100.0,Garden Golf Mionnay Parcours Golflower  Mionnay,https://www.cgolf.fr/detail/garden-golf-parcours-golfower-mionnay-01390a,0,?,?,?
+Golf du Beaujolais,,way/45898890,19.9,oui,100.0,Beaujolais Golf Club  Lucenay,https://www.cgolf.fr/detail/beaujolais-golf-club-lucenay-69480,0,?,?,?
+Golf Club de Lyon,,way/117975437,21.7,oui,100.0,Golf Club de Lyon Parcours Les Sangliers Villette-d'Anthon,https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-sangliers-villette-d-anthon-38280,0,?,?,?
+Golf Club de Lyon,,way/117975437,21.7,oui,100.0,Golf Club de Lyon Parcours Les Brocards  Villette-d'Anthon,https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-brocards-villette-d-anthon-38280,0,?,?,?
+Golf du Gouverneur,,relation/8362488,24.0,oui,100.0,Golf du Gouverneur Parcours Le Breuil Monthieux,https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-le-breuil-monthieux-01390,0,?,?,?
+Golf du Gouverneur,,relation/8362488,24.0,oui,100.0,Golf du Gouverneur Parcours Montaplan Monthieux,https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-montaplan-monthieux-01390,0,?,?,?
+Golf du Clou,,way/152789935,27.0,oui,100.0,Golf du Clou Villars-les-Dombes,https://www.cgolf.fr/detail/golf-du-clou-villars-les-dombes-01330,0,?,?,?
+Golf des 3 vallons,,way/142244633,34.4,oui,100.0,Golf Public des 3 Vallons L'Isle-d'Abeau,https://www.cgolf.fr/detail/golf-public-des-3-vallons-l-isle-d-abeau-38080,0,?,?,?
+Golf des 3 vallons,,way/142244633,34.4,oui,100.0,Golf Public des 3 Vallons Pitch and Putt L'Isle-d'Abeau,https://www.cgolf.fr/detail/golf-des-trois-vallons-pitch-and-putt-l-isle-d-abeau-38080,0,?,?,?
+Golf de la Sorelle,,way/233449525,42.0,oui,100.0,Golf de La Sorelle Villette-sur-Ain,https://www.cgolf.fr/detail/golf-de-la-sorelle-villette-sur-ain-01320,0,?,?,?
+Golf de la Bresse,Condeissiat,way/190706755,46.6,oui,100.0,Golf de la Bresse  Condeissiat,https://www.cgolf.fr/detail/golf-de-la-bresse-condeissiat-01400,0,?,?,?
+Golf de la Bresse,Condeissiat,way/190706755,46.6,oui,100.0,Golf de la Bresse Parcours 6 trous Condeissiat,https://www.cgolf.fr/detail/golf-de-la-bresse-parcours-6-trous-condeissiat-01400,0,?,?,?
+Golf de la Bièvre,,way/70119265,48.6,non,0,,,0,non,non,non
+Golf de Saint-Étienne,,way/168759964,50.1,oui,100.0,Golf Blue Green Saint-Étienne  Saint-Etienne,https://www.cgolf.fr/detail/golf-blue-green-saint-etienne-42000,0,?,?,?
+Golf de Saint-Étienne,,way/168759964,50.1,oui,100.0,Golf Blue Green Saint-Étienne Parcours Pitch and Putt  Saint-Etienne,https://www.cgolf.fr/detail/golf-blue-green-parcours-pitch-and-putt-saint-etienne-42000,0,?,?,?
+Golf des bords de Loire,Andrézieux-Bouthéon,way/365618199,52.0,non,0,,,0,non,non,non
+Golf du Forez,,way/248190244,52.7,oui,100.0,Golf Club du Forez  Craintilleux,https://www.cgolf.fr/detail/golf-club-du-forez-craintilleux-42210,0,?,?,?
+Golf d'Annonay-Gourdan,,way/75616005,55.6,oui,60,Golf du Domaine Saint-Clair  Saint-Clair,https://www.cgolf.fr/detail/golf-du-domaine-saint-clair-07430,0,?,?,?
+Golf du Château de Faverges,,way/177619889,57.6,non,0,,,0,non,non,non
+Golf public de Bourg-en-Bresse,,way/229076870,57.6,non,0,,,0,non,non,non
+Golf de la Commanderie,,way/194283742,58.5,oui,100.0,Golf de la Commanderie Crottet,https://www.cgolf.fr/detail/golf-de-la-commanderie-crottet-01290,0,?,?,?
+Golf des Étangs,,way/172915824,59.0,oui,100.0,Golf des Etangs  Savigneux,https://www.cgolf.fr/detail/golf-des-etangs-savigneux-42600,0,?,?,?
+Golf d'Albon,,way/42265503,59.3,oui,100.0,Golf Albon Senaud Parcours Les Seigneurs  Albon,https://www.cgolf.fr/detail/golf-senaud-parcours-les-seigneurs-albon-26140,0,?,?,?
+Superflu Golf Club,,way/1394444131,59.3,oui,100.0,Superflu Golf Club Saint-Romain-le-Puy,https://www.cgolf.fr/detail/superflu-golf-club-saint-romain-le-puy-42610,0,?,?,?
+Golf Club Domaine de Champlong,,way/425968946,68.5,oui,100.0,Golf Club Domaine de Champlong Villerest,https://www.cgolf.fr/detail/golf-club-domaine-de-champlong-villerest-42300,0,?,?,?
+Golf Club Domaine de Champlong,,way/425968946,68.5,oui,100.0,Golf Club Domaine de Champlong Parcours Pitch and Putt Villerest,https://www.cgolf.fr/detail/golf-club-domaine-de-champlong-parcours-pitch-and-putt-villerest-42300,0,?,?,?
+Golf,,way/482619986,68.6,non,0,,,0,non,non,non
+Golf de Mâcon La Salle,,way/195646412,71.2,oui,100.0,Golf de Mâcon La Salle La Salle,https://www.cgolf.fr/detail/golf-de-macon-la-salle-71260,0,?,?,?
+Golf de Mâcon La Salle,,way/195646412,71.2,oui,100.0,Golf de Mâcon La Salle Parcours Pitch and Putt La Salle,https://www.cgolf.fr/detail/golf-de-macon-parcours-pitch-and-putt-la-salle-71260,0,?,?,?
+Golf de Grenoble Charmeil,,way/103553037,76.6,oui,100.0,Golf de Grenoble Charmeil Saint-Quentin-sur-Isère,https://www.cgolf.fr/detail/golf-de-grenoble-charmeil-saint-quentin-sur-isere-38210,0,?,?,?
+Golf du Haut Bugey,,way/897996163,78.1,non,0,,,0,non,non,non
+Putting-Golf de Tence,,way/444928155,82.6,non,0,,,0,non,non,non
+Golf Club Aix les Bains,,way/164818549,83.8,non,0,,,0,non,non,non
+Golf des Chanalets,,way/785647219,87.4,oui,100.0,Golf des Chanalets Bourg-lès-Valence,https://www.cgolf.fr/detail/golf-des-chanalets-bourg-les-valence-26500,0,?,?,?
+Golf du Chambon-sur-Lignon,,relation/10321739,90.7,oui,100.0,Golf du Chambon-sur-Lignon Le Chambon-sur-Lignon,https://www.cgolf.fr/detail/golf-du-le-chambon-sur-lignon-43400,0,?,?,?
+Golf Granier Apremont,,way/1393697408,91.9,non,0,,,0,non,non,non
+Golf de Valence Saint-Didier,,way/460186822,92.7,oui,100.0,Golf Club Valence Saint Didier  Charpey,https://www.cgolf.fr/detail/golf-club-valence-saint-didier-charpey-26300,0,?,?,?
+Golf de Montrottier,,way/1420914309,94.9,non,0,,,0,non,non,non
+Golf Driving Range,,way/95149376,95.1,oui,60,Golf Blue Green Grenoble Seyssins Seyssins,https://www.cgolf.fr/detail/golf-blue-green-grenoble-seyssins-38180,0,?,?,?
+Golf de Seyssins,,way/95458066,95.2,oui,100.0,Golf Blue Green Grenoble Seyssins Seyssins,https://www.cgolf.fr/detail/golf-blue-green-grenoble-seyssins-38180,0,?,?,?
+Golf de Porte-de-Savoie,,way/184458423,96.6,non,0,,,0,non,non,non
+Golf de Corrençon,,way/211885973,98.5,oui,100.0,Golf de Corrençon-en-Vercors  Corrençon-en-Vercors,https://www.cgolf.fr/detail/golf-de-correncon-en-vercors-38250,0,?,?,?
+golf de Cunlhat,,way/211254416,99.8,non,0,,,0,non,non,non
+Golf de Gonville,,way/131923892,100.3,non,0,,,0,non,non,non
+Golf International de Grenoble,,way/125967213,100.7,non,0,,,0,non,non,non

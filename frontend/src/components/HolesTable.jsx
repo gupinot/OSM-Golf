@@ -37,20 +37,6 @@ export default function HolesTable({
     <div className="holes-section">
       <div className="holes-header">
         <h2>{course.name}</h2>
-        {holesData && <QualityBadge quality={holesData.quality} />}
-        <a
-          className="osm-edit-btn"
-          href={`https://www.openstreetmap.org/edit#map=17/${course.lat}/${course.lng}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ouvrir dans l'éditeur OSM"
-        >✏️ Éditer OSM</a>
-        <button
-          className="refresh-btn"
-          onClick={onRefreshHoles}
-          disabled={holesLoading}
-          title="Recharger les données OSM"
-        >⟳</button>
       </div>
 
       {holesLoading && !holesData && <p className="loading">Chargement OSM…</p>}
@@ -61,77 +47,104 @@ export default function HolesTable({
         const courseEntries = Object.entries(quality.courses);
         return (
           <>
-            {courseEntries.map(([courseKey, courseData]) => (
-              <div key={courseKey} className="course-group">
-                {courseKey && <h3 className="course-key">{courseKey}</h3>}
-                <div className="panels-layout">
-                  <div className="panel panel-osm">
-                    <div className="panel-title">
-                      OSM
-                      {holesLoading && <span className="osm-spinner" />}
+            {courseEntries.map(([courseKey, courseData]) => {
+              const defaultMatch = findCgolfForCourse(cgolfData, courseKey);
+              const custom = customSources[courseKey];
+              const activeMatch = custom
+                ? { holes: custom.holes, cgolfName: custom.sourceName, cgolfUrl: null }
+                : defaultMatch;
+              const canUpdate = canUpdateOsm(courseData, activeMatch, custom ? { found: true } : cgolfData);
+
+              return (
+                <div key={courseKey} className="course-group">
+                  {courseKey && <h3 className="course-key">{courseKey}</h3>}
+                  <div className="panels-layout">
+
+                    {/* ── Col 1 row 1 : en-tête OSM ── */}
+                    <div className="panel-osm-header">
+                      <div className="panel-title">
+                        Source OSM
+                        {holesLoading && <span className="osm-spinner" />}
+                        {holesData && <QualityBadge quality={holesData.quality} />}
+                        <a
+                          className="osm-edit-btn"
+                          href={`https://www.openstreetmap.org/edit#map=17/${course.lat}/${course.lng}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Ouvrir dans l'éditeur OSM"
+                        >✏️ Éditer</a>
+                        <button
+                          className="refresh-btn"
+                          onClick={onRefreshHoles}
+                          disabled={holesLoading}
+                          title="Recharger les données OSM"
+                        >⟳</button>
+                      </div>
                     </div>
-                    <OsmUnifiedTable
-                      holes={courseData.holes}
-                      issues={courseData}
-                      teesData={tees}
-                      greensData={greens}
-                      courseKey={courseKey}
-                    />
+
+                    {/* ── Col 2 : séparateur (spans 2 lignes) ── */}
+                    <div className="panel-divider">
+                      {canUpdate && (
+                        <UpdateOsmButton
+                          osmHoles={courseData.holes}
+                          match={activeMatch}
+                          courseKey={courseKey}
+                          onRefreshHoles={onRefreshHoles}
+                        />
+                      )}
+                    </div>
+
+                    {/* ── Col 3 row 1 : en-tête scorecard ── */}
+                    <div className="panel-cgolf-header">
+                      <div className="panel-title">
+                        Carte de score officielle
+                        <span className="panel-source-sep">—</span>
+                        <span className="panel-subtitle">
+                          {custom ? custom.sourceName : 'cgolf.fr'}
+                        </span>
+                        {!custom && defaultMatch?.cgolfUrl && (
+                          <a
+                            className="cgolf-link-btn"
+                            href={defaultMatch.cgolfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Ouvrir la page cgolf.fr"
+                          >↗</a>
+                        )}
+                      </div>
+                      <CustomSourceInput
+                        hasDefault={!!defaultMatch}
+                        isCustom={!!custom}
+                        onResult={result => setCustomSource(courseKey, result)}
+                        onReset={() => clearCustomSource(courseKey)}
+                      />
+                    </div>
+
+                    {/* ── Col 1 row 2 : tableau OSM ── */}
+                    <div className="panel-osm-table">
+                      <OsmUnifiedTable
+                        holes={courseData.holes}
+                        issues={courseData}
+                        teesData={tees}
+                        greensData={greens}
+                        courseKey={courseKey}
+                      />
+                    </div>
+
+                    {/* ── Col 3 row 2 : tableau scorecard ── */}
+                    <div className="panel-cgolf-table">
+                      <CgolfPanel
+                        match={activeMatch}
+                        cgolfLoading={cgolfLoading && !custom}
+                        cgolfError={cgolfError}
+                        cgolfFound={custom ? true : cgolfData?.found}
+                      />
+                    </div>
+
                   </div>
-                  {(() => {
-                    const defaultMatch = findCgolfForCourse(cgolfData, courseKey);
-                    const custom = customSources[courseKey];
-                    const activeMatch = custom
-                      ? { holes: custom.holes, cgolfName: custom.sourceName, cgolfUrl: null }
-                      : defaultMatch;
-                    const canUpdate = canUpdateOsm(courseData, activeMatch, custom ? { found: true } : cgolfData);
-                    return (
-                      <>
-                        <div className="panel-divider">
-                          {canUpdate && (
-                            <UpdateOsmButton osmHoles={courseData.holes} match={activeMatch} courseKey={courseKey} onRefreshHoles={onRefreshHoles} />
-                          )}
-                        </div>
-                        <div className="panel panel-cgolf">
-                          <div className="panel-title">
-                            {custom ? 'Source perso' : 'cgolf.fr'}
-                            {activeMatch?.cgolfName && (
-                              <span className="panel-subtitle">{activeMatch.cgolfName}</span>
-                            )}
-                            {!custom && defaultMatch?.cgolfUrl && (
-                              <a
-                                className="cgolf-link-btn"
-                                href={defaultMatch.cgolfUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Ouvrir la page cgolf.fr"
-                              >↗</a>
-                            )}
-                            {custom && (
-                              <button
-                                className="cgolf-reset-btn"
-                                onClick={() => clearCustomSource(courseKey)}
-                                title="Revenir à cgolf.fr"
-                              >× Réinitialiser</button>
-                            )}
-                          </div>
-                          <CustomSourceInput
-                            courseKey={courseKey}
-                            onResult={result => setCustomSource(courseKey, result)}
-                          />
-                          <CgolfPanel
-                            match={activeMatch}
-                            cgolfLoading={cgolfLoading && !custom}
-                            cgolfError={cgolfError}
-                            cgolfFound={custom ? true : cgolfData?.found}
-                          />
-                        </div>
-                      </>
-                    );
-                  })()}
                 </div>
-              </div>
-            ))}
+              );
+            })}
             {!holes.length && (
               <p className="empty">Aucun trou (golf=hole) trouvé dans un rayon de 5 km.</p>
             )}
@@ -284,7 +297,7 @@ function UpdateOsmButton({ osmHoles, match, courseKey, onRefreshHoles }) {
 const BACKEND = 'http://localhost:3001';
 
 function OsmLoginFlow({ onAuthenticated }) {
-  const [step, setStep] = useState('idle'); // idle | waiting | exchanging | error
+  const [step, setStep] = useState('idle');
   const [code, setCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -356,7 +369,7 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
   const [authChecked, setAuthChecked] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [force, setForce] = useState(false);
-  const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState(null);
   const [result, setResult] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -492,7 +505,7 @@ function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound }) {
   );
 }
 
-function CustomSourceInput({ courseKey, onResult }) {
+function CustomSourceInput({ hasDefault, isCustom, onResult, onReset }) {
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -540,8 +553,12 @@ function CustomSourceInput({ courseKey, onResult }) {
 
   if (!open) {
     return (
-      <button className="custom-source-toggle" onClick={() => setOpen(true)} title="Utiliser une autre source de scorecard">
-        + Autre source
+      <button
+        className="custom-source-toggle"
+        onClick={() => setOpen(true)}
+        title="Utiliser une autre source de scorecard"
+      >
+        Changer source
       </button>
     );
   }
@@ -549,9 +566,15 @@ function CustomSourceInput({ courseKey, onResult }) {
   return (
     <div className="custom-source-panel">
       <div className="custom-source-header">
-        <span>Autre source de scorecard</span>
+        <span>Changer la source de scorecard</span>
         <button className="custom-source-close" onClick={() => { setOpen(false); setError(null); }}>×</button>
       </div>
+
+      {hasDefault && isCustom && (
+        <button className="custom-source-revert" onClick={() => { onReset(); setOpen(false); }}>
+          ↩ Revenir à cgolf.fr
+        </button>
+      )}
 
       <form className="custom-source-url-row" onSubmit={handleUrl}>
         <input

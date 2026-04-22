@@ -80,6 +80,19 @@
 
 ---
 
+## 2026-04-22 — Refonte IHM : layout grid + titres restructurés
+
+**Choix :**
+- `holes-header` réduit au seul nom du golf (h2)
+- Panneau gauche renommé "Source OSM" : badge qualité, bouton Éditer OSM et refresh déplacés dans son en-tête
+- Panneau droit renommé "Carte de score officielle — [source]" (cgolf.fr ou nom source perso)
+- Bouton "+ Autre source" renommé "Changer source" ; toujours visible ; quand source perso active et fallback cgolf disponible, propose "↩ Revenir à cgolf.fr" dans le panneau
+- `panels-layout` converti en CSS Grid 3 colonnes × 2 rangées : rangée 1 = en-têtes, rangée 2 = tableaux ; le séparateur s'étend sur les 2 rangées
+
+**Raison :** Les contrôles OSM appartiennent visuellement à la source OSM, pas au titre global. Le grid garantit l'alignement des tableaux quelle que soit la hauteur des en-têtes.
+
+---
+
 ## 2026-04-22 — Bouton "Éditer OSM" sur le panneau trous
 
 **Choix :** Lien `✏️ Éditer OSM` dans le header du panneau trous, ouvre `https://www.openstreetmap.org/edit#map=17/{lat}/{lng}` dans un nouvel onglet.

@@ -122,3 +122,15 @@
 **Choix :** `fetchCgolfHoles` retourne un tableau de tous les matches pour un `osm_id` (`.filter()` au lieu de `.find()`). Côté frontend, `findCgolfForCourse(cgolfData, courseKey)` sélectionne l'entrée cgolf dont `cgolfName` ou `cgolfUrl` contient le `courseKey` OSM (ex : "Montaplan" → parcours Montaplan).
 
 **Raison :** Un complexe multi-parcours (ex : Golf du Gouverneur) a plusieurs entrées dans `match_results.json` avec le même `osm_id` mais des URLs cgolf différentes. Sans ce matching, tous les sous-parcours OSM affichaient la même scorecard (la première trouvée).
+
+---
+
+## 2026-04-22 — Comparaison visuelle OSM ↔ scorecard par cellule
+
+**Choix :** Mise en évidence colorée cellule par cellule entre le tableau OSM et le tableau scorecard :
+- **Rouge** (`.cell-missing`) : valeur présente dans un tableau et absente dans l'autre
+- **Orange** (`.cell-mismatch`) : valeur présente dans les deux mais différente (les deux cellules colorées)
+
+Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, handicap, distances }` avec statuts `missing-in-osm | missing-in-cgolf | mismatch | ok`. Appliqué via `cellClass(status, side)` dans `OsmUnifiedTable` (colonnes `golf=hole` uniquement) et `CgolfPanel`.
+
+**Raison :** Permettre d'identifier d'un coup d'œil les écarts entre OSM et la scorecard officielle, sans avoir à comparer ligne par ligne manuellement.

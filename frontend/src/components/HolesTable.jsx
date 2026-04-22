@@ -3,6 +3,40 @@ import { analyzeCustomScorecard } from '../services/api.js';
 
 const ALL_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
 
+function compareField(osmVal, cgolfVal) {
+  const hasOsm = osmVal != null && osmVal !== '';
+  const hasCgolf = cgolfVal != null && cgolfVal !== '';
+  if (!hasOsm && hasCgolf) return 'missing-in-osm';
+  if (hasOsm && !hasCgolf) return 'missing-in-cgolf';
+  if (hasOsm && hasCgolf && String(osmVal) !== String(cgolfVal)) return 'mismatch';
+  return 'ok';
+}
+
+function buildComparison(osmHoles, cgolfHoles) {
+  if (!osmHoles?.length || !cgolfHoles?.length) return {};
+  const cgolfMap = Object.fromEntries(cgolfHoles.map(h => [String(h.hole), h]));
+  const result = {};
+  for (const osmHole of osmHoles) {
+    if (!osmHole.ref) continue;
+    const ref = String(osmHole.ref);
+    const cg = cgolfMap[ref];
+    if (!cg) continue;
+    result[ref] = {
+      par: compareField(osmHole.par, cg.par),
+      handicap: compareField(osmHole.handicap, cg.handicap),
+      distances: Object.fromEntries(ALL_COLORS.map(c => [c, compareField(osmHole.distances?.[c], cg.distances?.[c])])),
+    };
+  }
+  return result;
+}
+
+function cellClass(status, side) {
+  if (status === 'mismatch') return 'cell-mismatch';
+  if (side === 'osm' && status === 'missing-in-osm') return 'cell-missing';
+  if (side === 'cgolf' && status === 'missing-in-cgolf') return 'cell-missing';
+  return '';
+}
+
 function findCgolfForCourse(cgolfData, courseKey) {
   if (!cgolfData?.matches) return null;
   if (cgolfData.matches.length === 1) return cgolfData.matches[0];
@@ -54,6 +88,7 @@ export default function HolesTable({
                 ? { holes: custom.holes, cgolfName: custom.sourceName, cgolfUrl: null }
                 : defaultMatch;
               const canUpdate = canUpdateOsm(courseData, activeMatch, custom ? { found: true } : cgolfData);
+              const comparison = buildComparison(courseData.holes, activeMatch?.holes);
 
               return (
                 <div key={courseKey} className="course-group">
@@ -128,6 +163,7 @@ export default function HolesTable({
                         teesData={tees}
                         greensData={greens}
                         courseKey={courseKey}
+                        comparison={comparison}
                       />
                     </div>
 
@@ -138,6 +174,7 @@ export default function HolesTable({
                         cgolfLoading={cgolfLoading && !custom}
                         cgolfError={cgolfError}
                         cgolfFound={custom ? true : cgolfData?.found}
+                        comparison={comparison}
                       />
                     </div>
 
@@ -205,7 +242,7 @@ function OsmCourseTable({ holes, issues }) {
   );
 }
 
-function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey }) {
+function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, comparison }) {
   if (!holes.length) return null;
   const dupRefs = new Set(issues.duplicateRefs || []);
 
@@ -244,11 +281,22 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey }) {
                 className={!h.ref ? 'row-warn' : dupRefs.has(h.ref) ? 'row-dup' : ''}
               >
                 <td>{h.ref || <span className="missing">—</span>}</td>
-                <td className="group-start">{h.par || <span className="missing">—</span>}</td>
-                <td>{h.handicap || <span className="missing">—</span>}</td>
-                {ALL_COLORS.map(c => (
-                  <td key={`hole-${c}`}>{h.distances[c] ?? <span className="missing">—</span>}</td>
-                ))}
+                {(() => {
+                  const cmp = comparison?.[String(h.ref)];
+                  return <>
+                    <td className={['group-start', cellClass(cmp?.par, 'osm')].filter(Boolean).join(' ')}>
+                      {h.par || <span className="missing">—</span>}
+                    </td>
+                    <td className={cellClass(cmp?.handicap, 'osm')}>
+                      {h.handicap || <span className="missing">—</span>}
+                    </td>
+                    {ALL_COLORS.map(c => (
+                      <td key={`hole-${c}`} className={cellClass(cmp?.distances?.[c], 'osm')}>
+                        {h.distances[c] ?? <span className="missing">—</span>}
+                      </td>
+                    ))}
+                  </>;
+                })()}
                 {ALL_COLORS.map((c, i) => {
                   const cls = i === 0 ? 'group-start' : '';
                   if (!h.distances[c]) return <td key={`tee-${c}`} className={cls}><span className="missing">—</span></td>;
@@ -468,7 +516,7 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
   );
 }
 
-function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound }) {
+function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound, comparison }) {
   if (cgolfLoading) return <p className="loading">Analyse scorecard…</p>;
   if (cgolfError) return <p className="error">{cgolfError}</p>;
   if (cgolfFound === false) return <p className="empty">Aucune correspondance cgolf.fr</p>;
@@ -489,16 +537,21 @@ function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound }) {
           </tr>
         </thead>
         <tbody>
-          {match.holes.map(h => (
-            <tr key={h.hole}>
-              <td>{h.hole}</td>
-              <td>{h.par ?? <span className="missing">—</span>}</td>
-              <td>{h.handicap ?? <span className="missing">—</span>}</td>
-              {ALL_COLORS.map(c => (
-                <td key={c}>{h.distances?.[c] ?? <span className="missing">—</span>}</td>
-              ))}
-            </tr>
-          ))}
+          {match.holes.map(h => {
+            const cmp = comparison?.[String(h.hole)];
+            return (
+              <tr key={h.hole}>
+                <td>{h.hole}</td>
+                <td className={cellClass(cmp?.par, 'cgolf')}>{h.par ?? <span className="missing">—</span>}</td>
+                <td className={cellClass(cmp?.handicap, 'cgolf')}>{h.handicap ?? <span className="missing">—</span>}</td>
+                {ALL_COLORS.map(c => (
+                  <td key={c} className={cellClass(cmp?.distances?.[c], 'cgolf')}>
+                    {h.distances?.[c] ?? <span className="missing">—</span>}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

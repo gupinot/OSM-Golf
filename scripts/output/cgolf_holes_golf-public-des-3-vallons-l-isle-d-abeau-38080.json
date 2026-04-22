@@ -1,0 +1,110 @@
+[
+  {
+    "hole": 1,
+    "par": 4,
+    "handicap": 8,
+    "distances": {
+      "black": 341,
+      "white": 341,
+      "yellow": 327,
+      "blue": 310,
+      "red": 283
+    }
+  },
+  {
+    "hole": 2,
+    "par": 5,
+    "handicap": 7,
+    "distances": {
+      "black": 448,
+      "white": 448,
+      "yellow": 432,
+      "blue": 422,
+      "red": 357
+    }
+  },
+  {
+    "hole": 3,
+    "par": 4,
+    "handicap": 2,
+    "distances": {
+      "black": 409,
+      "white": 409,
+      "yellow": 354,
+      "blue": 335,
+      "red": 310
+    }
+  },
+  {
+    "hole": 4,
+    "par": 4,
+    "handicap": 3,
+    "distances": {
+      "black": 283,
+      "white": 283,
+      "yellow": 271,
+      "blue": 259,
+      "red": 229
+    }
+  },
+  {
+    "hole": 5,
+    "par": 4,
+    "handicap": 6,
+    "distances": {
+      "black": 289,
+      "white": 289,
+      "yellow": 274,
+      "blue": 274,
+      "red": 245
+    }
+  },
+  {
+    "hole": 6,
+    "par": 3,
+    "handicap": 4,
+    "distances": {
+      "black": 178,
+      "white": 178,
+      "yellow": 173,
+      "blue": 162,
+      "red": 155
+    }
+  },
+  {
+    "hole": 7,
+    "par": 5,
+    "handicap": 1,
+    "distances": {
+      "black": 444,
+      "white": 444,
+      "yellow": 431,
+      "blue": 415,
+      "red": 361
+    }
+  },
+  {
+    "hole": 8,
+    "par": 3,
+    "handicap": 5,
+    "distances": {
+      "black": 121,
+      "white": 121,
+      "yellow": 115,
+      "blue": 110,
+      "red": 104
+    }
+  },
+  {
+    "hole": 9,
+    "par": 4,
+    "handicap": 9,
+    "distances": {
+      "black": 316,
+      "white": 316,
+      "yellow": 297,
+      "blue": 276,
+      "red": 227
+    }
+  }
+]

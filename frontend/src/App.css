@@ -339,6 +339,8 @@ body {
 .row-warn { background: #fef2f2; }
 .row-dup  { background: #fef9c3; }
 .missing  { color: #d6d3d1; }
+.cell-missing  { background: #fee2e2; color: #991b1b; }
+.cell-mismatch { background: #ffedd5; color: #9a3412; }
 
 
 .loading, .empty { padding: 1rem; font-size: 0.85rem; color: #78716c; }

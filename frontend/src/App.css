@@ -184,6 +184,30 @@ body {
 }
 .cgolf-link-btn:hover { background: #fde68a; border-color: #854d0e; }
 
+.cgolf-panel-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.swap-halves-btn {
+  position: absolute;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.72rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #f9fafb;
+  cursor: pointer;
+  color: #374151;
+  z-index: 1;
+}
+.swap-halves-btn:hover { background: #e0f2fe; border-color: #0284c7; }
+.swap-halves-btn.active { background: #dbeafe; border-color: #2563eb; color: #1d4ed8; font-weight: 600; }
+
 .custom-source-revert {
   width: 100%;
   padding: 0.3rem;

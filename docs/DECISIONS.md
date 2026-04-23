@@ -173,3 +173,11 @@ Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, han
 3. N'assigner le candidat comme `course` que s'il apparaît dans ≥ 2 trous
 
 **Raison :** Le pattern-matching fixe échouait pour des formats variés (ex : "Blanc - 8" pour Golf de Fourqueux). L'approche globale est robuste : si plusieurs trous partagent un même préfixe, c'est nécessairement le nom du parcours, sans supposer un format précis.
+
+---
+
+## 2026-04-23 — Bouton switch front/back sur la scorecard
+
+**Choix :** Bouton "switch front/back" / "unswitch front/back" positionné absolument à droite du tableau scorecard, aligné sur la frontière trou 9/10. État `swappedCourses` (Set de courseKeys) dans `HolesTable`. La fonction `swapHalves` renumérote les trous : n ≤ 9 → n+9, n ≥ 10 → n-9, puis retrie par numéro croissant. La comparaison OSM ↔ scorecard est recalculée automatiquement après inversion. Positionnement via `useRef` sur la ligne du trou 10 (`offsetTop` + `translateY(-50%)`), bouton en dehors du `<table>` (`position: absolute; left: calc(100% + 8px)`).
+
+**Raison :** Certains parcours ont l'aller et le retour inversés dans la scorecard récupérée (cgolf.fr ou source personnalisée). Le bouton permet de corriger visuellement cet écart sans modifier les données sources.

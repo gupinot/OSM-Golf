@@ -42,12 +42,20 @@ function findCgolfForCourse(cgolfData, courseKey) {
   if (cgolfData.matches.length === 1) return cgolfData.matches[0];
   const key = courseKey.toLowerCase();
   const slug = key.replace(/\s+/g, '-');
-  return (
-    cgolfData.matches.find(m =>
-      m.cgolfName.toLowerCase().includes(key) ||
-      m.cgolfUrl.toLowerCase().includes(slug)
-    ) || cgolfData.matches[0]
-  );
+  return cgolfData.matches.find(m =>
+    m.cgolfName.toLowerCase().includes(key) ||
+    m.cgolfUrl.toLowerCase().includes(slug)
+  ) ?? null;
+}
+
+function swapHalves(holes) {
+  if (!holes?.length) return holes;
+  return holes
+    .map(h => {
+      const n = Number(h.hole);
+      return { ...h, hole: n <= 9 ? n + 9 : n - 9 };
+    })
+    .sort((a, b) => Number(a.hole) - Number(b.hole));
 }
 
 export default function HolesTable({
@@ -57,6 +65,7 @@ export default function HolesTable({
   onRefreshHoles,
 }) {
   const [customSources, setCustomSources] = useState({});
+  const [swappedCourses, setSwappedCourses] = useState(new Set());
 
   useEffect(() => {
     if (!course?.osmId) return;
@@ -92,9 +101,13 @@ export default function HolesTable({
             {courseEntries.map(([courseKey, courseData]) => {
               const defaultMatch = findCgolfForCourse(cgolfData, courseKey);
               const custom = customSources[courseKey];
-              const activeMatch = custom
+              const baseMatch = custom
                 ? { holes: custom.holes, cgolfName: custom.sourceName, cgolfUrl: null }
                 : defaultMatch;
+              const isSwapped = swappedCourses.has(courseKey);
+              const activeMatch = baseMatch && isSwapped
+                ? { ...baseMatch, holes: swapHalves(baseMatch.holes) }
+                : baseMatch;
               const canUpdate = canUpdateOsm(courseData, activeMatch, custom ? { found: true } : cgolfData);
               const comparison = buildComparison(courseData.holes, activeMatch?.holes);
 
@@ -185,6 +198,13 @@ export default function HolesTable({
                         cgolfError={cgolfError}
                         cgolfFound={custom ? true : cgolfData?.found}
                         comparison={comparison}
+                        isSwapped={isSwapped}
+                        canSwap={baseMatch?.holes?.length > 0}
+                        onToggleSwap={() => setSwappedCourses(prev => {
+                          const next = new Set(prev);
+                          isSwapped ? next.delete(courseKey) : next.add(courseKey);
+                          return next;
+                        })}
                       />
                     </div>
 
@@ -526,44 +546,67 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
   );
 }
 
-function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound, comparison }) {
+function CgolfPanel({ match, cgolfLoading, cgolfError, cgolfFound, comparison, isSwapped, canSwap, onToggleSwap }) {
+  const splitRowRef = useRef(null);
+  const [btnTop, setBtnTop] = useState(null);
+
+  useEffect(() => {
+    if (splitRowRef.current) {
+      setBtnTop(splitRowRef.current.offsetTop);
+    }
+  }, [match?.holes]);
+
   if (cgolfLoading) return <p className="loading">Analyse scorecard…</p>;
   if (cgolfError) return <p className="error">{cgolfError}</p>;
   if (cgolfFound === false) return <p className="empty">Aucune correspondance cgolf.fr</p>;
-  if (!match) return null;
+  if (!match) return <p className="empty">Pas de scorecard cgolf pour ce sous-parcours</p>;
+
+  const hasSplit = canSwap && match.holes.some(h => Number(h.hole) === 10);
 
   return (
-    <div className="table-wrapper">
-      <table className="holes-table">
-        <thead>
-          <tr>
-            <th colSpan={8} className="group-header">scorecard</th>
-          </tr>
-          <tr>
-            <th>Ref</th>
-            <th>Par</th>
-            <th>Hcp</th>
-            {ALL_COLORS.map(c => <th key={c}>{c.slice(0, 3)}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {match.holes.map(h => {
-            const cmp = comparison?.[String(h.hole)];
-            return (
-              <tr key={h.hole}>
-                <td>{h.hole}</td>
-                <td className={cellClass(cmp?.par, 'cgolf')}>{h.par ?? <span className="missing">—</span>}</td>
-                <td className={cellClass(cmp?.handicap, 'cgolf')}>{h.handicap ?? <span className="missing">—</span>}</td>
-                {ALL_COLORS.map(c => (
-                  <td key={c} className={cellClass(cmp?.distances?.[c], 'cgolf')}>
-                    {h.distances?.[c] ?? <span className="missing">—</span>}
-                  </td>
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="cgolf-panel-outer">
+      <div className="table-wrapper">
+        <table className="holes-table">
+          <thead>
+            <tr>
+              <th colSpan={8} className="group-header">scorecard</th>
+            </tr>
+            <tr>
+              <th>Ref</th>
+              <th>Par</th>
+              <th>Hcp</th>
+              {ALL_COLORS.map(c => <th key={c}>{c.slice(0, 3)}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {match.holes.map(h => {
+              const isHole10 = Number(h.hole) === 10;
+              const cmp = comparison?.[String(h.hole)];
+              return (
+                <tr key={h.hole} ref={isHole10 ? splitRowRef : null}>
+                  <td>{h.hole}</td>
+                  <td className={cellClass(cmp?.par, 'cgolf')}>{h.par ?? <span className="missing">—</span>}</td>
+                  <td className={cellClass(cmp?.handicap, 'cgolf')}>{h.handicap ?? <span className="missing">—</span>}</td>
+                  {ALL_COLORS.map(c => (
+                    <td key={c} className={cellClass(cmp?.distances?.[c], 'cgolf')}>
+                      {h.distances?.[c] ?? <span className="missing">—</span>}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {hasSplit && btnTop !== null && (
+        <button
+          className={`swap-halves-btn${isSwapped ? ' active' : ''}`}
+          style={{ top: btnTop }}
+          onClick={onToggleSwap}
+        >
+          {isSwapped ? 'unswitch front/back' : 'switch front/back'}
+        </button>
+      )}
     </div>
   );
 }

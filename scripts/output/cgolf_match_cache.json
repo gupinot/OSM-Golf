@@ -118,5 +118,79 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/146.jpg",
       "matchScore": 80
     }
+  ],
+  "relation/8362488": [
+    {
+      "cgolfName": "Golf du Gouverneur Parcours Le Breuil Monthieux",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-le-breuil-monthieux-01390",
+      "cgolfLat": 45.966379,
+      "cgolfLng": 4.932137,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/317.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf du Gouverneur Parcours Montaplan Monthieux",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-du-gouverneur-parcours-montaplan-monthieux-01390",
+      "cgolfLat": 45.966379,
+      "cgolfLng": 4.932137,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/318.jpg",
+      "matchScore": 50
+    }
+  ],
+  "way/152789935": [
+    {
+      "cgolfName": "Golf du Clou Villars-les-Dombes",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-du-clou-villars-les-dombes-01330",
+      "cgolfLat": 45.974971,
+      "cgolfLng": 5.014191,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/315.jpg",
+      "matchScore": 50
+    }
+  ],
+  "way/142244633": [
+    {
+      "cgolfName": "Golf Public des 3 Vallons L'Isle-d'Abeau",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-public-des-3-vallons-l-isle-d-abeau-38080",
+      "cgolfLat": 45.598678,
+      "cgolfLng": 5.208846,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/583.jpg",
+      "matchScore": 57
+    },
+    {
+      "cgolfName": "Golf Public des 3 Vallons Pitch and Putt L'Isle-d'Abeau",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-des-trois-vallons-pitch-and-putt-l-isle-d-abeau-38080",
+      "cgolfLat": 45.598678,
+      "cgolfLng": 5.208846,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/584.jpg",
+      "matchScore": 40
+    }
+  ],
+  "way/233449525": [
+    {
+      "cgolfName": "Golf de La Sorelle Villette-sur-Ain",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-la-sorelle-villette-sur-ain-01320",
+      "cgolfLat": 45.999861,
+      "cgolfLng": 5.258742,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/314.jpg",
+      "matchScore": 50
+    }
+  ],
+  "way/190706755": [
+    {
+      "cgolfName": "Golf de la Bresse  Condeissiat",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-la-bresse-condeissiat-01400",
+      "cgolfLat": 46.141287,
+      "cgolfLng": 5.107018,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/310.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf de la Bresse Parcours 6 trous Condeissiat",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-la-bresse-parcours-6-trous-condeissiat-01400",
+      "cgolfLat": 46.141287,
+      "cgolfLng": 5.107018,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/311.jpg",
+      "matchScore": 40
+    }
   ]
 }

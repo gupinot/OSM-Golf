@@ -1,16 +1,17 @@
 ## Démarrage de session
 1. Lire `/docs/DECISIONS.md` — contexte des décisions prises
-2. Confirmer la lecture avant de commencer à coder
+2. Si le fichier `/docs/DECISIONS.md` n'existe pas pour le projet, le créer
+3. Confirmer la lecture avant de commencer à coder
 
 ## Développement
-- Travailler une feature à la fois, dans l'ordre MVP : settings → round → shot → scorecard → stats
+- Travailler une feature à la fois
 - Ne jamais passer à la feature suivante sans confirmation explicite
 - Soumettre toute décision de conception avant de l'implémenter
 
 ## Règles strictes
 - Ne JAMAIS faire de commit sans demande explicite de l'utilisateur
 - Ne JAMAIS mettre à jour `DECISIONS.md` sans demande explicite de l'utilisateur
-- Ne JAMAIS lire le fichier 'Temp.md'r
+- Ne JAMAIS lire le fichier 'Temp.md'
 
 ## Commande MAJ (OBLIGATOIRE — exécuter immédiatement et intégralement)
 Quand l'utilisateur dit **"MAJ"** :

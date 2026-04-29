@@ -192,5 +192,132 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/311.jpg",
       "matchScore": 40
     }
+  ],
+  "way/70119265": [],
+  "way/168759964": [
+    {
+      "cgolfName": "Golf Blue Green Saint-Étienne  Saint-Etienne",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-blue-green-saint-etienne-42000",
+      "cgolfLat": 45.45448,
+      "cgolfLng": 4.367229,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/342.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf Blue Green Saint-Étienne Parcours Pitch and Putt  Saint-Etienne",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-blue-green-parcours-pitch-and-putt-saint-etienne-42000",
+      "cgolfLat": 45.45448,
+      "cgolfLng": 4.367229,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/343.jpg",
+      "matchScore": 44
+    }
+  ],
+  "way/139128639": [
+    {
+      "cgolfName": "Golf Blue Green Grand Lyon Chassieu Chassieu",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-blue-green-grand-lyon-chassieu-69680",
+      "cgolfLat": 45.740007,
+      "cgolfLng": 4.94857,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/346.jpg",
+      "matchScore": 33
+    }
+  ],
+  "way/114449252": [
+    {
+      "cgolfName": "Golf de Miribel-Jonage Vaulx-en-Velin",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-miribel-jonage-vaulx-en-velin-69120",
+      "cgolfLat": 45.798495,
+      "cgolfLng": 4.941694,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/592.jpg",
+      "matchScore": 0
+    }
+  ],
+  "relation/17667965": [
+    {
+      "cgolfName": "Golf de Lyon Verger Parcours 18 trous Saint-Symphorien-d'Ozon",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-lyon-verger-saint-symphorien-d-ozon-69360",
+      "cgolfLat": 45.65019,
+      "cgolfLng": 4.87307,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/347.jpg",
+      "matchScore": 44
+    },
+    {
+      "cgolfName": "Golf de Lyon Verger Parcours Le Prés 9 Saint-Symphorien-d'Ozon",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-lyon-verger-parcours-le-pres-9-saint-symphorien-d-ozon-69360",
+      "cgolfLat": 45.65019,
+      "cgolfLng": 4.87307,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/348.jpg",
+      "matchScore": 44
+    }
+  ],
+  "way/10416296": [
+    {
+      "cgolfName": "Garden Golf Mionnay Mionnay",
+      "cgolfUrl": "https://www.cgolf.fr/detail/garden-golf-mionnay-01390a",
+      "cgolfLat": 45.895719,
+      "cgolfLng": 4.966835,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/307.jpg",
+      "matchScore": 100
+    },
+    {
+      "cgolfName": "Garden Golf Mionnay Parcours Golflower  Mionnay",
+      "cgolfUrl": "https://www.cgolf.fr/detail/garden-golf-parcours-golfower-mionnay-01390a",
+      "cgolfLat": 45.895719,
+      "cgolfLng": 4.966835,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/308.jpg",
+      "matchScore": 80
+    }
+  ],
+  "way/45898890": [
+    {
+      "cgolfName": "Beaujolais Golf Club  Lucenay",
+      "cgolfUrl": "https://www.cgolf.fr/detail/beaujolais-golf-club-lucenay-69480",
+      "cgolfLat": 45.921456,
+      "cgolfLng": 4.709305,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/349.jpg",
+      "matchScore": 67
+    }
+  ],
+  "way/365618199": [],
+  "way/248190244": [
+    {
+      "cgolfName": "Golf Club du Forez  Craintilleux",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-club-du-forez-craintilleux-42210",
+      "cgolfLat": 45.576858,
+      "cgolfLng": 4.212445,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/340.jpg",
+      "matchScore": 67
+    }
+  ],
+  "way/164818549": [],
+  "way/125967213": [
+    {
+      "cgolfName": "Golf International de Grenoble Parcours de Bresson Bresson",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-international-de-grenoble-parcours-de-bresson-38320",
+      "cgolfLat": 45.128027,
+      "cgolfLng": 5.756148,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/328.jpg",
+      "matchScore": 80
+    }
+  ],
+  "way/212737505": [],
+  "way/144880540": [],
+  "way/297670966": [
+    {
+      "cgolfName": "Lyon Salvagny Golf Club Parcours Les Etangs  La Tour-de-Salvagny",
+      "cgolfUrl": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-les-etangs-la-tour-de-salvagny-69890",
+      "cgolfLat": 45.822364,
+      "cgolfLng": 4.704386,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/350.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Lyon Salvagny Golf Club Parcours Le Château  La Tour-de-Salvagny",
+      "cgolfUrl": "https://www.cgolf.fr/detail/lyon-salvagny-golf-club-parcours-le-chateau-la-tour-de-salvagny-69890",
+      "cgolfLat": 45.822364,
+      "cgolfLng": 4.704386,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/351.jpg",
+      "matchScore": 67
+    }
   ]
 }

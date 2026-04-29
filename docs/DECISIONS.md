@@ -181,3 +181,11 @@ Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, han
 **Choix :** Bouton "switch front/back" / "unswitch front/back" positionné absolument à droite du tableau scorecard, aligné sur la frontière trou 9/10. État `swappedCourses` (Set de courseKeys) dans `HolesTable`. La fonction `swapHalves` renumérote les trous : n ≤ 9 → n+9, n ≥ 10 → n-9, puis retrie par numéro croissant. La comparaison OSM ↔ scorecard est recalculée automatiquement après inversion. Positionnement via `useRef` sur la ligne du trou 10 (`offsetTop` + `translateY(-50%)`), bouton en dehors du `<table>` (`position: absolute; left: calc(100% + 8px)`).
 
 **Raison :** Certains parcours ont l'aller et le retour inversés dans la scorecard récupérée (cgolf.fr ou source personnalisée). Le bouton permet de corriger visuellement cet écart sans modifier les données sources.
+
+---
+
+## 2026-04-29 — Documentation projet (README.md)
+
+**Choix :** Création du fichier `README.md` à la racine du projet. Contenu : description fonctionnelle, architecture, prérequis, installation, commandes de démarrage, variables d'environnement, routes API backend, scripts Python disponibles et système de cache.
+
+**Raison :** Faciliter la prise en main du projet par un nouvel utilisateur sans avoir à lire le code source ou DECISIONS.md.

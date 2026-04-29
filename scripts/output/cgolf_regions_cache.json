@@ -2217,5 +2217,506 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/550.jpg",
       "url": "https://www.cgolf.fr/detail/golf-de-pontarlier-25300"
     }
+  ],
+  "/parcours/golfs-provence-alpes-cote-d-azur": [
+    {
+      "name": "Golf country club de Saint-Donat Parcours 18 trous Grasse",
+      "lat": 43.629092,
+      "lng": 6.953041,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/2.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-de-saint-donat-grasse-06130"
+    },
+    {
+      "name": "Golf Country Club de Saint Donat Parcours compact Grasse",
+      "lat": 43.62888,
+      "lng": 6.956758,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/6.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-de-saint-donat-pitch-and-put-grasse-06130"
+    },
+    {
+      "name": "Golf du Claux-Amic  Grasse",
+      "lat": 43.670537,
+      "lng": 6.89369,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/8.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-claux-amic-grasse-06130"
+    },
+    {
+      "name": "Golf Old Course Parcours 18 trous Mandelieu-la-Napoule",
+      "lat": 43.532241,
+      "lng": 6.939966,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/5.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-old-course-mandelieu-la-napoule-06210"
+    },
+    {
+      "name": "Golf Old Course Parcours Grand Duc Mandelieu-la-Napoule",
+      "lat": 43.530793,
+      "lng": 6.939352,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/7.jpg",
+      "url": "https://www.cgolf.fr/detail/grand-duc-9-trous-mandelieu-la-napoule-06210"
+    },
+    {
+      "name": "Riviera Golf de Barbossi Mandelieu-la-Napoule",
+      "lat": 43.534481,
+      "lng": 6.918539,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/33.jpg",
+      "url": "https://www.cgolf.fr/detail/riviera-golf-de-barbossi-mandelieu-la-napoule-06210"
+    },
+    {
+      "name": "Golf de la Grande Bastide Châteauneuf-Grasse",
+      "lat": 43.658945,
+      "lng": 6.981149,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/10.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-grande-bastide-chateauneuf-grasse-06740"
+    },
+    {
+      "name": "Golf d’Opio Valbonne  Opio",
+      "lat": 43.652069,
+      "lng": 7.024608,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/11.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-opio-06650"
+    },
+    {
+      "name": "Golf du Royal Mougins Mougins",
+      "lat": 43.590675,
+      "lng": 6.969278,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/12.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-royal-mougins-06250"
+    },
+    {
+      "name": "Golf country club de Cannes Mougins Mougins",
+      "lat": 43.604022,
+      "lng": 7.024631,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/13.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-mougins-06250"
+    },
+    {
+      "name": "Golf Club de Biot Biot",
+      "lat": 43.617314,
+      "lng": 7.10503,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/14.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-biot-06410"
+    },
+    {
+      "name": "Le Provençal Golf Biot",
+      "lat": 43.619002,
+      "lng": 7.072253,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/15.jpg",
+      "url": "https://www.cgolf.fr/detail/le-provencal-golf-biot-06410"
+    },
+    {
+      "name": "Victoria Golf Club Valbonne",
+      "lat": 43.627314,
+      "lng": 7.02217,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/16.jpg",
+      "url": "https://www.cgolf.fr/detail/victoria-golf-club-valbonne-06560"
+    },
+    {
+      "name": "Monte-Carlo Golf Club La Turbie",
+      "lat": 43.762757,
+      "lng": 7.413907,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/17.jpg",
+      "url": "https://www.cgolf.fr/detail/monte-carlo-golf-club-la-turbie-06320"
+    },
+    {
+      "name": "Golf club de Beauvallon  Port Grimaud",
+      "lat": 43.291718,
+      "lng": 6.598939,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/18.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-beauvallon-port-grimaud-83310"
+    },
+    {
+      "name": "Golf Blue Green l'Estérel Saint Raphael",
+      "lat": 43.451728,
+      "lng": 6.791199,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/20.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-l-esterel-saint-raphael-83700"
+    },
+    {
+      "name": "Golf de Valescure Saint Raphael",
+      "lat": 43.455308,
+      "lng": 6.791441,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/21.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-valescure-saint-raphael-83700"
+    },
+    {
+      "name": "Golf Blue Green l'Académie Saint Raphael",
+      "lat": 43.451155,
+      "lng": 6.818251,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/50.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-l-academie-saint-raphael-83700"
+    },
+    {
+      "name": "Golf de Sainte Maxime Sainte Maxime",
+      "lat": 43.333993,
+      "lng": 6.649121,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/22.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-sainte-maxime-83120"
+    },
+    {
+      "name": "Golf de Saint Endréol La Motte",
+      "lat": 43.494413,
+      "lng": 6.586118,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/23.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-saint-endreol-la-motte-83920"
+    },
+    {
+      "name": "Golf du Château de Taulane La Martre",
+      "lat": 43.778813,
+      "lng": 6.631723,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/24.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-taulane-la-martre-83840"
+    },
+    {
+      "name": "Golf de Terre Blanche Parcours Le Château Tourrettes",
+      "lat": 43.594483,
+      "lng": 6.73088,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/25.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-terre-blanche-parcours-le-chateau-tourrettes-83440"
+    },
+    {
+      "name": "Golf de Terre Blanche Parcours Le Riou Tourrettes",
+      "lat": 43.59473,
+      "lng": 6.732206,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/26.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-terre-blanche-parcours-le-riou-tourrettes-83440"
+    },
+    {
+      "name": "Golf de Valcros La Londe-les-Maures",
+      "lat": 43.184911,
+      "lng": 6.28089,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/27.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-valcros-la-londe-les-maures-83250"
+    },
+    {
+      "name": "Dolce Fregate Golf Club Parcours Frégate Saint-Cyr-sur-Mer",
+      "lat": 43.149836,
+      "lng": 5.725046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/28.jpg",
+      "url": "https://www.cgolf.fr/detail/dolce-fregate-golf-club-saint-cyr-sur-mer-83270"
+    },
+    {
+      "name": "Dolce Fregate Golf Club Parcours Frégalon Saint-Cyr-sur-Mer",
+      "lat": 43.149836,
+      "lng": 5.725046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/29.jpg",
+      "url": "https://www.cgolf.fr/detail/dolce-fregalon-golf-club-saint-cyr-sur-mer-83270"
+    },
+    {
+      "name": "Golf de Roquebrune Roquebrune-sur-Argens",
+      "lat": 43.419633,
+      "lng": 6.67667,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/30.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-roquebrune-sur-argens-83520"
+    },
+    {
+      "name": "Golf de Valgarde La Garde",
+      "lat": 43.127245,
+      "lng": 6.026592,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/31.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-valgarde-la-garde-83130"
+    },
+    {
+      "name": "Golf de la Sainte Baume Nans-les-Pins",
+      "lat": 43.389196,
+      "lng": 5.793693,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/32.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-sainte-baume-nans-les-pins-83860"
+    },
+    {
+      "name": "Golf de Barbaroux Brignoles",
+      "lat": 43.406323,
+      "lng": 6.168338,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/34.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-barbaroux-brignoles-83170"
+    },
+    {
+      "name": "Golf du Domaine de Manville Les Baux-de-Provence",
+      "lat": 43.733889,
+      "lng": 4.806439,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/35.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-domaine-de-manville-les-baux-de-provence-13520"
+    },
+    {
+      "name": "Golf de l'Ecole de l'Air Salon-de-Provence",
+      "lat": 43.61644,
+      "lng": 5.121278,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/36.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-l-ecole-de-l-air-salon-de-provence-13300"
+    },
+    {
+      "name": "Golf de La Salette Marseille",
+      "lat": 43.305165,
+      "lng": 5.481636,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/37.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-salette-marseille-13000"
+    },
+    {
+      "name": "Golf Club d’Aix Marseille  Les Milles",
+      "lat": 43.486677,
+      "lng": 5.366419,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/38.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-d-aix-marseille-les-milles-13290"
+    },
+    {
+      "name": "Sainte Victoire Golf Club  Fuveau",
+      "lat": 43.462743,
+      "lng": 5.595448,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/39.jpg",
+      "url": "https://www.cgolf.fr/detail/sainte-victoire-golf-club-fuveau-13710"
+    },
+    {
+      "name": "Golf International de Pont Royal Mallemort",
+      "lat": 43.706904,
+      "lng": 5.205903,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/40.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-international-de-pont-royal-mallemort-13370"
+    },
+    {
+      "name": "Golf Ouest Provence Miramas Miramas",
+      "lat": 43.599505,
+      "lng": 5.019841,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/41.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-ouest-provence-miramas-13140"
+    },
+    {
+      "name": "Golf de Servanes Mouriès",
+      "lat": 43.707051,
+      "lng": 4.867242,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/42.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-servanes-mouries-13890"
+    },
+    {
+      "name": "Golf La Cabre d’Or Cabriès",
+      "lat": 43.451939,
+      "lng": 5.35252,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/43.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-cabre-d-or-cabries-13480"
+    },
+    {
+      "name": "Set Golf Aix-en-Provence",
+      "lat": 43.516133,
+      "lng": 5.421023,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/44.jpg",
+      "url": "https://www.cgolf.fr/detail/set-golf-aix-en-provence-13090"
+    },
+    {
+      "name": "Golf Grand Avignon Vedène",
+      "lat": 43.960077,
+      "lng": 4.889985,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/45.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-grand-vedene-84270"
+    },
+    {
+      "name": "Garden Golf Avignon, Parcours les Alpilles Morières-lès-Avignon",
+      "lat": 43.91762,
+      "lng": 4.903614,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/46.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-avignon-parcours-les-alpilles-morieres-les-avignon-84310"
+    },
+    {
+      "name": "Garden Golf Avignon, Parcours le Ventoux Morières-lès-Avignon",
+      "lat": 43.924605,
+      "lng": 4.903143,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/47.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-avignon-parcours-le-ventoux-morieres-les-avignon-84310"
+    },
+    {
+      "name": "Golf de Gap-Bayard Gap",
+      "lat": 44.621272,
+      "lng": 6.083859,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/48.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-bayard-gap-05000"
+    },
+    {
+      "name": "Golf des Lavandes Digne-les-Bains",
+      "lat": 44.052119,
+      "lng": 6.17476,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/49.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-lavandes-digne-les-bains-04000"
+    },
+    {
+      "name": "Golf du Lubéron Pierrevert",
+      "lat": 43.799175,
+      "lng": 5.720304,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/51.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-luberon-pierrevert-04860"
+    },
+    {
+      "name": "Golf Country club de Nice Nice",
+      "lat": 43.738229,
+      "lng": 7.185022,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/53.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-nice-06000"
+    },
+    {
+      "name": "Golf Provence Country Club Saumane-de-Vaucluse",
+      "lat": 43.92498,
+      "lng": 5.095525,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/63.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-provence-country-club-saumane-de-vaucluse-84800"
+    },
+    {
+      "name": "Golf de Villeneuve-Loubet Villeneuve-Loubet",
+      "lat": 43.663005,
+      "lng": 7.096803,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/124.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-villeneuve-loubet-06270"
+    }
+  ],
+  "/parcours/golfs-languedoc-roussillon": [
+    {
+      "name": "Golf de Fontcaude Parcours 18 trous Juvignac",
+      "lat": 43.628451,
+      "lng": 3.80635,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/70.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-foncaude-juvignac-34990"
+    },
+    {
+      "name": "Golf de Fontcaude Parcours 9 trous compact Juvignac",
+      "lat": 43.628451,
+      "lng": 3.80635,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/71.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-fontcaude-parcours-9-trous-compact-juvignac-34990"
+    },
+    {
+      "name": "Golf de La Grande Motte Parcours Les Flamands Roses La Grande-Motte",
+      "lat": 43.571668,
+      "lng": 4.100582,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/72.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-1-la-grande-motte-34280"
+    },
+    {
+      "name": "Golf de La Grande Motte Parcours Les Goélands La Grande-Motte",
+      "lat": 43.571668,
+      "lng": 4.100582,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/73.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-la-grande-motte-34280"
+    },
+    {
+      "name": "Golf de La Grande Motte Parcours Les mouettes La Grande-Motte",
+      "lat": 43.571668,
+      "lng": 4.100582,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/74.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-3-la-grande-motte-34280"
+    },
+    {
+      "name": "Golf de Montpellier Massane Parcours 18 trous Baillargues",
+      "lat": 43.649425,
+      "lng": 4.001774,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/75.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montpellier-massane-baillargues-34670"
+    },
+    {
+      "name": "Golf de Montpellier Massane Parcours Pitch and Putt Baillargues",
+      "lat": 43.649425,
+      "lng": 4.001774,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/76.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montpellier-massane-1-baillargues-34670"
+    },
+    {
+      "name": "Golf de Coulondres Parcours Puech  Saint-Gély-du-Fesc",
+      "lat": 43.692233,
+      "lng": 3.812112,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/77.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-coulondres-parcours-puech-saint-gely-du-fesc-34980"
+    },
+    {
+      "name": "Golf de Coulondres Parcours Coulondres Saint-Gély-du-Fesc",
+      "lat": 43.692233,
+      "lng": 3.812112,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/78.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-coulondres-parcours-coulondres-saint-gely-du-fesc-34980"
+    },
+    {
+      "name": "Golf International du Cap d’Agde Parcours Alizés & Azur Cap d'Agde",
+      "lat": 43.287458,
+      "lng": 3.486614,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/79.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-international-du-cap-d-agde-34300"
+    },
+    {
+      "name": "Golf International du Cap d’Agde Parcours Volcan Cap d'Agde",
+      "lat": 43.287458,
+      "lng": 3.486614,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/80.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-international-1-cap-d-agde-34300"
+    },
+    {
+      "name": "Golf Saint Thomas Béziers",
+      "lat": 43.372449,
+      "lng": 3.333411,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/81.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-saint-thomas-beziers-34500"
+    },
+    {
+      "name": "Golf Club de Nîmes Campagne Nîmes",
+      "lat": 43.765156,
+      "lng": 4.388056,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/82.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-nimes-30000"
+    },
+    {
+      "name": "Golf de Nîmes Vacquerolles Parcours 18 trous Nîmes",
+      "lat": 43.850728,
+      "lng": 4.299302,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/83.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-1-nimes-30000"
+    },
+    {
+      "name": "Golf de Nîmes Vacquerolles Parcours Pitch and Putt  Nîmes",
+      "lat": 43.850728,
+      "lng": 4.299302,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/84.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-2-nimes-30000"
+    },
+    {
+      "name": "Golf Club d'Uzès Uzès",
+      "lat": 43.983256,
+      "lng": 4.433523,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/95.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-d--uzes-30700"
+    },
+    {
+      "name": "Golf de Saint Cyprien Parcours Etang Canigou Saint-Cyprien",
+      "lat": 42.638493,
+      "lng": 3.016705,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/96.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-etang-canigou-golf-de-saint-cyprien-66750"
+    },
+    {
+      "name": "Golf de Saint Cyprien Parcours La Forêt Saint-Cyprien",
+      "lat": 42.638493,
+      "lng": 3.016705,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/97.jpg",
+      "url": "https://www.cgolf.fr/detail/parcours-la-foret-golf-de-saint-cyprien-66750"
+    },
+    {
+      "name": "Golf de Falgos Saint-Laurent-de-Cerdans",
+      "lat": 42.366028,
+      "lng": 2.580621,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/98.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-falgos-saint-laurent-de-cerdans-66260"
+    },
+    {
+      "name": "Golf des Gorges du Tarn Parcours du Sabot   La Canourgue",
+      "lat": 44.412757,
+      "lng": 3.2349,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/99.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-gorges-du-tarn-parcours-du-sabot-la-canourgue-48500"
+    },
+    {
+      "name": "Golf Club de Langogne Langogne",
+      "lat": 44.717221,
+      "lng": 3.825634,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/100.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-langogne-48300"
+    },
+    {
+      "name": "Golf de Carcassonne Carcassonne",
+      "lat": 43.189578,
+      "lng": 2.334472,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/117.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-carcassonne-11000"
+    }
   ]
 }

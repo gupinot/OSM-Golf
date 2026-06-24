@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { searchByName, searchByZone } = require('../services/overpass');
+const { searchByName, searchByZone, fetchZoneStats } = require('../services/overpass');
 const { geocodeCity } = require('../services/nominatim');
 
 const router = Router();
@@ -35,6 +35,24 @@ router.get('/zone', async (req, res) => {
     }
     const courses = await searchByZone(lat, lng, radius);
     res.json({ lat, lng, radius, courses });
+  } catch (err) {
+    res.status(502).json({ error: err.message });
+  }
+});
+
+// GET /api/search/zone-stats?lat=…&lng=…&radius=50
+// Comptage des features de jeu (trous/tees/greens/fairways/bunkers) par golf sur la zone.
+router.get('/zone-stats', async (req, res) => {
+  const lat = parseFloat(req.query.lat);
+  const lng = parseFloat(req.query.lng);
+  const radius = Math.min(parseFloat(req.query.radius) || 50, 100);
+
+  if (isNaN(lat) || isNaN(lng)) {
+    return res.status(400).json({ error: 'lat/lng requis' });
+  }
+  try {
+    const stats = await fetchZoneStats(lat, lng, radius);
+    res.json(stats);
   } catch (err) {
     res.status(502).json({ error: err.message });
   }

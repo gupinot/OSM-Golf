@@ -2718,5 +2718,289 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/117.jpg",
       "url": "https://www.cgolf.fr/detail/golf-de-carcassonne-11000"
     }
+  ],
+  "/parcours/golfs-nord-pas-de-calais": [
+    {
+      "name": "Aa Saint-Omer Golf Club Parcours du Val Lumbres",
+      "lat": 50.711855,
+      "lng": 2.086666,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/523.jpg",
+      "url": "https://www.cgolf.fr/detail/saint-omer-golf-club-parcours-du-val-lumbres-62380"
+    },
+    {
+      "name": "Aa Saint-Omer Golf Club Parcours Haute Drève  Lumbres",
+      "lat": 50.711855,
+      "lng": 2.086666,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/524.jpg",
+      "url": "https://www.cgolf.fr/detail/saint-omer-golf-club-parcours-haute-dreve-lumbres-62380"
+    },
+    {
+      "name": "Golf du Touquet Parcours La Fôret  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/525.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-la-foret-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Golf du Touquet Parcours La Mer  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/526.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-la-mer-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Golf du Touquet Parcours Le Manoir  Le Touquet-Paris-Plage",
+      "lat": 50.500504,
+      "lng": 1.596922,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/527.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-le-manoir-le-touquet-paris-plage-62520"
+    },
+    {
+      "name": "Arras Golf Club Parcours La Vallée  Anzin-Saint-Aubin",
+      "lat": 50.31308,
+      "lng": 2.739159,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/528.jpg",
+      "url": "https://www.cgolf.fr/detail/arras-golf-club-parcours-la-vallee-anzin-saint-aubin-62223"
+    },
+    {
+      "name": "Arras Golf Club Parcours Les Aubépines Anzin-Saint-Aubin",
+      "lat": 50.31308,
+      "lng": 2.739159,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/529.jpg",
+      "url": "https://www.cgolf.fr/detail/arras-golf-club-parcours-les-aubepines-anzin-saint-aubin-62223"
+    },
+    {
+      "name": "Golf et Country Club de la Côte d’Opale Ruminghem",
+      "lat": 50.847414,
+      "lng": 2.151552,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/530.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-et-country-club-de-la-cote-d-opale-ruminghem-62370"
+    },
+    {
+      "name": "Golf d'Hardelot Parcours des Dunes  Hardelot-Plage",
+      "lat": 50.625531,
+      "lng": 1.608643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/531.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-dunes-hardelot-plage-62152"
+    },
+    {
+      "name": "Golf d'Hardelot Parcours des Pins  Hardelot-Plage",
+      "lat": 50.625531,
+      "lng": 1.608643,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/532.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-parcours-des-pins-hardelot-plage-62152"
+    },
+    {
+      "name": "Golf de Wimereux Wimereux",
+      "lat": 50.788043,
+      "lng": 1.612085,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/533.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-wimereux-62930"
+    },
+    {
+      "name": "Golf de Bondues Parcours Trent Jones  Bondues",
+      "lat": 50.708543,
+      "lng": 3.076784,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/511.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-parcours-trent-jones-bondues-59910"
+    },
+    {
+      "name": "Golf de Bondues Parcours Hawtree  Bondues",
+      "lat": 50.708543,
+      "lng": 3.076784,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/512.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-parcours-hawtree-bondues-59910"
+    },
+    {
+      "name": "Golf Club Thumeries-Moncheaux  Thumeries",
+      "lat": 50.46085,
+      "lng": 3.069849,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/513.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-moncheaux-thumeries-59239"
+    },
+    {
+      "name": "Golf de Brigode Villeneuve-d'Ascq",
+      "lat": 50.629074,
+      "lng": 3.162164,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/514.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-brigode-villeneuve-d-ascq-59491"
+    },
+    {
+      "name": "Golf du Sart Villeneuve-d'Ascq",
+      "lat": 50.657238,
+      "lng": 3.130935,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/520.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-sart-villeneuve-d-ascq-59491"
+    },
+    {
+      "name": "Golf Blue Green Dunkerque Parcours Le Vauban Coudekerque",
+      "lat": 50.988433,
+      "lng": 2.404111,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/515.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-dunkerque-parcours-le-vauban-coudekerque-59380"
+    },
+    {
+      "name": "Golf Blue Green Dunkerque Parcours Le Valière Coudekerque",
+      "lat": 50.988433,
+      "lng": 2.404111,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/516.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-dunkerque-parcours-le-valiere-coudekerque-59380"
+    },
+    {
+      "name": "Golf Blue Green Lille Métropole Ronchin",
+      "lat": 50.607043,
+      "lng": 3.111405,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/517.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-lille-metropole-ronchin-59790"
+    },
+    {
+      "name": "Golf Blue Green Lille Métropole Parcours 9 trous Ronchin",
+      "lat": 50.607043,
+      "lng": 3.111405,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/518.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-lille-metropole-parcours-9-trous-ronchin-59790"
+    },
+    {
+      "name": "Golf de Mormal Preux-au-Sart",
+      "lat": 50.285954,
+      "lng": 3.723672,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/519.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-mormal-preux-au-sart-59144"
+    },
+    {
+      "name": "Golf Le Vert Parc Illies",
+      "lat": 50.566713,
+      "lng": 2.832289,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/521.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-le-vert-parc-illies-59480"
+    },
+    {
+      "name": "Mérignies Golf Country Club Parcours Valutte et Marque Mérignies",
+      "lat": 50.511952,
+      "lng": 3.138874,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/522.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-parcours-valutte-et-marque-merignies-59710"
+    }
+  ],
+  "/parcours/golfs-aquitaine": [
+    {
+      "name": "Golf Club de Périgueux  Marsac-sur-l'Isle",
+      "lat": 45.19566,
+      "lng": 0.673092,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/225.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-perigueux-marsac-sur-l-isle-24430"
+    },
+    {
+      "name": "Golf Blue Green la Marterie Saint-Félix-de-Reillac-et-Mortemart",
+      "lat": 44.997641,
+      "lng": 0.879276,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/227.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-la-marterie-saint-felix-de-reillac-et-mortemart-24260"
+    },
+    {
+      "name": "Golf des Vigiers Parcours Les Vignes - Le Lac Monestier",
+      "lat": 44.791122,
+      "lng": 0.28916,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/228.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-vigiers-parcours-les-vignes-le-lac-monestier-24240"
+    },
+    {
+      "name": "Golf des Vigiers Parcours La Vallée Monestier",
+      "lat": 44.791122,
+      "lng": 0.28916,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/229.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-vigiers-parcours-la-vallee-monestier-24240"
+    },
+    {
+      "name": "Golf des Vigiers Parcours Académique Monestier",
+      "lat": 44.791122,
+      "lng": 0.28916,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/230.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-des-vigiers-parcours-academique-monestier-24240"
+    },
+    {
+      "name": "Lolivarie Golf Club Saint-Germain-de-Belvès",
+      "lat": 44.80998,
+      "lng": 1.01086,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/231.jpg",
+      "url": "https://www.cgolf.fr/detail/lolivarie-golf-club-saint-germain-de-belves-24170"
+    },
+    {
+      "name": "Albret Golf Club Barbaste",
+      "lat": 44.170966,
+      "lng": 0.260968,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/268.jpg",
+      "url": "https://www.cgolf.fr/detail/albret-golf-club-barbaste-47230"
+    },
+    {
+      "name": "Golf Casteljaloux Club Casteljaloux",
+      "lat": 44.296292,
+      "lng": 0.069429,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/269.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-casteljaloux-47700"
+    },
+    {
+      "name": "Golf Casteljaloux Club Parcours Pitch and Putt   Casteljaloux",
+      "lat": 44.296292,
+      "lng": 0.069429,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/270.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-pitch-and-putt-casteljaloux-47700"
+    },
+    {
+      "name": "Villeneuve-sur-Lot Golf and Country Club Castelnaud-de-Gratecambe",
+      "lat": 44.485794,
+      "lng": 0.675966,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/271.jpg",
+      "url": "https://www.cgolf.fr/detail/villeneuve-sur-lot-golf-and-country-club-castelnaud-de-gratecambe-47290"
+    },
+    {
+      "name": "24610 Saint-Méard-de-Gurçon Saint-Méard-de-Gurçon",
+      "lat": 44.881476,
+      "lng": 0.166586,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/569.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-saint-meard-de-gurcon-24610"
+    },
+    {
+      "name": "Golf Château les Merles Mouleydier",
+      "lat": 44.853837,
+      "lng": 0.632314,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/570.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-chateau-les-merles-mouleydier-24520"
+    },
+    {
+      "name": "Golf de la Forge Siorac-en-Périgord",
+      "lat": 44.819031,
+      "lng": 0.993268,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/572.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-forge-siorac-en-perigord-24170"
+    },
+    {
+      "name": "Golf d’Essendiéras Saint-Médard-d'Excideuil",
+      "lat": 45.355653,
+      "lng": 1.090657,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/571.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-essendieras-saint-medard-d-excideuil-24160"
+    },
+    {
+      "name": "Golf de Barthe Tombebœuf",
+      "lat": 44.499235,
+      "lng": 0.461901,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/576.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-barthe-tombeb-uf-47380"
+    },
+    {
+      "name": "Golf du Château d'Allot Agen-Boé Boé",
+      "lat": 44.156441,
+      "lng": 0.657812,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/577.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-d-allot-agen-boe-47550"
+    },
+    {
+      "name": "Golf d’Agen Bon-Encontre Bon-Encontre",
+      "lat": 44.200378,
+      "lng": 0.680472,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/578.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-d-agen-bon-encontre-47240"
+    }
   ]
 }

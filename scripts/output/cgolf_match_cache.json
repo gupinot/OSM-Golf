@@ -338,5 +338,88 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/345.jpg",
       "matchScore": 40
     }
-  ]
+  ],
+  "way/290619725": [
+    {
+      "cgolfName": "Le Golf National Parcours l’Albatros Guyancourt",
+      "cgolfUrl": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-albatros-guyancourt-78280",
+      "cgolfLat": 48.750699,
+      "cgolfLng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/54.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Le Golf National Parcours l’Aigle Guyancourt",
+      "cgolfUrl": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-aigle-guyancourt-78280",
+      "cgolfLat": 48.750699,
+      "cgolfLng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/55.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Le Golf National Parcours l’Oiselet Guyancourt",
+      "cgolfUrl": "https://www.cgolf.fr/detail/le-golf-national-parcours-l-oiselet-guyancourt-78280",
+      "cgolfLat": 48.750699,
+      "cgolfLng": 2.077979,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/56.jpg",
+      "matchScore": 50
+    }
+  ],
+  "way/22604082": [
+    {
+      "cgolfName": "Golf de Saint-Nom-La-Bretèche Parcours Bleu Saint-Nom-la-Bretèche",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-nom-la-breteche-78860",
+      "cgolfLat": 48.851975,
+      "cgolfLng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/111.jpg",
+      "matchScore": 86
+    },
+    {
+      "cgolfName": "Golf de Saint-Nom-La-Bretèche Parcours Rouge Saint-Nom-la-Bretèche",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-2-saint-nom-la-breteche-78860",
+      "cgolfLat": 48.851975,
+      "cgolfLng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/112.jpg",
+      "matchScore": 86
+    }
+  ],
+  "way/1350321773": [
+    {
+      "cgolfName": "Golf de Saint-Germain Parcours Le Grand Parcours Saint-Germain-en-Laye",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-le-grand-parcours-saint-germain-en-laye-78100",
+      "cgolfLat": 48.918327,
+      "cgolfLng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/113.jpg",
+      "matchScore": 86
+    },
+    {
+      "cgolfName": "Golf de Saint-Germain Parcours des Genêts Saint-Germain-en-Laye",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-parcours-des-genets-saint-germain-en-laye-78100",
+      "cgolfLat": 48.918327,
+      "cgolfLng": 2.059711,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/114.jpg",
+      "matchScore": 86
+    }
+  ],
+  "way/49038958": [],
+  "way/22604155": [
+    {
+      "cgolfName": "Golf de Saint-Nom-La-Bretèche Parcours Bleu Saint-Nom-la-Bretèche",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-saint-nom-la-breteche-78860",
+      "cgolfLat": 48.851975,
+      "cgolfLng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/111.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Saint-Nom-La-Bretèche Parcours Rouge Saint-Nom-la-Bretèche",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-2-saint-nom-la-breteche-78860",
+      "cgolfLat": 48.851975,
+      "cgolfLng": 2.035119,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/112.jpg",
+      "matchScore": 0
+    }
+  ],
+  "relation/19214277": [],
+  "way/155267350": []
 }

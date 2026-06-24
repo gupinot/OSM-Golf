@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SearchPanel from './components/SearchPanel.jsx';
 import CourseList from './components/CourseList.jsx';
 import HolesTable from './components/HolesTable.jsx';
-import { fetchHoles, fetchCgolfHoles } from './services/api.js';
+import { fetchHoles, fetchCgolfHoles, fetchZoneStats } from './services/api.js';
 import './App.css';
 
 export default function App() {
@@ -16,6 +16,40 @@ export default function App() {
   const [cgolfData, setCgolfData] = useState(null);
   const [cgolfLoading, setCgolfLoading] = useState(false);
   const [cgolfError, setCgolfError] = useState(null);
+  const [statsMap, setStatsMap] = useState(null);
+  const [statsLoading, setStatsLoading] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState(660);
+
+  function startResize(e) {
+    e.preventDefault();
+    const startX = e.clientX;
+    const startW = sidebarWidth;
+    const onMove = ev => setSidebarWidth(Math.min(Math.max(startW + ev.clientX - startX, 320), 1100));
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    };
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'col-resize';
+  }
+
+  function handleResults(results) {
+    setSearchResults(results);
+    setStatsMap(null);
+    setStatsLoading(false);
+    // Stats au fil de l'eau : la liste s'affiche tout de suite, le comptage suit (zone only).
+    if (results?.mode === 'zone' && results.lat != null) {
+      setStatsLoading(true);
+      fetchZoneStats(results.lat, results.lng, results.radius)
+        .then(setStatsMap)
+        .catch(() => setStatsMap({}))
+        .finally(() => setStatsLoading(false));
+    }
+  }
 
   function handleSelectCourse(course) {
     setSelectedCourse(course);
@@ -56,9 +90,9 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <aside className="sidebar">
+        <aside className="sidebar" style={{ width: sidebarWidth }}>
           <SearchPanel
-            onResults={setSearchResults}
+            onResults={handleResults}
             onLoading={setLoading}
             onError={setError}
           />
@@ -71,9 +105,17 @@ export default function App() {
               courses={courses}
               selected={selectedCourse}
               onSelect={handleSelectCourse}
+              statsMap={statsMap}
+              statsLoading={statsLoading}
             />
           )}
         </aside>
+
+        <div
+          className="sidebar-resizer"
+          onMouseDown={startResize}
+          title="Glisser pour redimensionner"
+        />
 
         <section className="content">
           <HolesTable

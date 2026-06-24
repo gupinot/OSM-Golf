@@ -13,6 +13,13 @@ export async function searchByZone({ lat, lng, city, radius }) {
   return res.json();
 }
 
+export async function fetchZoneStats(lat, lng, radius) {
+  const params = new URLSearchParams({ lat, lng, radius });
+  const res = await fetch(`/api/search/zone-stats?${params}`);
+  if (!res.ok) throw new Error((await res.json()).error);
+  return res.json();
+}
+
 export async function fetchHoles(osmId, lat, lng, radius = 5) {
   const params = new URLSearchParams({ osmId, lat, lng, radius });
   const res = await fetch(`/api/holes?${params}`);

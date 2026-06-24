@@ -318,6 +318,107 @@ out body geom;
   return { holes, tees, greens };
 }
 
+// Polygone d'un golf_course : way → geometry directe ; relation → concaténation des outer.
+function extractPolygon(el) {
+  if (el.geometry?.length) return el.geometry;
+  if (el.members) {
+    const pts = [];
+    for (const m of el.members) {
+      if (m.role === 'outer' && m.geometry) pts.push(...m.geometry);
+    }
+    return pts.length ? pts : null;
+  }
+  return null;
+}
+
+// Point représentatif d'une feature pour l'attribution à un golf : coords du node,
+// ou centroïde (moyenne des sommets) du way.
+function representativePoint(el) {
+  if (el.type === 'node') return { lat: el.lat, lon: el.lon };
+  if (el.geometry?.length) {
+    let lat = 0, lon = 0;
+    for (const p of el.geometry) { lat += p.lat; lon += p.lon; }
+    return { lat: lat / el.geometry.length, lon: lon / el.geometry.length };
+  }
+  return null;
+}
+
+// Comptage des features de jeu par golf sur toute une zone, en 2 requêtes Overpass :
+// 1) polygones des golf_course du rayon, 2) golf=hole|tee|green|fairway|bunker du rayon,
+// puis attribution de chaque feature au golf dont le polygone la contient (point-in-polygon).
+async function fetchZoneStats(lat, lng, radiusKm) {
+  const r = Math.min(radiusKm, 100);
+  const key = `stats:${lat.toFixed(3)},${lng.toFixed(3)},${r}`;
+  const cached = getCached(key);
+  if (cached) return cached;
+
+  const radiusM = r * 1000;
+
+  const golfQl = `
+[out:json][timeout:30];
+(
+  way["leisure"="golf_course"](around:${radiusM},${lat},${lng});
+  relation["leisure"="golf_course"](around:${radiusM},${lat},${lng});
+);
+out body geom;
+`;
+  const golfData = await query(golfQl, `fetchZoneStats-golfs(${lat},${lng},${r}km)`);
+
+  const golfs = [];
+  for (const el of golfData.elements) {
+    if (!el.tags?.name) continue;
+    const polygon = extractPolygon(el);
+    if (!polygon?.length) continue;
+    golfs.push({ osmId: `${el.type}/${el.id}`, polygon });
+  }
+
+  // hole = way uniquement (le node golf=hole est le drapeau, éviter le double comptage).
+  // tee = way + node (deux formes légitimes). green/fairway/bunker = way.
+  const featQl = `
+[out:json][timeout:60];
+(
+  way["golf"="hole"](around:${radiusM},${lat},${lng});
+  way["golf"="tee"](around:${radiusM},${lat},${lng});
+  node["golf"="tee"](around:${radiusM},${lat},${lng});
+  way["golf"="green"](around:${radiusM},${lat},${lng});
+  way["golf"="fairway"](around:${radiusM},${lat},${lng});
+  way["golf"="bunker"](around:${radiusM},${lat},${lng});
+);
+out body geom;
+`;
+  const featData = await query(featQl, `fetchZoneStats-features(${lat},${lng},${r}km)`);
+
+  const stats = {};
+  for (const g of golfs) {
+    stats[g.osmId] = {
+      holes: { withRef: 0, withoutRef: 0 },
+      tees: { withRef: 0, withoutRef: 0 },
+      greens: { withRef: 0, withoutRef: 0 },
+      fairways: 0,
+      bunkers: 0,
+    };
+  }
+
+  for (const el of featData.elements) {
+    const golf = el.tags?.golf;
+    if (!golf) continue;
+    const pt = representativePoint(el);
+    if (!pt) continue;
+    const owner = golfs.find(g => pointInPolygon(pt.lat, pt.lon, g.polygon));
+    if (!owner) continue;
+    const s = stats[owner.osmId];
+    const hasRef = !!(el.tags.ref || '').trim();
+    if (golf === 'hole') hasRef ? s.holes.withRef++ : s.holes.withoutRef++;
+    else if (golf === 'tee') hasRef ? s.tees.withRef++ : s.tees.withoutRef++;
+    else if (golf === 'green') hasRef ? s.greens.withRef++ : s.greens.withoutRef++;
+    else if (golf === 'fairway') s.fairways++;
+    else if (golf === 'bunker') s.bunkers++;
+  }
+
+  setCached(key, stats);
+  return stats;
+}
+
 function parseCourses(elements, refLat, refLng) {
   return elements
     .filter(e => e.tags?.name)
@@ -352,4 +453,4 @@ function haversine(lat1, lng1, lat2, lng2) {
 
 function toRad(deg) { return deg * Math.PI / 180; }
 
-module.exports = { searchByName, searchByZone, fetchHoles };
+module.exports = { searchByName, searchByZone, fetchHoles, fetchZoneStats };

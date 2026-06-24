@@ -203,3 +203,27 @@ Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, han
 **Choix :** Création du fichier `README.md` à la racine du projet. Contenu : description fonctionnelle, architecture, prérequis, installation, commandes de démarrage, variables d'environnement, routes API backend, scripts Python disponibles et système de cache.
 
 **Raison :** Faciliter la prise en main du projet par un nouvel utilisateur sans avoir à lire le code source ou DECISIONS.md.
+
+---
+
+## 2026-06-24 — Stats de features par golf dans la liste de recherche (zone)
+
+**Choix :** Affichage, pour chaque golf de la recherche par zone, d'un tableau de comptage des features OSM : trous / tees / greens (avec distinction **avec réf** / **sans réf**), fairways, bunkers.
+
+Architecture **« Option A » (zone-wide)** : nouvel endpoint `GET /api/search/zone-stats?lat&lng&radius` + fonction `fetchZoneStats` (`overpass.js`) qui exécute **2 requêtes Overpass** quel que soit le nombre de golfs :
+1. polygones des `leisure=golf_course` du rayon (`out body geom`) ;
+2. `golf=hole|tee|green|fairway|bunker` du rayon (`out body geom`).
+
+Chaque feature est attribuée au golf dont le polygone la contient (point-in-polygon sur un point représentatif : coords du node, ou centroïde du way). Résultat mis en cache disque (clé `stats:lat,lng,radius`, TTL 7 j, même mécanisme que le cache de recherche).
+
+**Conventions de comptage :** `hole` compté sur les **ways uniquement** (le `node[golf=hole]` = drapeau → éviter le double comptage) ; `tee` sur way **et** node ; distinction avec/sans `ref` pour hole/tee/green ; fairways/bunkers = total simple (zones sans `ref` par convention).
+
+**UX :** « liste d'abord, stats au fil de l'eau » — la liste s'affiche immédiatement (recherche inchangée), le comptage suit en async (`statsMap`/`statsLoading` dans `App.jsx`). `…` pendant le chargement, `–` si pas de données. `CourseList` passe de `<ul>` à `<table>` avec en-têtes groupés (Golf · Trous · Tees · Greens · Fairw. · Bunk.).
+
+**Sidebar redimensionnable :** largeur par défaut 660 px pour afficher toutes les colonnes, + poignée de glissement à la souris (`.sidebar-resizer`, bornes 320–1100 px).
+
+**Raison :** Donner une vue d'ensemble immédiate de la qualité/complétude des données OSM par golf (ex. tees souvent sans `ref`, greens non taggés) sans cliquer sur chaque parcours. L'approche 2-requêtes respecte l'effort anti-martèlement Overpass (cf. fiabilisation du 2026-06-24).
+
+**Piège résolu :** `out geom tags;` sur une relation `type=multipolygon` **omet les membres** (le niveau de détail `tags` les exclut) → aucune géométrie, polygone introuvable, golfs multipolygon (Gouverneur, Lyon Verger) sans stats. Correctif : `out body geom;` (le niveau `body` inclut tags **et** membres).
+
+**Hors périmètre (incrément futur) :** la recherche **par nom** n'affiche pas encore les stats (golfs potentiellement dispersés, pas de centre/rayon défini).

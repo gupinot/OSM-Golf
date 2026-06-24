@@ -319,5 +319,24 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/351.jpg",
       "matchScore": 67
     }
+  ],
+  "way/25480974": [],
+  "way/117975437": [
+    {
+      "cgolfName": "Golf Club de Lyon Parcours Les Sangliers Villette-d'Anthon",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-sangliers-villette-d-anthon-38280",
+      "cgolfLat": 45.804762,
+      "cgolfLng": 5.11069,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/344.jpg",
+      "matchScore": 40
+    },
+    {
+      "cgolfName": "Golf Club de Lyon Parcours Les Brocards  Villette-d'Anthon",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-club-de-lyon-parcours-les-brocards-villette-d-anthon-38280",
+      "cgolfLat": 45.804762,
+      "cgolfLng": 5.11069,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/345.jpg",
+      "matchScore": 40
+    }
   ]
 }

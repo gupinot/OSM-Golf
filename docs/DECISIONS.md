@@ -184,6 +184,20 @@ Logique dans `buildComparison(osmHoles, cgolfHoles)` → map `ref → { par, han
 
 ---
 
+## 2026-06-24 — Fiabilisation des requêtes Overpass (406, timeout, endpoints, cache)
+
+**Choix :** Refonte de la robustesse de `overpass.js` sur 4 axes :
+1. **406 rendu retryable** : le 406 d'overpass-api.de est intermittent (load-shedding), pas fatal — la même requête repasse à 200 quelques secondes après. Ajouté à `RETRYABLE` ; le flag `isAreaNotFound` reste porté par l'erreur finale pour le fallback `area()` de `fetchHoles`, mais n'interrompt plus la boucle de retry.
+2. **Timeout fetch 60 s → 25 s** (`FETCH_TIMEOUT`), aligné sur `[timeout:25]` du QL → plus d'attente d'une minute sur un mirror mort.
+3. **Endpoints élargis et réordonnés** : ajout de `maps.mail.ru` (fiable aux tests) et `overpass.private.coffee` ; `maxAttempts` 5 → 3 puisqu'il y a désormais 4 endpoints et que le 406 bascule vite.
+4. **Cache disque des recherches zone/nom** : `scripts/output/overpass_search_cache.json`, TTL 7 jours, clés `name:<nom>` et `zone:<lat>,<lng>,<radius>` (coords arrondies à ~100 m). Évite les requêtes identiques répétées qui martelaient Overpass.
+
+**Raison :** L'utilisateur subissait des 502 systématiques après ~60 s : un seul 406 d'overpass-api.de faisait basculer immédiatement sur kumi.systems qui timeoutait à 60 s. Le retry du 406 + le failover rapide vers un mirror fiable + le cache suppriment ce scénario.
+
+**Aussi :** Ajout d'un middleware de log requêtes/réponses dans `index.js` (`→ METHOD path` / `← status (ms)`).
+
+---
+
 ## 2026-04-29 — Documentation projet (README.md)
 
 **Choix :** Création du fichier `README.md` à la racine du projet. Contenu : description fonctionnelle, architecture, prérequis, installation, commandes de démarrage, variables d'environnement, routes API backend, scripts Python disponibles et système de cache.

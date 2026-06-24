@@ -1,52 +1,100 @@
 const fetch = require('node-fetch');
-const { debug } = require('../utils/logger');
+const fs = require('fs');
+const path = require('path');
 
 const ENDPOINTS = [
   'https://overpass-api.de/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
   'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
 ];
 
-const RETRYABLE = status => status === 504 || status === 429 || status === 503;
+const FETCH_TIMEOUT = 25000;
+
+// 406 = overpass-api.de rejette par surcharge/rate-limit (transitoire, la même requête
+// repasse à 200 quelques secondes après) — on le réessaie comme un 429/503/504.
+const RETRYABLE = status => status === 504 || status === 429 || status === 503 || status === 406;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function query(ql, label, maxAttempts = 5) {
+async function query(ql, label, maxAttempts = 3) {
   let lastErr;
 
   for (const endpoint of ENDPOINTS) {
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       const t0 = Date.now();
-      debug(`[Overpass] ${label} → ${endpoint}${attempt > 0 ? ` (essai ${attempt + 1}/${maxAttempts})` : ''}`);
+      console.log(`[Overpass] ${label} → ${endpoint}${attempt > 0 ? ` (essai ${attempt + 1}/${maxAttempts})` : ''}`);
       try {
         const res = await fetch(endpoint, {
           method: 'POST',
           body: `data=${encodeURIComponent(ql)}`,
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          timeout: 60000,
+          timeout: FETCH_TIMEOUT,
         });
         if (!res.ok) {
           const err = new Error(`HTTP ${res.status}`);
           err.status = res.status;
+          err.isAreaNotFound = res.status === 406;
           throw err;
         }
         const json = await res.json();
-        debug(`[Overpass] ${label} ← ${json.elements?.length ?? 0} éléments en ${Date.now() - t0}ms`);
+        console.log(`[Overpass] ${label} ← ${json.elements?.length ?? 0} éléments en ${Date.now() - t0}ms`);
         return json;
       } catch (err) {
-        debug(`[Overpass] ${label} ✗ ${endpoint} — ${err.message} (${Date.now() - t0}ms)`);
+        console.log(`[Overpass] ${label} ✗ ${endpoint} — ${err.message} (${Date.now() - t0}ms)`);
         lastErr = err;
+        // Le flag isAreaNotFound reste porté par lastErr (cf. throw final) pour le
+        // fallback area() de fetchHoles, mais n'interrompt plus : un 406 est réessayé.
         if (!RETRYABLE(err.status)) break;
         if (attempt + 1 < maxAttempts) {
           const delay = Math.min(1000 * 2 ** attempt, 10000);
-          debug(`[Overpass] retry dans ${delay}ms…`);
+          console.log(`[Overpass] retry dans ${delay}ms…`);
           await sleep(delay);
         }
       }
     }
   }
-  throw new Error(`Overpass unavailable: ${lastErr?.message}`);
+  const err = new Error(`Overpass unavailable: ${lastErr?.message}`);
+  err.isAreaNotFound = lastErr?.isAreaNotFound ?? false;
+  throw err;
+}
+
+// Cache disque des recherches zone/nom : les golfs OSM bougent rarement, et les logs
+// montrent la même requête relancée plusieurs fois de suite. Évite de marteler Overpass.
+const SEARCH_CACHE_PATH = path.join(__dirname, '..', '..', '..', 'scripts', 'output', 'overpass_search_cache.json');
+const SEARCH_CACHE_TTL = 7 * 24 * 3600 * 1000; // 7 jours
+let searchCache = null;
+
+function readSearchCache() {
+  if (searchCache) return searchCache;
+  try {
+    searchCache = fs.existsSync(SEARCH_CACHE_PATH)
+      ? JSON.parse(fs.readFileSync(SEARCH_CACHE_PATH, 'utf8'))
+      : {};
+  } catch { searchCache = {}; }
+  return searchCache;
+}
+
+function getCached(key) {
+  const entry = readSearchCache()[key];
+  if (entry && Date.now() - entry.ts < SEARCH_CACHE_TTL) {
+    console.log(`[Overpass] ${key} ← cache (${entry.data.length} résultats)`);
+    return entry.data;
+  }
+  return null;
+}
+
+function setCached(key, data) {
+  const cache = readSearchCache();
+  cache[key] = { ts: Date.now(), data };
+  fs.mkdirSync(path.dirname(SEARCH_CACHE_PATH), { recursive: true });
+  fs.writeFileSync(SEARCH_CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
 async function searchByName(name) {
+  const key = `name:${name.trim().toLowerCase()}`;
+  const cached = getCached(key);
+  if (cached) return cached;
+
   const escaped = name.replace(/"/g, '\\"');
   const ql = `
 [out:json][timeout:30];
@@ -57,11 +105,19 @@ async function searchByName(name) {
 out center tags;
 `;
   const data = await query(ql, `searchByName("${name}")`);
-  return parseCourses(data.elements);
+  const courses = parseCourses(data.elements);
+  setCached(key, courses);
+  return courses;
 }
 
 async function searchByZone(lat, lng, radiusKm) {
-  const radiusM = Math.min(radiusKm, 100) * 1000;
+  const r = Math.min(radiusKm, 100);
+  // Coords arrondies à ~100 m : deux recherches quasi identiques tapent la même entrée.
+  const key = `zone:${lat.toFixed(3)},${lng.toFixed(3)},${r}`;
+  const cached = getCached(key);
+  if (cached) return cached;
+
+  const radiusM = r * 1000;
   const ql = `
 [out:json][timeout:30];
 (
@@ -71,7 +127,9 @@ async function searchByZone(lat, lng, radiusKm) {
 out center tags;
 `;
   const data = await query(ql, `searchByZone(${lat},${lng},${radiusKm}km)`);
-  return parseCourses(data.elements, lat, lng);
+  const courses = parseCourses(data.elements, lat, lng);
+  setCached(key, courses);
+  return courses;
 }
 
 // "Vert n°16 - Bois joli" → "Vert" ; "Jaune n°10 - ..." → "Jaune"
@@ -177,12 +235,26 @@ out body geom;
     label = `fetchHoles(${lat},${lng},${radiusKm}km)`;
   }
 
-  let data = await query(ql, label);
+  let data;
+  let needsFallback = false;
+
+  try {
+    data = await query(ql, label);
+    if (osmId && lat != null && !isNaN(lat) && data.elements.length === 0) needsFallback = true;
+  } catch (err) {
+    if (err.isAreaNotFound && osmId && lat != null && !isNaN(lat)) {
+      console.log(`[fetchHoles] area(${osmId}) → 406, fallback radius + polygon filter`);
+      needsFallback = true;
+      data = { elements: [] };
+    } else {
+      throw err;
+    }
+  }
 
   // Fallback: l'aire Overpass n'est pas indexée pour ce way.
   // On récupère la géométrie du way directement, puis on filtre les résultats radius par polygon.
-  if (osmId && lat != null && !isNaN(lat) && data.elements.length === 0) {
-    debug(`[fetchHoles] area(${osmId}) → 0 éléments, fallback radius + polygon filter`);
+  if (needsFallback) {
+    console.log(`[fetchHoles] area(${osmId}) → 0 éléments, fallback radius + polygon filter`);
     const boundary = await fetchBoundary(osmId);
     const radiusM = radiusKm * 1000;
     const fallbackQl = `
@@ -199,7 +271,7 @@ out body geom;
     if (boundary) {
       const before = raw.elements.length;
       raw.elements = raw.elements.filter(el => elementInPolygon(el, boundary));
-      debug(`[fetchHoles] polygon filter: ${before} → ${raw.elements.length} éléments`);
+      console.log(`[fetchHoles] polygon filter: ${before} → ${raw.elements.length} éléments`);
     }
     data = raw;
   }

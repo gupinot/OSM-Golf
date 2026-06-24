@@ -26,3 +26,9 @@ CLAUDE.md
 
 # Tesseract training data (large binary files)
 backend/*.traineddata
+
+# Large source assets (overlays, aerial views, PDFs) — hors git
+Data/
+
+# Cache de recherche Overpass (régénérable)
+scripts/output/overpass_search_cache.json

@@ -297,16 +297,22 @@ out body geom;
         par: (tags.par || '').trim(),
         handicap: (tags.handicap || '').trim(),
         distances: distTags,
+        firstPoint: e.geometry?.length ? e.geometry[0] : null,
         lastPoint: e.geometry?.length ? e.geometry[e.geometry.length - 1] : null,
       });
     } else if (golf === 'tee') {
       tees.push({
+        osmId: e.id,
+        osmType: e.type,
         ref: (tags.ref || '').trim(),
         course: (tags.course || '').trim(),
         color: (tags.tee || tags['golf:tee'] || '').trim(),
+        geometry: e.geometry || [],
       });
     } else if (golf === 'green' && e.type === 'way') {
       greens.push({
+        osmId: e.id,
+        osmType: e.type,
         ref: (tags.ref || '').trim(),
         course: (tags.course || '').trim(),
         geometry: e.geometry || [],
@@ -332,13 +338,14 @@ function extractPolygon(el) {
 }
 
 // Point représentatif d'une feature pour l'attribution à un golf : coords du node,
-// ou centroïde (moyenne des sommets) du way.
+// ou centroïde (moyenne des sommets) du way / de la relation (membres outer).
 function representativePoint(el) {
   if (el.type === 'node') return { lat: el.lat, lon: el.lon };
-  if (el.geometry?.length) {
+  const geom = el.geometry?.length ? el.geometry : extractPolygon(el);
+  if (geom?.length) {
     let lat = 0, lon = 0;
-    for (const p of el.geometry) { lat += p.lat; lon += p.lon; }
-    return { lat: lat / el.geometry.length, lon: lon / el.geometry.length };
+    for (const p of geom) { lat += p.lat; lon += p.lon; }
+    return { lat: lat / geom.length, lon: lon / geom.length };
   }
   return null;
 }
@@ -373,7 +380,8 @@ out body geom;
   }
 
   // hole = way uniquement (le node golf=hole est le drapeau, éviter le double comptage).
-  // tee = way + node (deux formes légitimes). green/fairway/bunker = way.
+  // tee = way + node (deux formes légitimes). green/fairway/bunker = way OU relation
+  // (multipolygon : tag porté par la relation, pas par les ways membres → pas de double comptage).
   const featQl = `
 [out:json][timeout:60];
 (
@@ -381,8 +389,11 @@ out body geom;
   way["golf"="tee"](around:${radiusM},${lat},${lng});
   node["golf"="tee"](around:${radiusM},${lat},${lng});
   way["golf"="green"](around:${radiusM},${lat},${lng});
+  relation["golf"="green"](around:${radiusM},${lat},${lng});
   way["golf"="fairway"](around:${radiusM},${lat},${lng});
+  relation["golf"="fairway"](around:${radiusM},${lat},${lng});
   way["golf"="bunker"](around:${radiusM},${lat},${lng});
+  relation["golf"="bunker"](around:${radiusM},${lat},${lng});
 );
 out body geom;
 `;

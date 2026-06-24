@@ -88,6 +88,9 @@ export default function HolesTable({
     <div className="holes-section">
       <div className="holes-header">
         <h2>{course.name}</h2>
+        {holesData?.holes?.length > 0 && (
+          <AssignRefsButton course={course} onRefreshHoles={onRefreshHoles} />
+        )}
       </div>
 
       {holesLoading && !holesData && <p className="loading">Chargement OSM…</p>}
@@ -283,7 +286,7 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
           <tr>
             <th rowSpan={2}>Ref</th>
             <th colSpan={7} className="group-header">golf=hole</th>
-            <th colSpan={5} className="group-header">golf=tee</th>
+            <th colSpan={6} className="group-header">golf=tee</th>
             <th colSpan={1} className="group-header">golf=green</th>
           </tr>
           <tr>
@@ -291,6 +294,7 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
             <th>Hcp</th>
             {ALL_COLORS.map(c => <th key={`hole-${c}`}>{c.slice(0, 3)}</th>)}
             {ALL_COLORS.map((c, i) => <th key={`tee-${c}`} className={i === 0 ? 'group-start' : ''}>{c.slice(0, 3)}</th>)}
+            <th title="Tees avec ref mais sans tag couleur">nocolor</th>
             <th className="group-start">Green</th>
           </tr>
         </thead>
@@ -334,6 +338,7 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
                   if (exists === undefined) return <td key={`tee-${c}`} className={cls}><span className="missing">?</span></td>;
                   return <td key={`tee-${c}`} className={cls}>{exists ? '✅' : '❌'}</td>;
                 })}
+                <td>{holeTees?.nocolor ? (holeTees.nocolor > 1 ? `⚠️ ${holeTees.nocolor}` : '⚠️') : <span className="missing">—</span>}</td>
                 <td className="group-start">{greenCell}</td>
               </tr>
             );
@@ -536,6 +541,151 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
         <div className="modal-actions">
           {authenticated && status === null && (
             <button className="btn-confirm" onClick={handleConfirm}>Confirmer</button>
+          )}
+          <button className="btn-cancel" onClick={onClose}>
+            {status === 'success' || status === 'error' ? 'Fermer' : 'Annuler'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AssignRefsButton({ course, onRefreshHoles }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        className="assign-refs-btn"
+        onClick={() => setOpen(true)}
+        title="Affecter le ref (et course) des greens/tees sans ref, par géométrie"
+      >
+        🎯 Affecter ref greens/tees
+      </button>
+      {open && (
+        <AssignRefsModal
+          course={course}
+          onClose={() => setOpen(false)}
+          onRefreshHoles={onRefreshHoles}
+        />
+      )}
+    </>
+  );
+}
+
+function AssignRefsModal({ course, onClose, onRefreshHoles }) {
+  const [authChecked, setAuthChecked] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [preview, setPreview] = useState(null);
+  const [status, setStatus] = useState('idle'); // idle|previewing|ready|applying|success|error
+  const [result, setResult] = useState(null);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    fetch('/api/osm-auth/status')
+      .then(r => r.json())
+      .then(d => { setAuthenticated(d.authenticated); setAuthChecked(true); })
+      .catch(() => setAuthChecked(true));
+  }, []);
+
+  useEffect(() => {
+    if (!authenticated || status !== 'idle') return;
+    setStatus('previewing');
+    fetch('/api/holes/assign-refs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ osmId: course.osmId, lat: course.lat, lng: course.lng, preview: true }),
+    })
+      .then(async r => { const d = await r.json(); if (!r.ok) throw new Error(d.error || 'Erreur'); return d; })
+      .then(d => { setPreview(d); setStatus('ready'); })
+      .catch(err => { setErrorMsg(err.message); setStatus('error'); });
+  }, [authenticated, status, course.osmId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function handleApply() {
+    setStatus('applying');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/holes/assign-refs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ osmId: course.osmId, lat: course.lat, lng: course.lng, preview: false }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur inconnue');
+      setResult(data);
+      setStatus('success');
+      if (data.updated > 0) onRefreshHoles?.();
+    } catch (err) {
+      setErrorMsg(err.message);
+      setStatus('error');
+    }
+  }
+
+  function renderChange(c, i) {
+    const label = c.kind === 'green' ? 'Green' : 'Tee';
+    const extras = [`ref=${c.ref}`];
+    if (c.course) extras.push(`course=${c.course}`);
+    return (
+      <li key={i}>
+        <strong>{label} {c.osmId}</strong> : {extras.join(', ')}
+      </li>
+    );
+  }
+
+  return (
+    <div className="modal-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
+      <div className="modal">
+        <h3 className="modal-title">Affecter le ref des greens/tees (géométrie)</h3>
+
+        {!authChecked && <p className="modal-loading">Vérification authentification…</p>}
+
+        {authChecked && !authenticated && (
+          <OsmLoginFlow onAuthenticated={() => setAuthenticated(true)} />
+        )}
+
+        {status === 'previewing' && <p className="modal-loading">Analyse géométrique…</p>}
+
+        {status === 'ready' && preview && (
+          <>
+            <p className="modal-desc">
+              Affectation du <strong>ref</strong> (et <strong>course</strong> si manquant) aux greens et tees
+              sans ref, déduit du trou dont l'arrivée (green) ou le départ (tee) se trouve dans la zone.
+            </p>
+            {preview.changes.length === 0
+              ? <p className="modal-success">Rien à faire — aucun green/tee sans ref n'a pu être associé.</p>
+              : (
+                <>
+                  <p>{preview.changes.length} élément{preview.changes.length > 1 ? 's' : ''} à mettre à jour :</p>
+                  <ul className="modal-changes">{preview.changes.map(renderChange)}</ul>
+                </>
+              )}
+            {preview.skipped?.length > 0 && (
+              <p className="modal-hint">
+                {preview.skipped.length} ignoré{preview.skipped.length > 1 ? 's' : ''} (ambigus) :{' '}
+                {preview.skipped.map(s => `${s.kind} ${s.osmId} (${s.reason})`).join(' ; ')}
+              </p>
+            )}
+          </>
+        )}
+
+        {status === 'applying' && <p className="modal-loading">Écriture dans OSM…</p>}
+
+        {status === 'success' && (
+          <div className="modal-success">
+            {result.updated === 0
+              ? <p>Aucune modification appliquée.</p>
+              : <>
+                  <p>✅ {result.updated} élément{result.updated > 1 ? 's' : ''} mis à jour.</p>
+                  <ul className="modal-changes">{result.changes.map(renderChange)}</ul>
+                </>}
+          </div>
+        )}
+
+        {status === 'error' && <p className="modal-error">❌ {errorMsg}</p>}
+
+        <div className="modal-actions">
+          {status === 'ready' && preview?.changes.length > 0 && (
+            <button className="btn-confirm" onClick={handleApply}>Confirmer</button>
           )}
           <button className="btn-cancel" onClick={onClose}>
             {status === 'success' || status === 'error' ? 'Fermer' : 'Annuler'}

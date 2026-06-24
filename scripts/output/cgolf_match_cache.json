@@ -193,7 +193,6 @@
       "matchScore": 40
     }
   ],
-  "way/70119265": [],
   "way/168759964": [
     {
       "cgolfName": "Golf Blue Green Saint-Étienne  Saint-Etienne",
@@ -278,7 +277,6 @@
       "matchScore": 67
     }
   ],
-  "way/365618199": [],
   "way/248190244": [
     {
       "cgolfName": "Golf Club du Forez  Craintilleux",
@@ -289,7 +287,6 @@
       "matchScore": 67
     }
   ],
-  "way/164818549": [],
   "way/125967213": [
     {
       "cgolfName": "Golf International de Grenoble Parcours de Bresson Bresson",
@@ -300,8 +297,6 @@
       "matchScore": 80
     }
   ],
-  "way/212737505": [],
-  "way/144880540": [],
   "way/297670966": [
     {
       "cgolfName": "Lyon Salvagny Golf Club Parcours Les Etangs  La Tour-de-Salvagny",
@@ -320,7 +315,6 @@
       "matchScore": 67
     }
   ],
-  "way/25480974": [],
   "way/117975437": [
     {
       "cgolfName": "Golf Club de Lyon Parcours Les Sangliers Villette-d'Anthon",
@@ -401,7 +395,6 @@
       "matchScore": 86
     }
   ],
-  "way/49038958": [],
   "way/22604155": [
     {
       "cgolfName": "Golf de Saint-Nom-La-Bretèche Parcours Bleu Saint-Nom-la-Bretèche",
@@ -420,6 +413,154 @@
       "matchScore": 0
     }
   ],
-  "relation/19214277": [],
-  "way/155267350": []
+  "way/155267350": [
+    {
+      "cgolfName": "Golf de Chiberta Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/260.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf de Chiberta Parcours Impératrice Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-parcours-imperatrice-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/261.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf de Biarritz Le Phare Biarritz",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-le-phare-biarritz-64200",
+      "cgolfLat": 43.491471,
+      "cgolfLng": -1.544422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/258.jpg",
+      "matchScore": 0
+    }
+  ],
+  "way/176306926": [
+    {
+      "cgolfName": "Ilbarritz Golf Bidart",
+      "cgolfUrl": "https://www.cgolf.fr/detail/ilbarritz-golf-bidart-64210",
+      "cgolfLat": 43.457916,
+      "cgolfLng": -1.574544,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/575.jpg",
+      "matchScore": 67
+    }
+  ],
+  "way/122106732": [
+    {
+      "cgolfName": "Golf de Moliets Parcours Airial Moliets-et-Maa",
+      "cgolfUrl": "https://www.cgolf.fr/detail/parcours-airial-golf-moliets-et-maa-40660",
+      "cgolfLat": 43.846561,
+      "cgolfLng": -1.377498,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/234.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf de Moliets Parcours Forêt-Océan   Moliets-et-Maa",
+      "cgolfUrl": "https://www.cgolf.fr/detail/parcours-foret-ocean-golf-de-moliets-et-maa-40660",
+      "cgolfLat": 43.846561,
+      "cgolfLng": -1.377498,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/233.jpg",
+      "matchScore": 40
+    }
+  ],
+  "way/155267153": [
+    {
+      "cgolfName": "Golf de Chiberta Parcours Impératrice Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-parcours-imperatrice-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/261.jpg",
+      "matchScore": 50
+    },
+    {
+      "cgolfName": "Golf de Biarritz Le Phare Biarritz",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-le-phare-biarritz-64200",
+      "cgolfLat": 43.491471,
+      "cgolfLng": -1.544422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/258.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Chiberta Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/260.jpg",
+      "matchScore": 0
+    }
+  ],
+  "way/157056661": [
+    {
+      "cgolfName": "Golf de Biarritz Le Phare Biarritz",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-le-phare-biarritz-64200",
+      "cgolfLat": 43.491471,
+      "cgolfLng": -1.544422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/258.jpg",
+      "matchScore": 100
+    },
+    {
+      "cgolfName": "Golf de Chiberta Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/260.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Chiberta Parcours Impératrice Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-parcours-imperatrice-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/261.jpg",
+      "matchScore": 0
+    }
+  ],
+  "relation/19234969": [
+    {
+      "cgolfName": "Golf d'Arcangues Arcangues",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-d--arcangues-64200a",
+      "cgolfLat": 43.437075,
+      "cgolfLng": -1.528269,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/257.jpg",
+      "matchScore": 100
+    },
+    {
+      "cgolfName": "Makila Golf Club Bassussarry",
+      "cgolfUrl": "https://www.cgolf.fr/detail/makila-golf-club-bassussarry-64200b",
+      "cgolfLat": 43.44138,
+      "cgolfLng": -1.489903,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/266.jpg",
+      "matchScore": 0
+    }
+  ],
+  "way/157056670": [
+    {
+      "cgolfName": "Golf de Biarritz Le Phare Biarritz",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-le-phare-biarritz-64200",
+      "cgolfLat": 43.491471,
+      "cgolfLng": -1.544422,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/258.jpg",
+      "matchScore": 80
+    },
+    {
+      "cgolfName": "Golf de Chiberta Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/260.jpg",
+      "matchScore": 0
+    },
+    {
+      "cgolfName": "Golf de Chiberta Parcours Impératrice Anglet",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-chiberta-parcours-imperatrice-anglet-64600",
+      "cgolfLat": 43.513477,
+      "cgolfLng": -1.525775,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/261.jpg",
+      "matchScore": 0
+    }
+  ]
 }

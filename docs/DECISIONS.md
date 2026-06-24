@@ -227,3 +227,41 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Piège résolu :** `out geom tags;` sur une relation `type=multipolygon` **omet les membres** (le niveau de détail `tags` les exclut) → aucune géométrie, polygone introuvable, golfs multipolygon (Gouverneur, Lyon Verger) sans stats. Correctif : `out body geom;` (le niveau `body` inclut tags **et** membres).
 
 **Hors périmètre (incrément futur) :** la recherche **par nom** n'affiche pas encore les stats (golfs potentiellement dispersés, pas de centre/rayon défini).
+
+---
+
+## 2026-06-24 — Stats zone : fairways/greens/bunkers en relation multipolygon
+
+**Choix :** La requête features de `fetchZoneStats` interroge aussi `relation["golf"="green"|"fairway"|"bunker"]` (en plus des `way`). `representativePoint` gère les relations (centroïde via membres `outer`, réutilise `extractPolygon`).
+
+**Raison :** Beaucoup de fairways/greens/bunkers sont taggés sur des relations `type=multipolygon` (outer + inner pour découper bunker/green) — ils étaient invisibles (ex. Golf d'Hossegor : 6 fairways comptés au lieu de 18). Pas de double comptage : le tag `golf=*` est porté par la relation, pas par les ways membres (non taggés).
+
+---
+
+## 2026-06-24 — Fix matching cgolf.fr : longitudes ouest (signe négatif)
+
+**Choix :** Regex GPS de `fetchDetailInfo` (`cgolf.js`) corrigé de `([\d.]+)` vers `(-?[\d.]+)` pour lat **et** lng.
+
+**Raison :** `L.latLng('43.51', -1.52)` — toute longitude ouest de Greenwich est négative ; l'ancien regex échouait, `fetchDetailInfo` retournait `null`, et le golf était silencieusement exclu de la liste cgolf. Bug systémique sur toute la côte ouest (Aquitaine/Biarritz, Bretagne, Cotentin…). Caches purgés après correctif : régions `aquitaine`/`normandie` + entrées de match vides.
+
+---
+
+## 2026-06-24 — Affectation géométrique du ref des greens/tees (écriture OSM)
+
+**Choix :** Nouvelle action (bouton **🎯 Affecter ref greens/tees** dans l'en-tête Source OSM, changeset dédié, indépendant de cgolf) : `assignRefsFromGeometry(osmId, lat, lng, {preview})` dans `osm-write.js`.
+- **Green sans `ref`** ← `ref` du `golf=hole` dont le **dernier point** (arrivée) est dans le polygone du green.
+- **Tee-way sans `ref`** ← `ref` du `golf=hole` dont le **premier point** (départ) est dans le polygone du tee.
+- Écrit `ref` + `course` (si manquant) ; ne touche jamais un ref existant ; conflits (plusieurs holes dans une zone) ignorés et signalés. Mode preview avant écriture.
+- `fetchHoles` enrichi (additif) : holes `firstPoint`, greens/tees `osmId`/`osmType` + geometry des tees. Route `POST /api/holes/assign-refs`.
+
+**Raison :** Permettre de compléter en masse les `ref` manquants des greens/tees directement depuis l'appli, sans édition manuelle dans iD/JOSM, en exploitant la géométrie déjà présente dans OSM.
+
+**Hors v1 :** tees-nodes (pas d'aire → règle de containment inapplicable), greens en relation multipolygon.
+
+---
+
+## 2026-06-24 — Colonne `nocolor` dans la section golf=tee
+
+**Choix :** `analyzeTeeGreenQuality` compte par `course|ref` les tees ayant un `ref` mais aucun tag couleur (`teeMap[key].nocolor`). Nouvelle sous-colonne `nocolor` dans la section `golf=tee` du tableau OSM (`colSpan` 5→6) : `⚠️` / `⚠️ N` / `—`.
+
+**Raison :** Identifier les tees référencés mais non typés par couleur (donnée incomplète invisible dans les colonnes Bla/Whi/Yel/Blu/Red).

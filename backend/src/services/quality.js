@@ -57,9 +57,12 @@ function analyzeTeeGreenQuality(holes, rawTees, rawGreens) {
     if (!tee.ref) continue;
     const key = `${tee.course}|${tee.ref}`;
     if (!teeMap[key]) teeMap[key] = {};
-    for (const color of tee.color.split(';').map(c => c.trim()).filter(Boolean)) {
+    const colors = tee.color.split(';').map(c => c.trim()).filter(Boolean);
+    for (const color of colors) {
       if (TEE_COLORS.includes(color)) teeMap[key][color] = true;
     }
+    // Tee avec ref mais sans tag couleur → compté dans nocolor
+    if (colors.length === 0) teeMap[key].nocolor = (teeMap[key].nocolor || 0) + 1;
   }
 
   const taggedGreenKeys = new Set(

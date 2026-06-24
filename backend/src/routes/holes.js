@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { fetchHoles } = require('../services/overpass');
 const { analyzeHolesQuality, analyzeTeeGreenQuality } = require('../services/quality');
-const { updateHolesFromCgolf, previewChanges } = require('../services/osm-write');
+const { updateHolesFromCgolf, previewChanges, assignRefsFromGeometry } = require('../services/osm-write');
 
 const router = Router();
 
@@ -40,6 +40,25 @@ router.post('/update-osm', async (req, res) => {
       return res.json({ changes });
     }
     const result = await updateHolesFromCgolf(osmHoles, cgolfHoles, force);
+    res.json(result);
+  } catch (err) {
+    res.status(502).json({ error: err.message });
+  }
+});
+
+// POST /api/holes/assign-refs
+// Affecte par géométrie le ref (+ course) aux greens/tees sans ref.
+router.post('/assign-refs', async (req, res) => {
+  const { osmId, lat, lng, preview = false } = req.body;
+  if (!osmId) return res.status(400).json({ error: 'osmId requis' });
+
+  try {
+    const result = await assignRefsFromGeometry(
+      osmId,
+      parseFloat(lat),
+      parseFloat(lng),
+      { preview }
+    );
     res.json(result);
   } catch (err) {
     res.status(502).json({ error: err.message });

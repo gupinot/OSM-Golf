@@ -171,6 +171,20 @@ body {
 .holes-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
 .holes-header h2 { font-size: 1.2rem; margin: 0; }
 
+.assign-refs-btn {
+  margin-left: auto;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #166534;
+  border-radius: 6px;
+  background: white;
+  color: #166534;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.assign-refs-btn:hover { background: #166534; color: white; }
+
 .refresh-btn {
   width: 1.8rem;
   height: 1.8rem;

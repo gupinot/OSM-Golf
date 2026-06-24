@@ -160,8 +160,9 @@ async function fetchDetailInfo(detailUrl) {
     if (!res.ok) return null;
     const html = await res.text();
 
-    // GPS depuis Leaflet : L.latLng('45.895719', 4.966835)
-    const gpsM = html.match(/L\.latLng\(['"']?([\d.]+)['"']?\s*,\s*['"']?([\d.]+)['"']?\)/);
+    // GPS depuis Leaflet : L.latLng('45.895719', 4.966835) ou L.latLng('43.51', -1.52)
+    // Le signe - est obligatoire pour les longitudes ouest (Aquitaine, Bretagne…).
+    const gpsM = html.match(/L\.latLng\(\s*['"]?(-?[\d.]+)['"]?\s*,\s*['"]?(-?[\d.]+)['"]?\s*\)/);
     if (!gpsM) return null;
     const lat = parseFloat(gpsM[1]);
     const lng = parseFloat(gpsM[2]);

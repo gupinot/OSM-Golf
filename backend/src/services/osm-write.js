@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const { getToken } = require('./osm-auth');
+const { fetchHoles } = require('./overpass');
 
 const OSM_API = 'https://api.openstreetmap.org/api/0.6';
 const CREATED_BY = 'OSM Golf Explorer';
@@ -153,4 +154,70 @@ function previewChanges(osmHoles, cgolfHoles, force) {
   return changes;
 }
 
-module.exports = { updateHolesFromCgolf, previewChanges };
+// Ray casting — point {lat, lon} dans un polygone [{lat, lon}, …]
+function pointInPolygon(point, polygon) {
+  if (!point || !polygon || polygon.length < 3) return false;
+  const { lat, lon } = point;
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].lon, yi = polygon[i].lat;
+    const xj = polygon[j].lon, yj = polygon[j].lat;
+    if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+// Affecte le ref (et course si manquant) aux greens/tees SANS ref, par géométrie :
+//  - green ← ref du golf=hole dont le DERNIER point (arrivée) est dans le polygone du green
+//  - tee (way) ← ref du golf=hole dont le PREMIER point (départ) est dans le polygone du tee
+// Ne touche jamais un ref existant. Tees-nodes et greens-relations hors périmètre.
+async function assignRefsFromGeometry(osmId, lat, lng, { preview = false } = {}) {
+  const { holes, tees, greens } = await fetchHoles(osmId, lat, lng);
+  const holesWithRef = holes.filter(h => h.ref);
+
+  const changes = []; // { kind, osmId, ref, course, tags }
+  const skipped = []; // { kind, osmId, reason }
+
+  function propose(kind, el, point, hasArea) {
+    if (el.ref) return;                              // déjà un ref → on ne touche pas
+    if (!hasArea) return;                            // tee-node : pas d'aire
+    const matching = holesWithRef.filter(h => point(h) && pointInPolygon(point(h), el.geometry));
+    if (matching.length === 0) return;               // rien à l'intérieur (ex. green « missing »)
+    const refs = [...new Set(matching.map(h => h.ref))];
+    if (refs.length > 1) {
+      skipped.push({ kind, osmId: el.osmId, reason: `ambigu (refs ${refs.join(', ')})` });
+      return;
+    }
+    const hole = matching[0];
+    const tags = { ref: hole.ref };
+    if (!el.course && hole.course) tags.course = hole.course;
+    changes.push({ kind, osmId: el.osmId, ref: hole.ref, course: tags.course || null, tags });
+  }
+
+  for (const g of greens) {
+    propose('green', g, h => h.lastPoint, g.osmType === 'way' && g.geometry?.length >= 3);
+  }
+  for (const t of tees) {
+    propose('tee', t, h => h.firstPoint, t.osmType === 'way' && t.geometry?.length >= 3);
+  }
+
+  if (preview) return { changes, skipped };
+  if (changes.length === 0) return { updated: 0, changes: [], skipped };
+
+  const changesetId = await createChangeset(
+    'OSM Golf Explorer — affectation ref greens/tees par géométrie'
+  );
+  try {
+    for (const c of changes) {
+      await updateWayTags(c.osmId, c.tags, changesetId);
+    }
+  } finally {
+    await closeChangeset(changesetId);
+  }
+
+  return { updated: changes.length, changes, skipped };
+}
+
+module.exports = { updateHolesFromCgolf, previewChanges, assignRefsFromGeometry };

@@ -1,20 +1,24 @@
-export async function searchByName(query) {
-  const res = await fetch(`/api/search/name?q=${encodeURIComponent(query)}`);
+export async function searchByName(query, { fresh = false } = {}) {
+  const params = new URLSearchParams({ q: query });
+  if (fresh) params.set('fresh', '1');
+  const res = await fetch(`/api/search/name?${params}`);
   if (!res.ok) throw new Error((await res.json()).error);
   return res.json();
 }
 
-export async function searchByZone({ lat, lng, city, radius }) {
+export async function searchByZone({ lat, lng, city, radius, fresh = false }) {
   const params = new URLSearchParams({ radius });
   if (city) params.set('city', city);
   else { params.set('lat', lat); params.set('lng', lng); }
+  if (fresh) params.set('fresh', '1');
   const res = await fetch(`/api/search/zone?${params}`);
   if (!res.ok) throw new Error((await res.json()).error);
   return res.json();
 }
 
-export async function fetchZoneStats(lat, lng, radius) {
+export async function fetchZoneStats(lat, lng, radius, { fresh = false } = {}) {
   const params = new URLSearchParams({ lat, lng, radius });
+  if (fresh) params.set('fresh', '1');
   const res = await fetch(`/api/search/zone-stats?${params}`);
   if (!res.ok) throw new Error((await res.json()).error);
   return res.json();

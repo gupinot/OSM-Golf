@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SearchPanel from './components/SearchPanel.jsx';
 import CourseList from './components/CourseList.jsx';
 import HolesTable from './components/HolesTable.jsx';
-import { fetchHoles, fetchCgolfHoles, fetchZoneStats } from './services/api.js';
+import { fetchHoles, fetchCgolfHoles, fetchZoneStats, searchByName, searchByZone } from './services/api.js';
 import './App.css';
 
 export default function App() {
@@ -18,7 +18,21 @@ export default function App() {
   const [cgolfError, setCgolfError] = useState(null);
   const [statsMap, setStatsMap] = useState(null);
   const [statsLoading, setStatsLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(660);
+
+  // Stats au fil de l'eau (zone uniquement). fresh=true contourne le cache disque.
+  function loadStats(results, fresh = false) {
+    setStatsMap(null);
+    setStatsLoading(false);
+    if (results?.mode === 'zone' && results.lat != null) {
+      setStatsLoading(true);
+      fetchZoneStats(results.lat, results.lng, results.radius, { fresh })
+        .then(setStatsMap)
+        .catch(() => setStatsMap({}))
+        .finally(() => setStatsLoading(false));
+    }
+  }
 
   function startResize(e) {
     e.preventDefault();
@@ -39,15 +53,37 @@ export default function App() {
 
   function handleResults(results) {
     setSearchResults(results);
+    loadStats(results);
+  }
+
+  // Rejoue la dernière recherche en contournant le cache disque Overpass (fresh=1),
+  // puis recharge les stats fraîches (mode zone).
+  async function handleRefreshSearch() {
+    if (!searchResults || refreshing) return;
+    const previous = searchResults;
+    setError(null);
+    setRefreshing(true);
+    // Vide la liste affichée avant de la régénérer.
+    setSearchResults(null);
     setStatsMap(null);
     setStatsLoading(false);
-    // Stats au fil de l'eau : la liste s'affiche tout de suite, le comptage suit (zone only).
-    if (results?.mode === 'zone' && results.lat != null) {
-      setStatsLoading(true);
-      fetchZoneStats(results.lat, results.lng, results.radius)
-        .then(setStatsMap)
-        .catch(() => setStatsMap({}))
-        .finally(() => setStatsLoading(false));
+    setLoading(true);
+    try {
+      if (previous.mode === 'name') {
+        const courses = await searchByName(previous.query, { fresh: true });
+        setSearchResults({ ...previous, courses });
+      } else {
+        const { lat, lng, radius } = previous;
+        const data = await searchByZone({ lat, lng, radius, fresh: true });
+        const results = { mode: 'zone', ...data };
+        setSearchResults(results);
+        loadStats(results, true);
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
     }
   }
 
@@ -107,6 +143,8 @@ export default function App() {
               onSelect={handleSelectCourse}
               statsMap={statsMap}
               statsLoading={statsLoading}
+              onRefresh={handleRefreshSearch}
+              refreshing={refreshing}
             />
           )}
         </aside>

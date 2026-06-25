@@ -9,8 +9,9 @@ router.get('/name', async (req, res) => {
   if (!q || q.trim().length < 2) {
     return res.status(400).json({ error: 'Paramètre q requis (min 2 caractères)' });
   }
+  const fresh = req.query.fresh === '1';
   try {
-    const courses = await searchByName(q.trim());
+    const courses = await searchByName(q.trim(), { fresh });
     res.json(courses);
   } catch (err) {
     res.status(502).json({ error: err.message });
@@ -20,6 +21,7 @@ router.get('/name', async (req, res) => {
 router.get('/zone', async (req, res) => {
   let { lat, lng, city, radius = 50 } = req.query;
   radius = Math.min(parseFloat(radius) || 50, 100);
+  const fresh = req.query.fresh === '1';
 
   try {
     if (city) {
@@ -33,7 +35,7 @@ router.get('/zone', async (req, res) => {
         return res.status(400).json({ error: 'lat/lng ou city requis' });
       }
     }
-    const courses = await searchByZone(lat, lng, radius);
+    const courses = await searchByZone(lat, lng, radius, { fresh });
     res.json({ lat, lng, radius, courses });
   } catch (err) {
     res.status(502).json({ error: err.message });
@@ -46,12 +48,13 @@ router.get('/zone-stats', async (req, res) => {
   const lat = parseFloat(req.query.lat);
   const lng = parseFloat(req.query.lng);
   const radius = Math.min(parseFloat(req.query.radius) || 50, 100);
+  const fresh = req.query.fresh === '1';
 
   if (isNaN(lat) || isNaN(lng)) {
     return res.status(400).json({ error: 'lat/lng requis' });
   }
   try {
-    const stats = await fetchZoneStats(lat, lng, radius);
+    const stats = await fetchZoneStats(lat, lng, radius, { fresh });
     res.json(stats);
   } catch (err) {
     res.status(502).json({ error: err.message });

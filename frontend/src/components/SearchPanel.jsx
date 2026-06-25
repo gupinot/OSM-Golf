@@ -17,7 +17,7 @@ export default function SearchPanel({ onResults, onLoading, onError }) {
       let results;
       if (mode === 'name') {
         results = await searchByName(nameQuery);
-        onResults({ mode: 'name', courses: results });
+        onResults({ mode: 'name', query: nameQuery, courses: results });
       } else {
         const payload = geoCoords
           ? { lat: geoCoords.lat, lng: geoCoords.lng, radius }

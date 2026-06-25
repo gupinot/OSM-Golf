@@ -90,10 +90,12 @@ function setCached(key, data) {
   fs.writeFileSync(SEARCH_CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
-async function searchByName(name) {
+async function searchByName(name, { fresh = false } = {}) {
   const key = `name:${name.trim().toLowerCase()}`;
-  const cached = getCached(key);
-  if (cached) return cached;
+  if (!fresh) {
+    const cached = getCached(key);
+    if (cached) return cached;
+  }
 
   const escaped = name.replace(/"/g, '\\"');
   const ql = `
@@ -110,12 +112,14 @@ out center tags;
   return courses;
 }
 
-async function searchByZone(lat, lng, radiusKm) {
+async function searchByZone(lat, lng, radiusKm, { fresh = false } = {}) {
   const r = Math.min(radiusKm, 100);
   // Coords arrondies à ~100 m : deux recherches quasi identiques tapent la même entrée.
   const key = `zone:${lat.toFixed(3)},${lng.toFixed(3)},${r}`;
-  const cached = getCached(key);
-  if (cached) return cached;
+  if (!fresh) {
+    const cached = getCached(key);
+    if (cached) return cached;
+  }
 
   const radiusM = r * 1000;
   const ql = `
@@ -353,11 +357,13 @@ function representativePoint(el) {
 // Comptage des features de jeu par golf sur toute une zone, en 2 requêtes Overpass :
 // 1) polygones des golf_course du rayon, 2) golf=hole|tee|green|fairway|bunker du rayon,
 // puis attribution de chaque feature au golf dont le polygone la contient (point-in-polygon).
-async function fetchZoneStats(lat, lng, radiusKm) {
+async function fetchZoneStats(lat, lng, radiusKm, { fresh = false } = {}) {
   const r = Math.min(radiusKm, 100);
   const key = `stats:${lat.toFixed(3)},${lng.toFixed(3)},${r}`;
-  const cached = getCached(key);
-  if (cached) return cached;
+  if (!fresh) {
+    const cached = getCached(key);
+    if (cached) return cached;
+  }
 
   const radiusM = r * 1000;
 

@@ -265,3 +265,22 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix :** `analyzeTeeGreenQuality` compte par `course|ref` les tees ayant un `ref` mais aucun tag couleur (`teeMap[key].nocolor`). Nouvelle sous-colonne `nocolor` dans la section `golf=tee` du tableau OSM (`colSpan` 5→6) : `⚠️` / `⚠️ N` / `—`.
 
 **Raison :** Identifier les tees référencés mais non typés par couleur (donnée incomplète invisible dans les colonnes Bla/Whi/Yel/Blu/Red).
+
+---
+
+## 2026-06-25 — Bouton « Rafraîchir » de la liste (bypass du cache disque Overpass)
+
+**Choix :** Bouton ↻ dans l'en-tête « Golf » du tableau de résultats (`CourseList`) qui rejoue la **dernière recherche** (nom ou zone) en contournant le cache disque 7 j.
+- **Backend :** paramètre `fresh=1` optionnel sur `/api/search/name`, `/api/search/zone`, `/api/search/zone-stats`. Propagé en `{ fresh }` à `searchByName` / `searchByZone` / `fetchZoneStats` (`overpass.js`) : quand `fresh`, on **saute `getCached()`** mais on appelle toujours `setCached()` → le cache est rafraîchi, pas ignoré.
+- **Frontend :** `api.js` propage `fresh` ; `SearchPanel` mémorise le `query` dans le payload `onResults` (mode nom) pour pouvoir le rejouer ; `App.handleRefreshSearch()` rejoue la recherche + recharge les stats fraîches (mode zone). Helper `loadStats(results, fresh)` factorisé.
+- **UX :** au clic, la liste affichée est d'abord **vidée** (`setSearchResults(null)` + `setStatsMap(null)` + `setLoading(true)` → « Recherche en cours… ») puis régénérée avec les données fraîches.
+
+**Raison :** Les résultats venaient systématiquement du cache (TTL 7 j) sans moyen de forcer une requête Overpass à jour. Le bypass + réécriture du cache permet de rafraîchir à la demande sans invalider manuellement le fichier de cache.
+
+---
+
+## 2026-06-25 — Fix dialog modale : bouton de fermeture hors écran sur longues listes
+
+**Choix :** `.modal` borné à `max-height: 90vh` et `.modal-changes` (liste des trous modifiés) rendu défilant (`overflow-y: auto; max-height: 60vh`). Couvre les 3 modales partageant la classe (mise à jour OSM + 2 aperçus « Affecter ref greens/tees »).
+
+**Raison :** Sur un parcours 18 trous, la liste des changements rendait la modale plus haute que le viewport et poussait le bouton « Fermer » hors champ, inatteignable. La liste défile désormais à l'intérieur ; titre, résumé et actions restent toujours visibles.

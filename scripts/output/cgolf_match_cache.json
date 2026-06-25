@@ -562,5 +562,16 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/261.jpg",
       "matchScore": 0
     }
+  ],
+  "way/310365436": [],
+  "way/156597577": [
+    {
+      "cgolfName": "Golf du Domaine des Ormes  Dol-de-Bretagne",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-du-domaine-des-ormes-dol-de-bretagne-35120",
+      "cgolfLat": 48.489132,
+      "cgolfLng": -1.726341,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/374.jpg",
+      "matchScore": 40
+    }
   ]
 }

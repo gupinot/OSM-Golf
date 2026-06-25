@@ -1,4 +1,4 @@
-export default function CourseList({ courses, selected, onSelect, statsMap, statsLoading }) {
+export default function CourseList({ courses, selected, onSelect, statsMap, statsLoading, onRefresh, refreshing }) {
   if (!courses.length) return <p className="empty">Aucun parcours trouvé.</p>;
 
   // Cellules de stats d'une ligne : '…' tant que le comptage tourne, '–' si pas de données.
@@ -27,7 +27,22 @@ export default function CourseList({ courses, selected, onSelect, statsMap, stat
       <table className="course-table">
         <thead>
           <tr>
-            <th rowSpan={2} className="col-golf">Golf</th>
+            <th rowSpan={2} className="col-golf">
+              <span className="col-golf-head">
+                <span>Golf</span>
+                {onRefresh && (
+                  <button
+                    type="button"
+                    className="list-refresh-btn"
+                    onClick={onRefresh}
+                    disabled={refreshing}
+                    title="Rafraîchir les données (ignorer le cache)"
+                  >
+                    {refreshing ? '…' : '↻'}
+                  </button>
+                )}
+              </span>
+            </th>
             <th colSpan={2}>Trous</th>
             <th colSpan={2}>Tees</th>
             <th colSpan={2}>Greens</th>

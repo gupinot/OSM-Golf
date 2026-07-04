@@ -169,9 +169,30 @@ function pointInPolygon(point, polygon) {
   return inside;
 }
 
+// Deux segments [p1,p2] et [p3,p4] se croisent-ils ? (points {lat, lon})
+function segmentsIntersect(p1, p2, p3, p4) {
+  const d = (a, b, c) => (b.lon - a.lon) * (c.lat - a.lat) - (b.lat - a.lat) * (c.lon - a.lon);
+  const d1 = d(p3, p4, p1);
+  const d2 = d(p3, p4, p2);
+  const d3 = d(p1, p2, p3);
+  const d4 = d(p1, p2, p4);
+  return ((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0));
+}
+
+// Le segment [a,b] intersecte-t-il le polygone ? (endpoint dedans OU croisement d'une arête)
+function segmentIntersectsPolygon(a, b, polygon) {
+  if (!a || !b || !polygon || polygon.length < 3) return false;
+  if (pointInPolygon(a, polygon) || pointInPolygon(b, polygon)) return true;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    if (segmentsIntersect(a, b, polygon[j], polygon[i])) return true;
+  }
+  return false;
+}
+
 // Affecte le ref (et course si manquant) aux greens/tees SANS ref, par géométrie :
 //  - green ← ref du golf=hole dont le DERNIER point (arrivée) est dans le polygone du green
-//  - tee (way) ← ref du golf=hole dont le PREMIER point (départ) est dans le polygone du tee
+//  - tee (way) ← ref du golf=hole dont le PREMIER SEGMENT (départ→1er point du tracé)
+//    traverse le polygone du tee (capte le tee arrière ET les tees avancés en enfilade)
 // Ne touche jamais un ref existant. Tees-nodes et greens-relations hors périmètre.
 async function assignRefsFromGeometry(osmId, lat, lng, { preview = false } = {}) {
   const { holes, tees, greens } = await fetchHoles(osmId, lat, lng);
@@ -180,10 +201,10 @@ async function assignRefsFromGeometry(osmId, lat, lng, { preview = false } = {})
   const changes = []; // { kind, osmId, ref, course, tags }
   const skipped = []; // { kind, osmId, reason }
 
-  function propose(kind, el, point, hasArea) {
+  function propose(kind, el, matchFn, hasArea) {
     if (el.ref) return;                              // déjà un ref → on ne touche pas
     if (!hasArea) return;                            // tee-node : pas d'aire
-    const matching = holesWithRef.filter(h => point(h) && pointInPolygon(point(h), el.geometry));
+    const matching = holesWithRef.filter(h => matchFn(h, el));
     if (matching.length === 0) return;               // rien à l'intérieur (ex. green « missing »)
     const refs = [...new Set(matching.map(h => h.ref))];
     if (refs.length > 1) {
@@ -197,10 +218,14 @@ async function assignRefsFromGeometry(osmId, lat, lng, { preview = false } = {})
   }
 
   for (const g of greens) {
-    propose('green', g, h => h.lastPoint, g.osmType === 'way' && g.geometry?.length >= 3);
+    propose('green', g,
+      (h, el) => h.lastPoint && pointInPolygon(h.lastPoint, el.geometry),
+      g.osmType === 'way' && g.geometry?.length >= 3);
   }
   for (const t of tees) {
-    propose('tee', t, h => h.firstPoint, t.osmType === 'way' && t.geometry?.length >= 3);
+    propose('tee', t,
+      (h, el) => h.firstPoint && h.secondPoint && segmentIntersectsPolygon(h.firstPoint, h.secondPoint, el.geometry),
+      t.osmType === 'way' && t.geometry?.length >= 3);
   }
 
   if (preview) return { changes, skipped };

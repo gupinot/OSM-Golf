@@ -220,11 +220,39 @@ function pointInPolygon(lat, lon, polygon) {
   return inside;
 }
 
+// Marge tolérée hors du polygone du golf_course : certains parcours ont une limite
+// OSM tracée trop serrée qui n'englobe pas les départs/greens de bord (cf. Golf des
+// Ormes, départs arrière à 7-16 m dehors). On garde une feature à moins de ce seuil.
+const BOUNDARY_BUFFER_M = 25;
+
+// Distance (m, approx. planaire locale) d'un point au segment [a, b] {lat, lon}.
+function distPointToSegmentM(lat, lon, a, b) {
+  const mPerDegLat = 111320;
+  const mPerDegLon = 111320 * Math.cos(lat * Math.PI / 180);
+  const px = lon * mPerDegLon, py = lat * mPerDegLat;
+  const ax = a.lon * mPerDegLon, ay = a.lat * mPerDegLat;
+  const bx = b.lon * mPerDegLon, by = b.lat * mPerDegLat;
+  const dx = bx - ax, dy = by - ay;
+  const l2 = dx * dx + dy * dy;
+  let t = l2 ? ((px - ax) * dx + (py - ay) * dy) / l2 : 0;
+  t = Math.max(0, Math.min(1, t));
+  return Math.hypot(px - (ax + t * dx), py - (ay + t * dy));
+}
+
+// Point dans le polygone OU à moins de bufferM d'une de ses arêtes.
+function pointNearPolygon(lat, lon, polygon, bufferM) {
+  if (pointInPolygon(lat, lon, polygon)) return true;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    if (distPointToSegmentM(lat, lon, polygon[j], polygon[i]) <= bufferM) return true;
+  }
+  return false;
+}
+
 function elementInPolygon(el, polygon) {
   if (!polygon?.length) return true;
-  if (el.type === 'node') return pointInPolygon(el.lat, el.lon, polygon);
-  // way: au moins un nœud dans le polygon
-  return el.geometry?.some(pt => pointInPolygon(pt.lat, pt.lon, polygon)) ?? false;
+  if (el.type === 'node') return pointNearPolygon(el.lat, el.lon, polygon, BOUNDARY_BUFFER_M);
+  // way: au moins un nœud dans le polygon (ou dans la marge tolérée)
+  return el.geometry?.some(pt => pointNearPolygon(pt.lat, pt.lon, polygon, BOUNDARY_BUFFER_M)) ?? false;
 }
 
 async function fetchHoles(osmId, lat, lng, radiusKm = 5) {
@@ -324,6 +352,7 @@ out body geom;
         handicap: (tags.handicap || '').trim(),
         distances: distTags,
         firstPoint: e.geometry?.length ? e.geometry[0] : null,
+        secondPoint: e.geometry?.length >= 2 ? e.geometry[1] : null,
         lastPoint: e.geometry?.length ? e.geometry[e.geometry.length - 1] : null,
       });
     } else if (golf === 'tee') {

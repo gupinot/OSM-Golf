@@ -292,3 +292,21 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix :** Sauvegarde de `searchResults` + `selectedCourse` dans `sessionStorage` (clé `osmgolf.session`, `App.jsx`), réhydratés via les initialiseurs `useState` au chargement. Un `useEffect` de montage relance les fetchs dérivés : stats zone (`loadStats`), trous OSM + scorecard cgolf via le helper extrait `loadCourseData` (partagé avec `handleSelectCourse`). Les gros volumes (trous, scorecard, stats) ne sont **pas** stockés — re-récupérés au montage (bénéfice du cache disque backend). `try/catch` autour de `sessionStorage` (mode privé/quota).
 
 **Raison :** En dev, le client HMR de Vite force un `location.reload()` complet après reconnexion de son WebSocket (onglet inactif, mise en veille machine) → tout l'état React en mémoire était effacé, ramenant à l'écran de recherche vide. La persistance de session restaure la liste et le golf sélectionné. Portée onglet : un nouvel onglet repart vierge, la fermeture de l'onglet efface l'état (comportement attendu pour une session de travail). Disparaît en build de production (pas de HMR).
+
+---
+
+## 2026-07-04 — Affectation ref tees : règle du « premier segment » (au lieu du seul point de départ)
+
+**Choix :** La règle d'affectation du `ref` des tees-way passe du **point de départ** (`firstPoint` dans le polygone) au **premier segment** du tracé `golf=hole` : le tee reçoit le `ref` du hole dont le segment `départ → 1er point du tracé` (`firstPoint → secondPoint`) **traverse** le polygone du tee.
+- `overpass.js` : ajout de `secondPoint` (2ᵉ point de la géométrie) sur chaque hole.
+- `osm-write.js` : primitives géométriques `segmentsIntersect(p1,p2,p3,p4)` (test d'orientation par produits croisés) et `segmentIntersectsPolygon(a,b,polygon)` (endpoint dedans OU croisement d'une arête). `propose()` généralisé pour accepter un prédicat `matchFn(hole, el)` au lieu d'un extracteur de point — greens inchangés (`lastPoint` dans le polygone), tees via le premier segment.
+
+**Raison :** Un `golf=hole` part souvent du **tee arrière** ; les tees avancés alignés en enfilade sur l'axe de jeu n'étaient pas captés par le seul containment du point de départ. Le premier segment traverse toute la rangée de tees départ et est un **sur-ensemble strict** de l'ancienne règle (départ = extrémité du segment).
+
+---
+
+## 2026-07-04 — Buffer de tolérance (25 m) sur le filtre polygonal du fallback `fetchHoles`
+
+**Choix :** Dans le chemin fallback de `fetchHoles` (quand `area()` Overpass renvoie 0 → filtrage point-in-polygon côté backend contre la limite `leisure=golf_course`), le filtre `elementInPolygon` tolère désormais une marge de **25 m** hors du polygone (`BOUNDARY_BUFFER_M`). Ajout de `distPointToSegmentM(lat,lon,a,b)` (distance point→segment, approx. planaire locale avec `cos(lat)`) et `pointNearPolygon(lat,lon,polygon,bufferM)` (dans le polygone OU à ≤ bufferM d'une arête). Nodes et ways (au moins un nœud dans la marge) concernés.
+
+**Raison :** Bug constaté au Golf des Ormes (`way/156597577`) : le 2ᵉ tee du trou 6 (et un autre départ arrière) n'était pas affecté alors qu'aligné dans l'axe du premier segment. Cause réelle diagnostiquée : la limite OSM du golf_course est tracée **trop serrée** et exclut les départs arrière situés 7–16 m dehors → le filtre polygonal les écartait **en amont** de toute affectation. Correctif systémique (bénéficie aussi aux stats qualité, mêmes features filtrées). Vérifié en preview : le tee 622 est désormais capté (`ref=6`), filtre 82→70 au lieu de 82→68.

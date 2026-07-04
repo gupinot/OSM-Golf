@@ -284,3 +284,11 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix :** `.modal` borné à `max-height: 90vh` et `.modal-changes` (liste des trous modifiés) rendu défilant (`overflow-y: auto; max-height: 60vh`). Couvre les 3 modales partageant la classe (mise à jour OSM + 2 aperçus « Affecter ref greens/tees »).
 
 **Raison :** Sur un parcours 18 trous, la liste des changements rendait la modale plus haute que le viewport et poussait le bouton « Fermer » hors champ, inatteignable. La liste défile désormais à l'intérieur ; titre, résumé et actions restent toujours visibles.
+
+---
+
+## 2026-07-04 — Persistance de session (survie aux reloads HMR Vite)
+
+**Choix :** Sauvegarde de `searchResults` + `selectedCourse` dans `sessionStorage` (clé `osmgolf.session`, `App.jsx`), réhydratés via les initialiseurs `useState` au chargement. Un `useEffect` de montage relance les fetchs dérivés : stats zone (`loadStats`), trous OSM + scorecard cgolf via le helper extrait `loadCourseData` (partagé avec `handleSelectCourse`). Les gros volumes (trous, scorecard, stats) ne sont **pas** stockés — re-récupérés au montage (bénéfice du cache disque backend). `try/catch` autour de `sessionStorage` (mode privé/quota).
+
+**Raison :** En dev, le client HMR de Vite force un `location.reload()` complet après reconnexion de son WebSocket (onglet inactif, mise en veille machine) → tout l'état React en mémoire était effacé, ramenant à l'écran de recherche vide. La persistance de session restaure la liste et le golf sélectionné. Portée onglet : un nouvel onglet repart vierge, la fermeture de l'onglet efface l'état (comportement attendu pour une session de travail). Disparaît en build de production (pas de HMR).

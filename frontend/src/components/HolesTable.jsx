@@ -17,8 +17,8 @@ function buildComparison(osmHoles, cgolfHoles) {
   const cgolfMap = Object.fromEntries(cgolfHoles.map(h => [String(h.hole), h]));
   const result = {};
   for (const osmHole of osmHoles) {
-    if (!osmHole.ref) continue;
-    const ref = String(osmHole.ref);
+    if (!osmHole.refTarget) continue;
+    const ref = String(osmHole.refTarget);
     const cg = cgolfMap[ref];
     if (!cg) continue;
     result[ref] = {
@@ -284,12 +284,14 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
       <table className="holes-table">
         <thead>
           <tr>
-            <th rowSpan={2}>Ref</th>
+            <th colSpan={2} className="group-header">Ref</th>
             <th colSpan={7} className="group-header">golf=hole</th>
             <th colSpan={6} className="group-header">golf=tee</th>
             <th colSpan={1} className="group-header">golf=green</th>
           </tr>
           <tr>
+            <th title="N° de trou cible (parcours via course/regex)">cible</th>
+            <th title="Valeur ref actuelle sur OSM">OSM</th>
             <th className="group-start">Par</th>
             <th>Hcp</th>
             {ALL_COLORS.map(c => <th key={`hole-${c}`}>{c.slice(0, 3)}</th>)}
@@ -300,9 +302,10 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
         </thead>
         <tbody>
           {holes.map(h => {
-            const key = `${courseKey}|${h.ref}`;
+            const key = `${courseKey}|${h.refTarget}`;
             const holeTees = teesData?.[key];
             const greenStatus = greensData?.[key];
+            const refDiverges = h.ref !== h.refTarget;
             let greenCell;
             if (greenStatus === 'tagged') greenCell = '✅';
             else if (greenStatus === 'untagged') greenCell = '⚠️';
@@ -312,11 +315,14 @@ function OsmUnifiedTable({ holes, issues, teesData, greensData, courseKey, compa
             return (
               <tr
                 key={h.osmWayId}
-                className={!h.ref ? 'row-warn' : dupRefs.has(h.ref) ? 'row-dup' : ''}
+                className={!h.refTarget ? 'row-warn' : dupRefs.has(h.refTarget) ? 'row-dup' : ''}
               >
-                <td>{h.ref || <span className="missing">—</span>}</td>
+                <td>{h.refTarget || <span className="missing">—</span>}</td>
+                <td className={refDiverges ? 'cell-mismatch' : ''}>
+                  {h.ref || <span className="missing">—</span>}
+                </td>
                 {(() => {
-                  const cmp = comparison?.[String(h.ref)];
+                  const cmp = comparison?.[String(h.refTarget)];
                   return <>
                     <td className={['group-start', cellClass(cmp?.par, 'osm')].filter(Boolean).join(' ')}>
                       {h.par || <span className="missing">—</span>}

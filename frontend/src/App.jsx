@@ -1,15 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchPanel from './components/SearchPanel.jsx';
 import CourseList from './components/CourseList.jsx';
 import HolesTable from './components/HolesTable.jsx';
 import { fetchHoles, fetchCgolfHoles, fetchZoneStats, searchByName, searchByZone } from './services/api.js';
 import './App.css';
 
+// Persistance de session : survit aux rechargements complets du dev-server Vite
+// (le client HMR force un location.reload() après reconnexion du WebSocket, ce qui
+// effacerait sinon tout l'état en mémoire → retour à l'écran de recherche vide).
+const SESSION_KEY = 'osmgolf.session';
+
+function loadPersisted() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+const persisted = loadPersisted();
+
 export default function App() {
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState(persisted.searchResults ?? null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(persisted.selectedCourse ?? null);
   const [holesData, setHolesData] = useState(null);
   const [holesLoading, setHolesLoading] = useState(false);
   const [holesError, setHolesError] = useState(null);
@@ -20,6 +36,21 @@ export default function App() {
   const [statsLoading, setStatsLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(660);
+
+  // Sauvegarde en session la liste + le golf sélectionné, pour survivre à un reload.
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ searchResults, selectedCourse }));
+    } catch {
+      /* quota/private mode : ignore */
+    }
+  }, [searchResults, selectedCourse]);
+
+  // Réhydratation au montage : relance les fetchs dérivés (stats zone, trous + cgolf).
+  useEffect(() => {
+    if (persisted.searchResults?.mode === 'zone') loadStats(persisted.searchResults);
+    if (persisted.selectedCourse) loadCourseData(persisted.selectedCourse);
+  }, []);
 
   // Stats au fil de l'eau (zone uniquement). fresh=true contourne le cache disque.
   function loadStats(results, fresh = false) {
@@ -87,8 +118,8 @@ export default function App() {
     }
   }
 
-  function handleSelectCourse(course) {
-    setSelectedCourse(course);
+  // Charge (ou recharge) les données dérivées d'un golf : trous OSM + scorecard cgolf.
+  function loadCourseData(course) {
     setHolesData(null);
     setHolesError(null);
     setHolesLoading(true);
@@ -105,6 +136,11 @@ export default function App() {
       .then(data => setCgolfData(data))
       .catch(err => setCgolfError(err.message))
       .finally(() => setCgolfLoading(false));
+  }
+
+  function handleSelectCourse(course) {
+    setSelectedCourse(course);
+    loadCourseData(course);
   }
 
   function handleRefreshHoles() {

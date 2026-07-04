@@ -573,5 +573,102 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/374.jpg",
       "matchScore": 40
     }
+  ],
+  "way/101386557": [
+    {
+      "cgolfName": "Golf de la Sainte Baume Nans-les-Pins",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-la-sainte-baume-nans-les-pins-83860",
+      "cgolfLat": 43.389196,
+      "cgolfLng": 5.793693,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/32.jpg",
+      "matchScore": 67
+    }
+  ],
+  "relation/8843251": [
+    {
+      "cgolfName": "Dolce Fregate Golf Club Parcours Frégate Saint-Cyr-sur-Mer",
+      "cgolfUrl": "https://www.cgolf.fr/detail/dolce-fregate-golf-club-saint-cyr-sur-mer-83270",
+      "cgolfLat": 43.149836,
+      "cgolfLng": 5.725046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/28.jpg",
+      "matchScore": 29
+    },
+    {
+      "cgolfName": "Dolce Fregate Golf Club Parcours Frégalon Saint-Cyr-sur-Mer",
+      "cgolfUrl": "https://www.cgolf.fr/detail/dolce-fregalon-golf-club-saint-cyr-sur-mer-83270",
+      "cgolfLat": 43.149836,
+      "cgolfLng": 5.725046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/29.jpg",
+      "matchScore": 25
+    }
+  ],
+  "way/167482677": [
+    {
+      "cgolfName": "Golf La Cabre d’Or Cabriès",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-de-la-cabre-d-or-cabries-13480",
+      "cgolfLat": 43.451939,
+      "cgolfLng": 5.35252,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/43.jpg",
+      "matchScore": 80
+    }
+  ],
+  "relation/13007665": [
+    {
+      "cgolfName": "Golf International du Cap d’Agde Parcours Volcan Cap d'Agde",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-international-1-cap-d-agde-34300",
+      "cgolfLat": 43.287458,
+      "cgolfLng": 3.486614,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/80.jpg",
+      "matchScore": 67
+    },
+    {
+      "cgolfName": "Golf International du Cap d’Agde Parcours Alizés & Azur Cap d'Agde",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-international-du-cap-d-agde-34300",
+      "cgolfLat": 43.287458,
+      "cgolfLng": 3.486614,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/79.jpg",
+      "matchScore": 57
+    }
+  ],
+  "way/56084254": [
+    {
+      "cgolfName": "Alsace Golf Links Rouffach",
+      "cgolfUrl": "https://www.cgolf.fr/detail/alsace-golf-links-rouffach-68250",
+      "cgolfLat": 47.968572,
+      "cgolfLng": 7.335311,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/551.jpg",
+      "matchScore": 50
+    }
+  ],
+  "way/46434108": [
+    {
+      "cgolfName": "Golf Club de Bouleaux Wittelsheim",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-club-de-bouleaux-wittelsheim-68310",
+      "cgolfLat": 47.776156,
+      "cgolfLng": 7.220697,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/555.jpg",
+      "matchScore": 67
+    }
+  ],
+  "way/223094076": [
+    {
+      "cgolfName": "Golf du Rhin Chalampé",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-du-rhin-chalampe-68490",
+      "cgolfLat": 47.85183,
+      "cgolfLng": 7.560928,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/561.jpg",
+      "matchScore": 67
+    }
+  ],
+  "way/38345391": [],
+  "way/55451630": [
+    {
+      "cgolfName": "Golf Resort Ammerschwihr Trois-épis  Ammerschwihr",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-resort-trois-epis-ammerschwihr-68770",
+      "cgolfLat": 48.123609,
+      "cgolfLng": 7.257235,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/556.jpg",
+      "matchScore": 75
+    }
   ]
 }

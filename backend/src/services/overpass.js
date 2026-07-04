@@ -136,32 +136,54 @@ out center tags;
   return courses;
 }
 
-// "Vert n°16 - Bois joli" → "Vert" ; "Jaune n°10 - ..." → "Jaune"
-function extractNameCandidates(name) {
-  const candidates = new Set();
-  const m1 = name.match(/^(.+?)\s+n°\s*\d+/i);
-  if (m1) candidates.add(m1[1].trim());
-  const m2 = name.match(/^(.+?)\s+[-–]\s+\d+/);
-  if (m2) candidates.add(m2[1].trim());
-  return candidates;
+// Découpe une valeur type "Vert n°16 - Bois joli" ou "Azur - 4" en { prefix, number }.
+// Le préfixe = nom de parcours ; number = n° de trou. null si aucun motif.
+// Le préfixe purement numérique est rejeté (évite "9 - 18" → prefix "9").
+function parseRefLike(value) {
+  if (!value) return null;
+  let m = value.match(/^(.+?)\s+n°\s*(\d+)/i);
+  if (m) return { prefix: m[1].trim(), number: m[2] };
+  m = value.match(/^(.+?)\s+[-–]\s+(\d+)/);
+  if (m && !/^\d+$/.test(m[1].trim())) return { prefix: m[1].trim(), number: m[2] };
+  return null;
 }
 
-function inferCourseFromNames(holes) {
+// refTarget = n° de trou cible : extrait d'un ref type "Azur - 4" → "4", sinon le ref brut.
+function deriveRefTarget(ref) {
+  const parsed = parseRefLike(ref);
+  return parsed ? parsed.number : ref;
+}
+
+// Infère le course des trous depuis les préfixes partagés (tag name ET ref).
+// Ne retient un préfixe que s'il apparaît dans ≥ 2 trous (robustesse, comme avant).
+// Retourne l'ensemble des courses connus (tags + inférés) pour réutilisation tees/greens.
+function inferHoleCourses(holes) {
   const counts = new Map();
   for (const hole of holes) {
-    if (hole.course || !hole._rawName) continue;
-    for (const c of extractNameCandidates(hole._rawName)) {
-      counts.set(c, (counts.get(c) || 0) + 1);
+    if (hole.course) continue;
+    for (const src of [hole._rawName, hole.ref]) {
+      const p = parseRefLike(src);
+      if (p) counts.set(p.prefix, (counts.get(p.prefix) || 0) + 1);
     }
   }
   for (const hole of holes) {
-    if (!hole.course && hole._rawName) {
-      for (const c of extractNameCandidates(hole._rawName)) {
-        if ((counts.get(c) || 0) >= 2) { hole.course = c; break; }
+    if (!hole.course) {
+      for (const src of [hole._rawName, hole.ref]) {
+        const p = parseRefLike(src);
+        if (p && (counts.get(p.prefix) || 0) >= 2) { hole.course = p.prefix; break; }
       }
     }
     delete hole._rawName;
   }
+  return new Set(holes.map(h => h.course).filter(Boolean));
+}
+
+// Tee/green sans tag course : récupère le course depuis le préfixe du ref, uniquement
+// s'il fait partie des courses connus (cohérence des clés course|refTarget avec les trous).
+function inferFeatureCourse(item, knownCourses) {
+  if (item.course) return;
+  const p = parseRefLike(item.ref);
+  if (p && knownCourses.has(p.prefix)) item.course = p.prefix;
 }
 
 async function fetchBoundary(osmId) {
@@ -324,7 +346,12 @@ out body geom;
     }
   }
 
-  inferCourseFromNames(holes);
+  // Normalisation course + refTarget (gère les refs type "Azur - 4" sans tag course/name).
+  const knownCourses = inferHoleCourses(holes);
+  for (const h of holes) h.refTarget = deriveRefTarget(h.ref);
+  for (const t of tees) { inferFeatureCourse(t, knownCourses); t.refTarget = deriveRefTarget(t.ref); }
+  for (const g of greens) { inferFeatureCourse(g, knownCourses); g.refTarget = deriveRefTarget(g.ref); }
+
   return { holes, tees, greens };
 }
 

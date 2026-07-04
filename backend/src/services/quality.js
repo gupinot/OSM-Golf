@@ -14,10 +14,10 @@ function analyzeHolesQuality(holes) {
   const courses = {};
 
   for (const [key, grp] of Object.entries(groups)) {
-    const missing = grp.filter(h => !h.ref).length;
+    const missing = grp.filter(h => !h.refTarget).length;
     const refCounts = {};
     for (const h of grp) {
-      if (h.ref) refCounts[h.ref] = (refCounts[h.ref] || 0) + 1;
+      if (h.refTarget) refCounts[h.refTarget] = (refCounts[h.refTarget] || 0) + 1;
     }
     const dupes = Object.entries(refCounts).filter(([, c]) => c > 1).map(([r]) => r);
 
@@ -41,12 +41,12 @@ function analyzeHolesQuality(holes) {
 }
 
 function holeSort(a, b) {
-  const na = parseInt(a.ref);
-  const nb = parseInt(b.ref);
+  const na = parseInt(a.refTarget);
+  const nb = parseInt(b.refTarget);
   if (!isNaN(na) && !isNaN(nb)) return na - nb;
   if (!isNaN(na)) return -1;
   if (!isNaN(nb)) return 1;
-  return (a.ref || '').localeCompare(b.ref || '');
+  return (a.refTarget || '').localeCompare(b.refTarget || '');
 }
 
 const TEE_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
@@ -54,8 +54,8 @@ const TEE_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
 function analyzeTeeGreenQuality(holes, rawTees, rawGreens) {
   const teeMap = {};
   for (const tee of rawTees) {
-    if (!tee.ref) continue;
-    const key = `${tee.course}|${tee.ref}`;
+    if (!tee.refTarget) continue;
+    const key = `${tee.course}|${tee.refTarget}`;
     if (!teeMap[key]) teeMap[key] = {};
     const colors = tee.color.split(';').map(c => c.trim()).filter(Boolean);
     for (const color of colors) {
@@ -66,13 +66,13 @@ function analyzeTeeGreenQuality(holes, rawTees, rawGreens) {
   }
 
   const taggedGreenKeys = new Set(
-    rawGreens.filter(g => g.ref).map(g => `${g.course}|${g.ref}`)
+    rawGreens.filter(g => g.refTarget).map(g => `${g.course}|${g.refTarget}`)
   );
 
   const greenMap = {};
   for (const hole of holes) {
-    const key = `${hole.course}|${hole.ref}`;
-    if (!hole.ref) { greenMap[key] = 'missing'; continue; }
+    const key = `${hole.course}|${hole.refTarget}`;
+    if (!hole.refTarget) { greenMap[key] = 'missing'; continue; }
     if (taggedGreenKeys.has(key)) { greenMap[key] = 'tagged'; continue; }
     const inside = hole.lastPoint && rawGreens.some(g => pointInPolygon(hole.lastPoint, g.geometry));
     greenMap[key] = inside ? 'untagged' : 'missing';

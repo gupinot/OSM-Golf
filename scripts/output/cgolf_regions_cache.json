@@ -3979,5 +3979,261 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/87.jpg",
       "url": "https://www.cgolf.fr/detail/golf-base-loisirs-de-saint-quentin-en-yvelines-parcours-rouge-trappes-78190"
     }
+  ],
+  "/parcours/golfs-midi-pyrenees": [
+    {
+      "name": "Golf Club de Toulouse Vieille-Toulouse",
+      "lat": 43.534854,
+      "lng": 1.437427,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/440.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-toulouse-vieille-toulouse-31320"
+    },
+    {
+      "name": "Golf Club de l’Ariège La Bastide-de-Sérou",
+      "lat": 43.022947,
+      "lng": 1.468001,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/429.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-l-ariege-la-bastide-de-serou-09240"
+    },
+    {
+      "name": "Golf Blue Green Grand Rodez Onet-le-Château",
+      "lat": 44.376191,
+      "lng": 2.563662,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/430.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-grand-rodez-onet-le-chateau-12000"
+    },
+    {
+      "name": "Golf Blue Green Grand Rodez Parcours Pitch and Putt Onet-le-Château",
+      "lat": 44.376191,
+      "lng": 2.563662,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/431.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-blue-green-grand-rodez-parcours-pitch-and-putt-onet-le-chateau-12000"
+    },
+    {
+      "name": "Golf d'Auch Embats  Auch",
+      "lat": 43.653291,
+      "lng": 0.537184,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/432.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-embats-auch-32000"
+    },
+    {
+      "name": "Golf de Guinlet Eauze  Eauze",
+      "lat": 43.898025,
+      "lng": 0.115974,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/433.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-guinlet-eauze-32800"
+    },
+    {
+      "name": "Golf du Château de Pallanne Tillac",
+      "lat": 43.494077,
+      "lng": 0.264156,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/434.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-pallanne-tillac-32170"
+    },
+    {
+      "name": "Exclusiv Golf Toulouse-Seilh Parcours Rouge  Seilh",
+      "lat": 43.684215,
+      "lng": 1.357238,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/435.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-toulouse-parcours-rouge-seilh-31840"
+    },
+    {
+      "name": "Exclusiv Golf Toulouse-Seilh Parcours Jaune  Seilh",
+      "lat": 43.684215,
+      "lng": 1.357238,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/436.jpg",
+      "url": "https://www.cgolf.fr/detail/exclusiv-golf-toulouse-parcours-jaune-seilh-31840"
+    },
+    {
+      "name": "Garden Golf Toulouse Téoula Plaisance-du-Touch",
+      "lat": 43.554207,
+      "lng": 1.256046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/437.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-toulouse-teoula-plaisance-du-touch-31830"
+    },
+    {
+      "name": "Garden Golf Toulouse La Ramée Tournefeuille",
+      "lat": 43.554207,
+      "lng": 1.256046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/438.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-toulouse-la-ramee-tournefeuille-31170"
+    },
+    {
+      "name": "Garden Golf Toulouse La Ramée Parcours Pitch and Putt Tournefeuille",
+      "lat": 43.554207,
+      "lng": 1.256046,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/439.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-toulouse-la-ramee-parcours-pitch-and-putt-tournefeuille-31170"
+    },
+    {
+      "name": "Golf Club de Palmola Buzet-sur-Tarn",
+      "lat": 43.746658,
+      "lng": 1.597707,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/441.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-palmola-buzet-sur-tarn-31660"
+    },
+    {
+      "name": "Golf Country Club de Bigorre Pouzac",
+      "lat": 43.091038,
+      "lng": 0.153071,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/442.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-de-bigorre-pouzac-65200"
+    },
+    {
+      "name": "Golf de Lannemezan Lannemezan",
+      "lat": 43.111432,
+      "lng": 0.413714,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/443.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-lannemezan-65300"
+    },
+    {
+      "name": "Golf de Tarbes les Tumulus Laloubère",
+      "lat": 43.209419,
+      "lng": 0.071551,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/444.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-tarbes-les-tumulus-laloubere-65310"
+    },
+    {
+      "name": "Golf de Lourdes Lourdes",
+      "lat": 43.103347,
+      "lng": -0.080468,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/445.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-lourdes-65100"
+    },
+    {
+      "name": "Souillac Golf Country Club  Lachapelle-Auzac",
+      "lat": 44.94915,
+      "lng": 1.450862,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/446.jpg",
+      "url": "https://www.cgolf.fr/detail/souillac-golf-country-club-lachapelle-auzac-46200"
+    },
+    {
+      "name": "Golf d’Albi-Lasbordes  Albi",
+      "lat": 43.940399,
+      "lng": 2.119437,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/447.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-lasbordes-albi-81000"
+    },
+    {
+      "name": "Albi Florentin Golf  Florentin",
+      "lat": 43.888221,
+      "lng": 2.047283,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/448.jpg",
+      "url": "https://www.cgolf.fr/detail/albi-golf-florentin-81150"
+    },
+    {
+      "name": "Garden Golf Etangs de Fiac Fiac",
+      "lat": 43.675227,
+      "lng": 1.93727,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/449.jpg",
+      "url": "https://www.cgolf.fr/detail/garden-golf-etangs-de-fiac-81500"
+    },
+    {
+      "name": "Golf de Mazamet La Barouge Pont-de-Larn",
+      "lat": 43.5143,
+      "lng": 2.388786,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/450.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-mazamet-la-barouge-pont-de-larn-81660"
+    },
+    {
+      "name": "Golf de Montauban Montauban",
+      "lat": 44.040289,
+      "lng": 1.337911,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/451.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-montauban-82000"
+    }
+  ],
+  "/parcours/golfs-alsace": [
+    {
+      "name": "Golf Club de Strasbourg Parcours Blanc-Rouge Illkirch-Graffenstaden",
+      "lat": 48.506233,
+      "lng": 7.732044,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/554.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-strasbourg-parcours-blanc-rouge-illkirch-graffenstaden-67400"
+    },
+    {
+      "name": "Golf Club de Strasbourg Parcours Jaune Illkirch-Graffenstaden",
+      "lat": 48.506233,
+      "lng": 7.732044,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/563.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-strasbourg-parcours-jaune-illkirch-graffenstaden-67400"
+    },
+    {
+      "name": "Alsace Golf Links Rouffach",
+      "lat": 47.968572,
+      "lng": 7.335311,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/551.jpg",
+      "url": "https://www.cgolf.fr/detail/alsace-golf-links-rouffach-68250"
+    },
+    {
+      "name": "Golf Club Soufflenheim Baden-Baden   Soufflenheim",
+      "lat": 48.813884,
+      "lng": 7.94882,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/552.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-baden-baden-soufflenheim-67620"
+    },
+    {
+      "name": "Golf Club Baden-Baden Parcours 9 trous    Soufflenheim",
+      "lat": 48.813884,
+      "lng": 7.94882,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/553.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-baden-baden-parcours-9-trous-soufflenheim-67620"
+    },
+    {
+      "name": "Golf Club de Bouleaux Wittelsheim",
+      "lat": 47.776156,
+      "lng": 7.220697,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/555.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-club-de-bouleaux-wittelsheim-68310"
+    },
+    {
+      "name": "Golf Resort Ammerschwihr Trois-épis  Ammerschwihr",
+      "lat": 48.123609,
+      "lng": 7.257235,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/556.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-resort-trois-epis-ammerschwihr-68770"
+    },
+    {
+      "name": "Golf Country Club de La Largue  Mooslargue",
+      "lat": 47.515742,
+      "lng": 7.204998,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/557.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-country-club-de-la-largue-mooslargue-68580"
+    },
+    {
+      "name": "Golf de La Wantzenau La Wantzenau",
+      "lat": 48.673209,
+      "lng": 7.802972,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/558.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-de-la-wantzenau-67610"
+    },
+    {
+      "name": "Golf du Château Hombourg Parcours du Château  Hombourg",
+      "lat": 47.752197,
+      "lng": 7.495671,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/559.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-parcours-du-chateau-hombourg-68490"
+    },
+    {
+      "name": "Golf du Château de Hombourg Parcours du Domaine  Hombourg",
+      "lat": 47.752197,
+      "lng": 7.495671,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/560.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-chateau-de-parcours-du-domaine-hombourg-68490"
+    },
+    {
+      "name": "Golf du Rhin Chalampé",
+      "lat": 47.85183,
+      "lng": 7.560928,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/561.jpg",
+      "url": "https://www.cgolf.fr/detail/golf-du-rhin-chalampe-68490"
+    },
+    {
+      "name": "Kempferhof Resort Golf Club Plobsheim",
+      "lat": 48.459997,
+      "lng": 7.742423,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/562.jpg",
+      "url": "https://www.cgolf.fr/detail/kempferhof-resort-golf-club-plobsheim-67115"
+    }
   ]
 }

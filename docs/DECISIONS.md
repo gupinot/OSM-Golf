@@ -310,3 +310,43 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix :** Dans le chemin fallback de `fetchHoles` (quand `area()` Overpass renvoie 0 → filtrage point-in-polygon côté backend contre la limite `leisure=golf_course`), le filtre `elementInPolygon` tolère désormais une marge de **25 m** hors du polygone (`BOUNDARY_BUFFER_M`). Ajout de `distPointToSegmentM(lat,lon,a,b)` (distance point→segment, approx. planaire locale avec `cos(lat)`) et `pointNearPolygon(lat,lon,polygon,bufferM)` (dans le polygone OU à ≤ bufferM d'une arête). Nodes et ways (au moins un nœud dans la marge) concernés.
 
 **Raison :** Bug constaté au Golf des Ormes (`way/156597577`) : le 2ᵉ tee du trou 6 (et un autre départ arrière) n'était pas affecté alors qu'aligné dans l'axe du premier segment. Cause réelle diagnostiquée : la limite OSM du golf_course est tracée **trop serrée** et exclut les départs arrière situés 7–16 m dehors → le filtre polygonal les écartait **en amont** de toute affectation. Correctif systémique (bénéficie aussi aux stats qualité, mêmes features filtrées). Vérifié en preview : le tee 622 est désormais capté (`ref=6`), filtre 82→70 au lieu de 82→68.
+
+---
+
+## 2026-07-07 — Portage sur Firebase (lift-and-shift, mode proxy OSM conservé)
+
+**Choix :** Migration de l'app locale (backend Express + frontend Vite) vers Firebase sans changer les fonctionnalités : IHM statique sur Firebase Hosting, backend conteneurisé sur Cloud Run, `/api/**` routé par rewrite Hosting → Cloud Run (`firebase.json`). La référence des données reste OpenStreetMap (proxy). La persistance Firestore est reportée à un incrément ultérieur (« second temps »).
+
+**Raison :** Découpler le risque « infra/déploiement » du risque « refonte données » : valider hébergement, réseau et build d'abord, faire évoluer le modèle de données ensuite.
+
+---
+
+## 2026-07-07 — Compute : Cloud Run + conteneurisation backend
+
+**Choix :** Backend Express empaqueté dans une image `node:22-slim` (single-stage, non-root, `backend/Dockerfile`), déployée sur Cloud Run via Cloud Build (`--source`, pas de Docker local), `min=max=1` instance. Variable `CACHE_DIR` pour rediriger les caches disque (`overpass.js`, `cgolf.js`) vers `/tmp/osm-golf`. Le backend lit déjà `process.env.PORT` (compat Cloud Run 8080).
+
+**Raison :** L'Express existant se conteneurise tel quel ; Cloud Run gère bien les appels externes longs (Overpass/Gemini/scraping). `min=max=1` garde le token OSM en mémoire vivant (persistance propre reportée à Firestore) ; FS Cloud Run éphémère et non inscriptible hors `/tmp` → caches volatils, sans impact fonctionnel.
+
+---
+
+## 2026-07-07 — Authentification & habilitation (Firebase Auth Google + allowlist)
+
+**Choix :** Application entièrement fermée. Frontend : gate de connexion Google (SDK `firebase`, config via `VITE_FIREBASE_*`), ID token `Bearer` attaché à tous les appels `/api` via le helper `apiFetch` (`services/http.js`). Backend : middleware `firebase-admin` (API modulaire v14, `middleware/auth.js`) vérifiant l'ID token sur tout `/api`, + allowlist d'emails (`AUTHORIZED_EMAILS`, CSV) **fail-closed** (liste vide → 403). Bypass dev explicite `AUTH_DISABLED=1` ; en dev local sans config Firebase, l'appli tourne ouverte.
+
+**Raison :** L'app passe sur Internet → protéger l'écriture OSM et les appels Gemini (coût). « Login obligatoire » ne suffit pas (n'importe quel compte Google entrerait) → allowlist. Dev local inchangé grâce aux bypass.
+
+---
+
+## 2026-07-07 — Tooling de déploiement scripté (`deploy/`)
+
+**Choix :** Dossier `deploy/` de scripts bash paramétrés (`--help`, aucune valeur en dur), chargeant automatiquement `deploy/.env` (gitignoré) : `00-enable-apis` (APIs GCP + projet + grant `cloudbuild.builds.builder` au SA compute), `10-secrets` (Secret Manager + grant `secretAccessor`), `20-deploy-backend` (Cloud Run, liste `--set-secrets` dynamique → OSM optionnel), `30-deploy-frontend` (build `VITE_*` + Hosting), `deploy-all` (orchestration). README réécrit. Règle projet ajoutée (CLAUDE.md) : toute opération manuelle → script paramétré + documentation.
+
+**Raison :** Reproductibilité, secrets hors git et hors historique shell, opérations rejouables. Le grant `cloudbuild.builds.builder` corrige l'échec de build « from source » (projets GCP récents : le compte de service compute par défaut, désormais identité de build, manque des droits).
+
+---
+
+## 2026-07-07 — Architecture cible Firestore (analyse validée, phase ultérieure — non implémentée)
+
+**Choix (décidé, à implémenter au « second temps ») :** Firestore comme référence primaire nourrie par OSM en ingestion asynchrone ; hiérarchie `golfs → courses → versions` + `scorecards` (images en Cloud Storage) + `plans` ; versioning par **snapshots complets immuables** ; recherche géo par **geohash**, par nom **fuzzy in-memory** (token-set-ratio), et par id ; scorecards multi-parcours via `coversCourses[]` (cas des 9 trous combinés, ex. cap d'Agde) ; sauvegardes PITR + scheduled backups + export GCS.
+
+**Raison :** Consigner les décisions d'architecture prises pendant l'analyse pour ne pas les reperdre, même si l'implémentation est reportée.

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { analyzeCustomScorecard, fetchPersistedCustomSources, removePersistedCustomSource } from '../services/api.js';
+import { apiFetch } from '../services/http.js';
 
 const ALL_COLORS = ['black', 'white', 'yellow', 'blue', 'red'];
 
@@ -392,7 +393,7 @@ function OsmLoginFlow({ onAuthenticated }) {
 
   async function handleOpenOsm() {
     try {
-      const res = await fetch('/api/osm-auth/auth-url');
+      const res = await apiFetch('/api/osm-auth/auth-url');
       const { url } = await res.json();
       window.open(url, '_blank');
       setStep('waiting');
@@ -406,7 +407,7 @@ function OsmLoginFlow({ onAuthenticated }) {
     if (!code.trim()) return;
     setStep('exchanging');
     try {
-      const res = await fetch('/api/osm-auth/exchange', {
+      const res = await apiFetch('/api/osm-auth/exchange', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code.trim() }),
@@ -463,7 +464,7 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
   const [errorMsg, setErrorMsg] = useState('');
 
   useState(() => {
-    fetch('/api/osm-auth/status')
+    apiFetch('/api/osm-auth/status')
       .then(r => r.json())
       .then(d => { setAuthenticated(d.authenticated); setAuthChecked(true); })
       .catch(() => setAuthChecked(true));
@@ -473,7 +474,7 @@ function UpdateOsmModal({ osmHoles, cgolfHoles, courseKey, onClose, onRefreshHol
     setStatus('loading');
     setErrorMsg('');
     try {
-      const res = await fetch('/api/holes/update-osm', {
+      const res = await apiFetch('/api/holes/update-osm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ osmHoles, cgolfHoles, force }),
@@ -588,7 +589,7 @@ function AssignRefsModal({ course, onClose, onRefreshHoles }) {
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
-    fetch('/api/osm-auth/status')
+    apiFetch('/api/osm-auth/status')
       .then(r => r.json())
       .then(d => { setAuthenticated(d.authenticated); setAuthChecked(true); })
       .catch(() => setAuthChecked(true));
@@ -597,7 +598,7 @@ function AssignRefsModal({ course, onClose, onRefreshHoles }) {
   useEffect(() => {
     if (!authenticated || status !== 'idle') return;
     setStatus('previewing');
-    fetch('/api/holes/assign-refs', {
+    apiFetch('/api/holes/assign-refs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ osmId: course.osmId, lat: course.lat, lng: course.lng, preview: true }),
@@ -611,7 +612,7 @@ function AssignRefsModal({ course, onClose, onRefreshHoles }) {
     setStatus('applying');
     setErrorMsg('');
     try {
-      const res = await fetch('/api/holes/assign-refs', {
+      const res = await apiFetch('/api/holes/assign-refs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ osmId: course.osmId, lat: course.lat, lng: course.lng, preview: false }),

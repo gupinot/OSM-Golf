@@ -60,7 +60,8 @@ async function query(ql, label, maxAttempts = 3) {
 
 // Cache disque des recherches zone/nom : les golfs OSM bougent rarement, et les logs
 // montrent la même requête relancée plusieurs fois de suite. Évite de marteler Overpass.
-const SEARCH_CACHE_PATH = path.join(__dirname, '..', '..', '..', 'scripts', 'output', 'overpass_search_cache.json');
+const OUTPUT_DIR = process.env.CACHE_DIR || path.join(__dirname, '..', '..', '..', 'scripts', 'output');
+const SEARCH_CACHE_PATH = path.join(OUTPUT_DIR, 'overpass_search_cache.json');
 const SEARCH_CACHE_TTL = 7 * 24 * 3600 * 1000; // 7 jours
 let searchCache = null;
 

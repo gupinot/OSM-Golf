@@ -32,3 +32,6 @@ Data/
 
 # Cache de recherche Overpass (régénérable)
 scripts/output/overpass_search_cache.json
+
+# Cache de déploiement Firebase (régénérable)
+.firebase/

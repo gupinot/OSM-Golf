@@ -3,6 +3,7 @@ import SearchPanel from './components/SearchPanel.jsx';
 import CourseList from './components/CourseList.jsx';
 import HolesTable from './components/HolesTable.jsx';
 import { fetchHoles, fetchCgolfHoles, fetchZoneStats, searchByName, searchByZone } from './services/api.js';
+import { authEnabled, onAuthChange, login, logout } from './services/firebase.js';
 import './App.css';
 
 // Persistance de session : survit aux rechargements complets du dev-server Vite
@@ -21,7 +22,7 @@ function loadPersisted() {
 
 const persisted = loadPersisted();
 
-export default function App() {
+function AppContent({ user }) {
   const [searchResults, setSearchResults] = useState(persisted.searchResults ?? null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -159,6 +160,12 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <h1>OSM Golf Explorer</h1>
+        {authEnabled && user && (
+          <div className="app-user">
+            <span className="app-user-email">{user.email}</span>
+            <button className="app-logout" onClick={logout}>Déconnexion</button>
+          </div>
+        )}
       </header>
 
       <main className="app-main">
@@ -207,4 +214,39 @@ export default function App() {
       </main>
     </div>
   );
+}
+
+function LoginScreen() {
+  const [error, setError] = useState(null);
+  return (
+    <div className="login-screen">
+      <div className="login-card">
+        <h1>OSM Golf Explorer</h1>
+        <p>Connecte-toi pour accéder à l'application.</p>
+        <button
+          className="login-google"
+          onClick={() => login().catch(err => setError(err.message))}
+        >
+          Se connecter avec Google
+        </button>
+        {error && <p className="error">{error}</p>}
+      </div>
+    </div>
+  );
+}
+
+// Gate d'accès : en prod (Firebase configuré) l'appli n'est rendue qu'après connexion.
+// En dev local (auth désactivée), rendue directement.
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [authReady, setAuthReady] = useState(!authEnabled);
+
+  useEffect(() => {
+    if (!authEnabled) return;
+    return onAuthChange(u => { setUser(u); setAuthReady(true); });
+  }, []);
+
+  if (!authReady) return <div className="login-screen"><p className="loading">Chargement…</p></div>;
+  if (authEnabled && !user) return <LoginScreen />;
+  return <AppContent user={user} />;
 }

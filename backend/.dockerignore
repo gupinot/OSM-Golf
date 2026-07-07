@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log*
+Dockerfile
+.dockerignore
+
+# Secrets (jamais dans l'image — injectés par Cloud Run / Secret Manager)
+.env
+.env.*
+
+# Données d'entraînement Tesseract (volumineuses, inutilisées)
+*.traineddata

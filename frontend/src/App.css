@@ -19,9 +19,53 @@ body {
   color: white;
   padding: 0.75rem 1.25rem;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-header h1 { font-size: 1.1rem; font-weight: 600; }
+
+/* ── Auth : bandeau utilisateur + écran de connexion ── */
+.app-user { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; }
+.app-user-email { opacity: 0.9; }
+.app-logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+}
+.app-logout:hover { background: rgba(255, 255, 255, 0.28); }
+
+.login-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f4;
+}
+.login-card {
+  background: white;
+  border: 1px solid #d6d3d1;
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+.login-card h1 { font-size: 1.3rem; font-weight: 600; color: #166534; margin: 0 0 0.5rem; }
+.login-card p { color: #57534e; margin: 0 0 1.25rem; }
+.login-google {
+  background: #166534;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.login-google:hover { background: #14532d; }
 
 .app-main { display: flex; flex: 1; overflow: hidden; }
 

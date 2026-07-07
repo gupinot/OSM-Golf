@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { debug } = require('../utils/logger');
 
-const SCRIPTS_OUTPUT = path.join(__dirname, '..', '..', '..', 'scripts', 'output');
+const SCRIPTS_OUTPUT = process.env.CACHE_DIR || path.join(__dirname, '..', '..', '..', 'scripts', 'output');
 const CGOLF_REGIONS_CACHE_PATH = path.join(SCRIPTS_OUTPUT, 'cgolf_regions_cache.json');
 const CGOLF_MATCH_CACHE_PATH = path.join(SCRIPTS_OUTPUT, 'cgolf_match_cache.json');
 const CUSTOM_SOURCES_PATH = path.join(SCRIPTS_OUTPUT, 'custom_sources.json');

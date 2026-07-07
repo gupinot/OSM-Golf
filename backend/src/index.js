@@ -4,6 +4,7 @@ const searchRoutes = require('./routes/search');
 const holesRoutes = require('./routes/holes');
 const cgolfHolesRoutes = require('./routes/cgolf-holes');
 const osmAuthRoutes = require('./routes/osm-auth');
+const { requireAuth } = require('./middleware/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,6 +22,10 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+// Toutes les routes /api exigent un ID token Firebase valide + email habilité
+// (sauf en dev local avec AUTH_DISABLED=1).
+app.use('/api', requireAuth);
 
 app.use('/api/search', searchRoutes);
 app.use('/api/holes', holesRoutes);

@@ -189,50 +189,171 @@ function segmentIntersectsPolygon(a, b, polygon) {
   return false;
 }
 
-// Affecte le ref (et course si manquant) aux greens/tees SANS ref, par géométrie :
-//  - green ← ref du golf=hole dont le DERNIER point (arrivée) est dans le polygone du green
-//  - tee (way) ← ref du golf=hole dont le PREMIER SEGMENT (départ→1er point du tracé)
-//    traverse le polygone du tee (capte le tee arrière ET les tees avancés en enfilade)
-// Ne touche jamais un ref existant. Tees-nodes et greens-relations hors périmètre.
+// ---- Géométrie pour la détection de couleur des tees (distances dist:*) ----
+
+const R_EARTH = 6371000;
+function haversineM(a, b) {
+  const toRad = d => d * Math.PI / 180;
+  const dLat = toRad(b.lat - a.lat), dLon = toRad(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2
+    + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R_EARTH * Math.asin(Math.sqrt(h));
+}
+// Longueur cumulée de la polyline entre les index [startIdx, fin]
+function polylineLengthM(geom, startIdx = 0) {
+  let s = 0;
+  for (let i = startIdx + 1; i < geom.length; i++) s += haversineM(geom[i - 1], geom[i]);
+  return s;
+}
+// Centroïde des sommets uniques (ferme la boucle : dernier == premier)
+function polygonCentroid(geom) {
+  const pts = geom.slice();
+  if (pts.length > 1 && pts[0].lat === pts[pts.length - 1].lat && pts[0].lon === pts[pts.length - 1].lon) pts.pop();
+  const lat = pts.reduce((a, p) => a + p.lat, 0) / pts.length;
+  const lon = pts.reduce((a, p) => a + p.lon, 0) / pts.length;
+  return { lat, lon };
+}
+
+// Ordre canonique des couleurs de té (du plus long/arrière au plus court/avant)
+const TEE_COLOR_ORDER = ['black', 'white', 'yellow', 'blue', 'red', 'gold', 'green', 'orange', 'silver'];
+const colorRank = c => { const i = TEE_COLOR_ORDER.indexOf(c); return i < 0 ? 99 : i; };
+
+// Regroupe les distances cartées par valeur identique → un seul tee=color1;color2
+// [{ dist, colors:['black','white'] }, …] trié par distance décroissante.
+function distanceGroups(distances) {
+  const byVal = new Map();
+  for (const [color, raw] of Object.entries(distances || {})) {
+    const d = parseFloat(raw);
+    if (!isFinite(d)) continue;
+    if (!byVal.has(d)) byVal.set(d, []);
+    byVal.get(d).push(color);
+  }
+  return [...byVal.entries()]
+    .map(([dist, colors]) => ({ dist, colors: colors.sort((a, b) => colorRank(a) - colorRank(b)) }))
+    .sort((a, b) => b.dist - a.dist);
+}
+
+// Bruit toléré (m) au-delà de l'étendue physique du té (imprécision carte vs tracé OSM).
+const TEE_COLOR_MARGIN_M = 5;
+
+// Bande [lo, hi] des distances de jeu plausibles pour un té : on projette ses sommets sur
+// l'axe de jeu (refPoint → target). baseDist = distance de jeu au refPoint (p=0). La balle
+// peut être placée n'importe où dans le té → dist(p) = baseDist - p (avancer raccourcit).
+function teeDistanceBand(geom, refPoint, baseDist, target) {
+  const mLat = 111320, mLon = 111320 * Math.cos(refPoint.lat * Math.PI / 180);
+  const dx = (target.lon - refPoint.lon) * mLon, dy = (target.lat - refPoint.lat) * mLat;
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len;
+  let pmin = Infinity, pmax = -Infinity;
+  for (const v of geom) {
+    const p = (v.lon - refPoint.lon) * mLon * ux + (v.lat - refPoint.lat) * mLat * uy;
+    if (p < pmin) pmin = p;
+    if (p > pmax) pmax = p;
+  }
+  return { lo: baseDist - pmax - TEE_COLOR_MARGIN_M, hi: baseDist - pmin + TEE_COLOR_MARGIN_M };
+}
+
+// Affecte par géométrie, aux greens/tees, sans jamais écraser une valeur existante :
+//  - green : ref ← golf=hole dont le DERNIER point (arrivée) est dans le polygone.
+//  - tee (way) : ref ← golf=hole dont le PREMIER SEGMENT (départ→1er point du tracé)
+//    traverse le polygone (capte le tee arrière ET les tees avancés en enfilade).
+//  - tee (way) : couleur (tag `tee`) ← déduite des distances dist:* du golf=hole. Les
+//    couleurs de même distance forment un groupe → tee=color1;color2. Chaque té est estimé
+//    (départ = longueur totale depuis le 1er nœud du way ; avancé = centroïde→2e point +
+//    reste du tracé), puis rattaché au groupe dont la distance tombe dans sa bande physique
+//    (aire du té projetée sur l'axe de jeu), en matching 1-pour-1 par écart croissant.
+// Tees-nodes et greens-relations hors périmètre.
 async function assignRefsFromGeometry(osmId, lat, lng, { preview = false } = {}) {
   const { holes, tees, greens } = await fetchHoles(osmId, lat, lng);
   const holesWithRef = holes.filter(h => h.ref);
 
-  const changes = []; // { kind, osmId, ref, course, tags }
   const skipped = []; // { kind, osmId, reason }
 
-  function propose(kind, el, matchFn, hasArea) {
-    if (el.ref) return;                              // déjà un ref → on ne touche pas
-    if (!hasArea) return;                            // tee-node : pas d'aire
-    const matching = holesWithRef.filter(h => matchFn(h, el));
-    if (matching.length === 0) return;               // rien à l'intérieur (ex. green « missing »)
+  // --- Greens : ref par containment du dernier point ---
+  const greenChanges = [];
+  for (const g of greens) {
+    if (g.ref) continue;                             // déjà un ref → on ne touche pas
+    if (!(g.osmType === 'way' && g.geometry?.length >= 3)) continue;
+    const matching = holesWithRef.filter(h => h.lastPoint && pointInPolygon(h.lastPoint, g.geometry));
+    if (matching.length === 0) continue;
     const refs = [...new Set(matching.map(h => h.ref))];
-    if (refs.length > 1) {
-      skipped.push({ kind, osmId: el.osmId, reason: `ambigu (refs ${refs.join(', ')})` });
-      return;
-    }
+    if (refs.length > 1) { skipped.push({ kind: 'green', osmId: g.osmId, reason: `ambigu (refs ${refs.join(', ')})` }); continue; }
     const hole = matching[0];
     const tags = { ref: hole.ref };
-    if (!el.course && hole.course) tags.course = hole.course;
-    changes.push({ kind, osmId: el.osmId, ref: hole.ref, course: tags.course || null, tags });
+    if (!g.course && hole.course) tags.course = hole.course;
+    greenChanges.push({ kind: 'green', osmId: g.osmId, ref: hole.ref, course: tags.course || null, color: null, tags });
   }
 
-  for (const g of greens) {
-    propose('green', g,
-      (h, el) => h.lastPoint && pointInPolygon(h.lastPoint, el.geometry),
-      g.osmType === 'way' && g.geometry?.length >= 3);
-  }
+  // --- Tees : accumulateur par osmId (un même té peut recevoir ref ET/OU couleur) ---
+  const teeChanges = new Map(); // osmId -> { kind, osmId, ref, course, color, tags }
+  const teeChange = t => {
+    let c = teeChanges.get(t.osmId);
+    if (!c) { c = { kind: 'tee', osmId: t.osmId, ref: null, course: null, color: null, tags: {} }; teeChanges.set(t.osmId, c); }
+    return c;
+  };
+
+  // ref par premier segment ; on mémorise le ref effectif (existant ou proposé) de chaque té
+  const teeEffectiveRef = new Map(); // osmId -> ref
   for (const t of tees) {
-    propose('tee', t,
-      (h, el) => h.firstPoint && h.secondPoint && segmentIntersectsPolygon(h.firstPoint, h.secondPoint, el.geometry),
-      t.osmType === 'way' && t.geometry?.length >= 3);
+    if (!(t.osmType === 'way' && t.geometry?.length >= 3)) continue;
+    if (t.ref) { teeEffectiveRef.set(t.osmId, t.ref); continue; } // ref existant conservé
+    const matching = holesWithRef.filter(h => h.firstPoint && h.secondPoint && segmentIntersectsPolygon(h.firstPoint, h.secondPoint, t.geometry));
+    if (matching.length === 0) continue;
+    const refs = [...new Set(matching.map(h => h.ref))];
+    if (refs.length > 1) { skipped.push({ kind: 'tee', osmId: t.osmId, reason: `ambigu (refs ${refs.join(', ')})` }); continue; }
+    const hole = matching[0];
+    const c = teeChange(t);
+    c.ref = hole.ref; c.tags.ref = hole.ref;
+    if (!t.course && hole.course) { c.course = hole.course; c.tags.course = hole.course; }
+    teeEffectiveRef.set(t.osmId, hole.ref);
   }
+
+  // couleur (tag `tee`) par distances dist:* du hole correspondant
+  for (const hole of holes) {
+    if (!hole.ref) continue;
+    const groups = distanceGroups(hole.distances);
+    if (groups.length === 0 || !(hole.geometry?.length >= 2)) continue;
+    const first = hole.geometry[0], second = hole.geometry[1];
+    const total = polylineLengthM(hole.geometry);
+    const rest = polylineLengthM(hole.geometry, 1); // 2e point → green
+
+    // tés candidats : way, sans couleur, ref effectif == hole.ref, sur le 1er segment
+    const cand = [];
+    for (const t of tees) {
+      if (t.color) continue;                                   // couleur existante conservée
+      if (!(t.osmType === 'way' && t.geometry?.length >= 3)) continue;
+      if (teeEffectiveRef.get(t.osmId) !== hole.ref) continue;
+      if (!segmentIntersectsPolygon(first, second, t.geometry)) continue;
+      const isStart = pointInPolygon(first, t.geometry);       // le té contient le 1er nœud du way ?
+      const c = polygonCentroid(t.geometry);
+      const refPoint = isStart ? first : c;                    // départ : 1er nœud ; avancé : centroïde
+      const baseDist = isStart ? total : haversineM(c, second) + rest;
+      const band = teeDistanceBand(t.geometry, refPoint, baseDist, second);
+      cand.push({ t, refDist: baseDist, lo: band.lo, hi: band.hi });
+    }
+    // matching 1-pour-1 : paires (té, groupe) éligibles (groupe dans la bande), écart croissant
+    const pairs = [];
+    for (const cd of cand) for (const g of groups) {
+      if (g.dist >= cd.lo && g.dist <= cd.hi) pairs.push({ cd, g, d: Math.abs(g.dist - cd.refDist) });
+    }
+    pairs.sort((a, b) => a.d - b.d);
+    const usedTee = new Set(), usedGrp = new Set();
+    for (const p of pairs) {
+      if (usedTee.has(p.cd.t.osmId) || usedGrp.has(p.g.dist)) continue;
+      usedTee.add(p.cd.t.osmId); usedGrp.add(p.g.dist);
+      const color = p.g.colors.join(';');
+      const c = teeChange(p.cd.t);
+      c.color = color; c.tags.tee = color;
+    }
+  }
+
+  const changes = [...greenChanges, ...teeChanges.values()];
 
   if (preview) return { changes, skipped };
   if (changes.length === 0) return { updated: 0, changes: [], skipped };
 
   const changesetId = await createChangeset(
-    'OSM Golf Explorer — affectation ref greens/tees par géométrie'
+    'OSM Golf Explorer — affectation ref + couleur greens/tees par géométrie'
   );
   try {
     for (const c of changes) {

@@ -351,6 +351,7 @@ out body geom;
         par: (tags.par || '').trim(),
         handicap: (tags.handicap || '').trim(),
         distances: distTags,
+        geometry: e.geometry || [],
         firstPoint: e.geometry?.length ? e.geometry[0] : null,
         secondPoint: e.geometry?.length >= 2 ? e.geometry[1] : null,
         lastPoint: e.geometry?.length ? e.geometry[e.geometry.length - 1] : null,

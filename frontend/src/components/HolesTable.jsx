@@ -629,8 +629,10 @@ function AssignRefsModal({ course, onClose, onRefreshHoles }) {
 
   function renderChange(c, i) {
     const label = c.kind === 'green' ? 'Green' : 'Tee';
-    const extras = [`ref=${c.ref}`];
+    const extras = [];
+    if (c.ref) extras.push(`ref=${c.ref}`);
     if (c.course) extras.push(`course=${c.course}`);
+    if (c.color) extras.push(`tee=${c.color}`);
     return (
       <li key={i}>
         <strong>{label} {c.osmId}</strong> : {extras.join(', ')}
@@ -654,8 +656,9 @@ function AssignRefsModal({ course, onClose, onRefreshHoles }) {
         {status === 'ready' && preview && (
           <>
             <p className="modal-desc">
-              Affectation du <strong>ref</strong> (et <strong>course</strong> si manquant) aux greens et tees
-              sans ref, déduit du trou dont l'arrivée (green) ou le départ (tee) se trouve dans la zone.
+              Affectation du <strong>ref</strong> (et <strong>course</strong> si manquant) aux greens et tees,
+              plus la <strong>couleur</strong> des tees (tag <code>tee</code>) déduite des distances
+              <code>dist:*</code> du trou. Rien n'est écrasé si la valeur existe déjà.
             </p>
             {preview.changes.length === 0
               ? <p className="modal-success">Rien à faire — aucun green/tee sans ref n'a pu être associé.</p>

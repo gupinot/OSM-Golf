@@ -670,5 +670,15 @@
       "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/556.jpg",
       "matchScore": 75
     }
+  ],
+  "way/500728192": [
+    {
+      "cgolfName": "Golf des Rochers Sévigné  Vitré",
+      "cgolfUrl": "https://www.cgolf.fr/detail/golf-des-rochers-sevigne-vitre-35500",
+      "cgolfLat": 48.079606,
+      "cgolfLng": -1.167759,
+      "scorecardImgUrl": "https://www.cgolf.fr/gallery/parcours/373.jpg",
+      "matchScore": 80
+    }
   ]
 }

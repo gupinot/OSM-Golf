@@ -15,6 +15,22 @@ la persistance Firestore est prévue dans un incrément ultérieur.
 - **Écriture OSM** — affectation géométrique des `ref`/couleurs des greens/tees, report scorecard → OSM (OAuth OSM)
 - **Switch front/back** — inversion aller/retour sur la scorecard pour corriger les écarts d'ordre
 
+## Navigation (IHM)
+
+L'application est une SPA multi-pages (routage `react-router-dom`, `BrowserRouter`).
+Les rewrites Firebase Hosting servent `index.html` pour toute URL hors `/api/**`, donc
+l'accès direct à une URL profonde fonctionne.
+
+| Route          | Page          | État                                                        |
+|----------------|---------------|-------------------------------------------------------------|
+| `/`            | Accueil       | Carte de France + stats + derniers parcours (données « en base » à venir avec Firestore ; coquille avec états vides pour l'instant) |
+| `/osmproxy`    | OSM Proxy     | Outil de diagnostic/comparaison OSM ↔ scorecard (l'app historique) |
+| `/search`      | Recherche     | Recherche OSM (par nom / par zone), résultats en liste ou carte, indicateurs de présence OSM/Base ; clic → détail. Sources Base/Les deux désactivées (Firestore à venir) |
+| `/course/:id`  | Détail parcours | Zones pliables (Base placeholder / OSM / Carte scorecard), chargement paresseux par zone, delta de comparaison OSM↔carte. Édition (report, association ref, détection zones) à venir |
+
+Toutes les routes exigent la connexion (gate d'auth au-dessus du routeur). En dev local
+sans config Firebase, l'appli est ouverte.
+
 ## Architecture
 
 ```
@@ -36,9 +52,10 @@ OSM-Golf/
 │       ├── routes/     # search, holes, cgolf-holes, osm-auth
 │       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth
 │       └── middleware/ # auth (vérif ID token Firebase + allowlist)
-├── frontend/       # React + Vite
+├── frontend/       # React + Vite (react-router-dom, react-leaflet)
 │   └── src/
-│       ├── components/
+│       ├── pages/      # HomePage, OsmProxyPage, SearchPage, CoursePage
+│       ├── components/ # Layout (header + nav), SearchPanel, CourseList, HolesTable
 │       └── services/   # api, http (apiFetch), firebase (auth)
 ├── deploy/         # scripts de déploiement paramétrés (Cloud Run + Hosting + secrets)
 ├── firebase.json   # config Hosting + rewrite /api → Cloud Run

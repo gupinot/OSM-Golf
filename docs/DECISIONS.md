@@ -350,3 +350,29 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix (décidé, à implémenter au « second temps ») :** Firestore comme référence primaire nourrie par OSM en ingestion asynchrone ; hiérarchie `golfs → courses → versions` + `scorecards` (images en Cloud Storage) + `plans` ; versioning par **snapshots complets immuables** ; recherche géo par **geohash**, par nom **fuzzy in-memory** (token-set-ratio), et par id ; scorecards multi-parcours via `coversCourses[]` (cas des 9 trous combinés, ex. cap d'Agde) ; sauvegardes PITR + scheduled backups + export GCS.
 
 **Raison :** Consigner les décisions d'architecture prises pendant l'analyse pour ne pas les reperdre, même si l'implémentation est reportée.
+
+---
+
+## 2026-07-08 — Refonte IHM : navigation multi-pages (routing) + page d'accueil
+
+**Choix :** Introduction d'un routeur (`react-router-dom`, `BrowserRouter`) et passage d'une page unique à une IHM multi-pages sous un layout commun (`components/Layout.jsx` : en-tête marque + navigation Accueil/Recherche/OSM Proxy + bloc utilisateur/déconnexion). L'application historique (recherche + `HolesTable`) est déplacée **à l'identique** sur la route `/osmproxy` (`pages/OsmProxyPage.jsx`). Nouvelle **page d'accueil** `/` (`pages/HomePage.jsx`) en **coquille avec états vides** : carte de France (`react-leaflet` + tuiles OSM, sans marqueurs), stats à 0, listes « aucun parcours », bandeau « base à venir ». La gate d'auth reste au-dessus du routeur (toutes les routes exigent la connexion). `firebase.json` inchangé (les rewrites SPA `**`→`index.html` servent déjà les URLs profondes).
+
+**Raison :** Faire évoluer largement l'IHM (Accueil, Recherche, Détail) tout en conservant l'outil de diagnostic existant comme « OSM Proxy ». Les données « en base » (parcours, stats, derniers ajoutés/édités) dépendent de Firestore (non encore alimenté) → accueil construit en coquille, branchement réel reporté au 2ᵉ temps.
+
+**Aussi :** correctif de persistance — `OsmProxyPage` lit sa session `sessionStorage` **au montage** (et non au niveau module) pour que la navigation client Accueil ↔ OSM Proxy restaure la dernière recherche/sélection.
+
+---
+
+## 2026-07-08 — Écran de recherche (`/search`)
+
+**Choix :** Page dédiée réutilisant `SearchPanel` (recherche OSM par nom / par zone). Sélecteur de source `OSM · Base · Les deux` avec **Base et Les deux désactivés** (« à venir », Firestore). Résultats avec bascule **Liste / Carte** : liste (nom + ville + distance + indicateurs de présence `OSM ✓` / `Base —`), carte Leaflet (`CircleMarker` vectoriel — pas d'icône image à charger — recentrée sur les résultats via `fitBounds`). Un clic sur un résultat navigue vers `/course/:id` (identifiant = `osmId` avec `/`→`-`, ex. `way-22752042`), l'objet parcours complet passé via le `state` du routeur. La dernière recherche (résultats + vue) est **persistée en `sessionStorage`** (clé `osmgolf.search`) → retour depuis le détail ou reload restaure la liste/carte.
+
+**Raison :** L'indicateur/score de qualité et le filtre par niveau de qualité ne sont pas encore calculables en liste (le score OSM n'existe qu'après chargement des trous ; les stats zone ne sont que des comptages) → reportés ; en v1 seuls les indicateurs de présence sont affichés. Sources Base/les-deux désactivées car Firestore absent.
+
+---
+
+## 2026-07-08 — Écran détail parcours (`/course/:id`) : zones pliables + delta, extraction de briques partagées
+
+**Choix :** Extraction des briques réutilisables de `HolesTable` dans un module partagé (`components/holes/` : `compare.js` = `buildComparison`/`cellClass`/`findCgolfForCourse`/`swapHalves`/`ALL_COLORS` ; `tables.jsx` = `QualityBadge`/`OsmUnifiedTable`/`CgolfPanel` ; `CustomSourceInput.jsx`). `HolesTable` (OSM Proxy) ré-importe ces briques, comportement **inchangé**. Nouvelle page `pages/CoursePage.jsx` : sous-header (retour, nom + badge qualité, bouton **Delta**) et body en **3 zones pliables disposées en colonnes** — **Parcours en base** (gauche, placeholder Firestore), **Parcours OSM** (centre, dépliée par défaut), **Carte de parcours** (droite). Chaque colonne pliée se réduit à une bande verticale étroite (titre à la verticale). Chargement **paresseux** par zone (déclenché au dépliage dans le handler ; chargement initial OSM par effet de montage) : trous via `fetchHoles`, scorecard via `fetchCgolfHoles`, gardés en mémoire (pas de re-fetch). Le **delta** (coloration cellule par cellule OSM↔carte, réutilise `buildComparison`) s'active depuis le header uniquement quand les zones OSM et Carte sont dépliées. Parcours ouvert persisté en `sessionStorage` (reload / lien direct restauré, sinon message « ouvrir depuis la recherche »).
+
+**Raison :** L'écran détail est un sur-ensemble de l'outil OSM Proxy → réutiliser ses briques évite la duplication et garantit la cohérence. Périmètre v1 volontairement limité à la **lecture + delta** ; sont **reportés** : sélecteur de référence du delta (OSM/base/carte — utile seulement à 3 sources), et toute l'**édition** (report carte→OSM/base, report OSM↔base, association ref/couleur, détection de zones, édition manuelle du tableau, composition multi-parcours, dry-run/propagation en 2 étapes).

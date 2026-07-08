@@ -26,6 +26,25 @@ body {
 
 .app-header h1 { font-size: 1.1rem; font-weight: 600; }
 
+/* ── Marque + navigation ── */
+.app-brand { display: flex; align-items: center; gap: 1.5rem; }
+.app-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+.app-nav { display: flex; gap: 0.25rem; }
+.app-nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+.app-nav a:hover { background: rgba(255, 255, 255, 0.15); color: white; }
+.app-nav a.active { background: rgba(255, 255, 255, 0.22); color: white; font-weight: 600; }
+
 /* ── Auth : bandeau utilisateur + écran de connexion ── */
 .app-user { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; }
 .app-user-email { opacity: 0.9; }
@@ -68,6 +87,225 @@ body {
 .login-google:hover { background: #14532d; }
 
 .app-main { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Conteneur de page défilant (accueil, stubs) ── */
+.page { flex: 1; min-height: 0; overflow-y: auto; background: #f5f5f4; }
+.page-stub { padding: 2rem; }
+.page-stub h1 { font-size: 1.4rem; font-weight: 600; color: #166534; margin-bottom: 0.5rem; }
+.page-stub p { color: #57534e; margin-bottom: 0.35rem; }
+.page-stub-meta { font-size: 0.85rem; color: #a8a29e; }
+.back-link { color: #166534; text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+
+/* ── Page de recherche ── */
+.search-page { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto; width: 100%; }
+.search-title { font-size: 1.4rem; font-weight: 600; color: #166534; }
+
+.search-card { background: white; border: 1px solid #d6d3d1; border-radius: 8px; overflow: hidden; }
+/* Le SearchPanel réutilisé apporte ses propres styles (.search-panel, .mode-tabs…). */
+.search-card .search-panel { border-bottom: none; }
+
+.source-tabs { display: flex; gap: 0.5rem; padding: 1rem 1rem 0; }
+.source-tabs button {
+  flex: 1;
+  padding: 0.35rem 0;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
+  background: #f5f5f4;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.source-tabs button.active { background: #166534; color: white; border-color: #166534; }
+.source-tabs button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.results-block { background: white; border: 1px solid #d6d3d1; border-radius: 8px; overflow: hidden; }
+.results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e7e5e4;
+}
+.results-count { font-size: 0.9rem; color: #57534e; }
+.view-tabs { display: flex; gap: 0.35rem; }
+.view-tabs button {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
+  background: #f5f5f4;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.view-tabs button.active { background: #166534; color: white; border-color: #166534; }
+
+.results-list { list-style: none; }
+.result-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: none;
+  border-bottom: 1px solid #f0efed;
+  cursor: pointer;
+  text-align: left;
+}
+.result-row:hover { background: #f0fdf4; }
+.result-main { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.result-name { font-weight: 600; color: #1c1917; }
+.result-meta { display: flex; gap: 0.75rem; font-size: 0.8rem; color: #78716c; }
+
+.presence { display: flex; gap: 0.35rem; flex-shrink: 0; }
+.presence-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.presence-badge.on { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.presence-badge.off { background: #f5f5f4; color: #a8a29e; border-color: #e7e5e4; }
+.result-chevron { color: #a8a29e; font-size: 1.2rem; flex-shrink: 0; }
+
+.search-map { height: 460px; width: 100%; }
+.popup-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  background: none;
+  border: none;
+  color: #166534;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.popup-link:hover { text-decoration: underline; }
+
+/* ── Page détail parcours ── */
+.detail-page { padding: 0 0 2rem; display: block; }
+.detail-subheader {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  background: white; border-bottom: 1px solid #e7e5e4;
+}
+.back-btn {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border: 1px solid #d6d3d1; border-radius: 6px;
+  background: #f5f5f4; cursor: pointer; font-size: 1.1rem; line-height: 1;
+}
+.back-btn:hover { background: #e7e5e4; }
+.detail-title { flex: 1; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; min-width: 0; }
+.detail-title h1 { font-size: 1.3rem; font-weight: 600; color: #166534; }
+.detail-city { color: #78716c; font-size: 0.9rem; }
+.detail-ops { flex-shrink: 0; display: flex; gap: 0.5rem; }
+.delta-btn {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #d6d3d1; border-radius: 6px;
+  background: #f5f5f4; cursor: pointer; font-size: 0.85rem;
+}
+.delta-btn:hover:not(:disabled) { border-color: #166534; }
+.delta-btn.active { background: #166534; color: white; border-color: #166534; }
+.delta-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.delta-hint {
+  padding: 0.5rem 1.5rem; font-size: 0.82rem; color: #854d0e;
+  background: #fffbeb; border-bottom: 1px solid #fde68a;
+}
+
+/* 3 zones côte à côte : base (gauche) · OSM (centre) · carte (droite). Chaque colonne
+   se replie en une bande verticale étroite. */
+.detail-body { display: flex; flex-direction: row; align-items: stretch; gap: 1rem; padding: 1.25rem 1.5rem; }
+
+.detail-zone { border: 1px solid #d6d3d1; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; }
+.detail-zone.open { flex: 1 1 0; min-width: 0; }
+.detail-zone.collapsed { flex: 0 0 auto; width: 48px; }
+
+.zone-collapsed-bar {
+  flex: 1; width: 100%;
+  border: none; background: #fafaf9; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  padding: 0.8rem 0;
+}
+.zone-collapsed-bar:hover { background: #f0fdf4; }
+.zone-collapsed-icon { color: #57534e; font-size: 0.8rem; }
+.zone-collapsed-title {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-weight: 600; font-size: 0.9rem; color: #1c1917; white-space: nowrap;
+}
+
+.zone-head {
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  padding: 0.75rem 1rem; cursor: pointer; background: #fafaf9;
+}
+.zone-head:hover { background: #f5f5f4; }
+.zone-toggle {
+  border: none; background: none; cursor: pointer;
+  font-size: 0.9rem; color: #57534e; width: 1rem; flex-shrink: 0;
+}
+.zone-head h2 { font-size: 1rem; font-weight: 600; color: #1c1917; }
+.zone-actions { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.zone-body { flex: 1; padding: 1rem; border-top: 1px solid #e7e5e4; overflow-x: auto; }
+.zone-empty { color: #a8a29e; font-style: italic; font-size: 0.9rem; }
+
+.card-source-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.card-source-name { font-weight: 600; font-size: 0.9rem; color: #1c1917; }
+/* Le bouton « Changer source » est en display:block/100% pour la sidebar OSM Proxy ;
+   dans l'en-tête de zone (flex), on le repasse en ligne. */
+.card-source-head .custom-source-toggle { display: inline-block; width: auto; }
+.card-source-head .custom-source-panel { width: 260px; }
+
+.detail-notice { padding: 2rem 1.5rem; }
+.detail-notice p { color: #57534e; margin-bottom: 0.5rem; }
+
+/* ── Page d'accueil ── */
+.home { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+.home-banner {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  color: #92400e;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+.home-map-section { border-radius: 8px; overflow: hidden; border: 1px solid #d6d3d1; }
+.home-map { height: 420px; width: 100%; }
+
+.home-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+.stat-card {
+  background: white;
+  border: 1px solid #d6d3d1;
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+.stat-value { font-size: 1.8rem; font-weight: 700; color: #166534; line-height: 1; }
+.stat-label { font-size: 0.85rem; color: #57534e; }
+
+.home-section {
+  background: white;
+  border: 1px solid #d6d3d1;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.home-section h2 { font-size: 1.05rem; font-weight: 600; color: #1c1917; margin-bottom: 0.5rem; }
+.home-empty { color: #a8a29e; font-size: 0.9rem; font-style: italic; }
+
+.home-cta { text-align: center; padding: 0.5rem 0 1.5rem; }
+.home-cta-link {
+  display: inline-block;
+  background: #166534;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.home-cta-link:hover { background: #14532d; }
 
 /* ── Sidebar ── */
 .sidebar {

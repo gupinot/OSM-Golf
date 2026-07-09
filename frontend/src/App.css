@@ -219,13 +219,16 @@ body {
   background: #fffbeb; border-bottom: 1px solid #fde68a;
 }
 
-/* 3 zones côte à côte : base (gauche) · OSM (centre) · carte (droite). Chaque colonne
-   se replie en une bande verticale étroite. */
-.detail-body { display: flex; flex-direction: row; align-items: stretch; gap: 1rem; padding: 1.25rem 1.5rem; }
+/* 3 zones côte à côte : base (gauche) · OSM (centre) · carte (droite). Grille dont les
+   colonnes (48px si repliée, sinon 1fr) et les pistes de lignes sont calculées inline
+   (cf. CoursePage). Les zones dépliées se calent sur ces pistes via `subgrid` : en-tête,
+   titre de sous-parcours et tableau s'alignent d'une colonne à l'autre → trou N aligné
+   entre OSM et carte. Chaque colonne se replie en une bande verticale étroite. */
+.detail-body { display: grid; gap: 1rem; padding: 1.25rem 1.5rem; }
 
-.detail-zone { border: 1px solid #d6d3d1; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; }
-.detail-zone.open { flex: 1 1 0; min-width: 0; }
-.detail-zone.collapsed { flex: 0 0 auto; width: 48px; }
+.detail-zone { border: 1px solid #d6d3d1; border-radius: 8px; background: white; overflow: hidden; grid-row: 1 / -1; }
+.detail-zone.open { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: subgrid; }
+.detail-zone.collapsed { display: flex; }
 
 .zone-collapsed-bar {
   flex: 1; width: 100%;
@@ -243,6 +246,7 @@ body {
 .zone-head {
   display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
   padding: 0.75rem 1rem; cursor: pointer; background: #fafaf9;
+  border-bottom: 1px solid #e7e5e4;
 }
 .zone-head:hover { background: #f5f5f4; }
 .zone-toggle {
@@ -251,10 +255,28 @@ body {
 }
 .zone-head h2 { font-size: 1rem; font-weight: 600; color: #1c1917; }
 .zone-actions { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-.zone-body { flex: 1; padding: 1rem; border-top: 1px solid #e7e5e4; overflow-x: auto; }
+/* Aplati : les enfants du corps (titre de sous-parcours, tableau, messages) deviennent des
+   items de la grille subgrid de la zone, condition de l'alignement inter-colonnes. Le padding
+   de corps, perdu ici, est réinjecté sur chaque bande ci-dessous. */
+.zone-body { display: contents; }
+.detail-body .course-group { display: contents; }
+.detail-body .course-group > .course-key { margin: 0; padding: 0.7rem 1rem 0.25rem; }
+.detail-body .zone-empty,
+.detail-body .loading,
+.detail-body .error,
+.detail-body .empty { margin: 0; padding: 0.75rem 1rem; }
+/* OSM : tableau large, occupe la colonne et défile horizontalement si besoin. */
+.detail-body .course-group > .table-wrapper { padding: 0 1rem 1.25rem; min-width: 0; }
+/* Carte : le panneau se dimensionne à son contenu (justify-self:start) pour que le bouton
+   « switch front/back » (positionné à droite du tableau) tienne dans la marge et ne soit
+   pas rogné par overflow:hidden ; padding porté par le tableau interne. */
+.detail-body .course-group > .cgolf-panel-outer { justify-self: start; padding-bottom: 1.25rem; }
+.detail-body .cgolf-panel-outer > .table-wrapper { padding: 0 1rem; }
 .zone-empty { color: #a8a29e; font-style: italic; font-size: 0.9rem; }
 
-.card-source-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+/* Bande source Carte : porte aussi le titre du sous-parcours (fusionné) → sert de bande
+   titre équivalente à `.course-key` côté OSM. */
+.card-source-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0.6rem 1rem 0.25rem; }
 .card-source-name { font-weight: 600; font-size: 0.9rem; color: #1c1917; }
 /* Le bouton « Changer source » est en display:block/100% pour la sidebar OSM Proxy ;
    dans l'en-tête de zone (flex), on le repasse en ligne. */

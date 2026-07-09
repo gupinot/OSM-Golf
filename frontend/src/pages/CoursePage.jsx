@@ -25,11 +25,12 @@ function loadCourse(id) {
   }
 }
 
-function Zone({ title, badge, open, onToggle, actions, children }) {
+function Zone({ title, badge, open, onToggle, actions, children, col }) {
+  const style = { gridColumn: col };
   // Pliée : bande verticale étroite (titre à la verticale, cliquable pour déplier).
   if (!open) {
     return (
-      <section className="detail-zone collapsed">
+      <section className="detail-zone collapsed" style={style}>
         <button className="zone-collapsed-bar" onClick={onToggle} title={`Déplier « ${title} »`}>
           <span className="zone-collapsed-icon">▸</span>
           <span className="zone-collapsed-title">{title}</span>
@@ -37,9 +38,11 @@ function Zone({ title, badge, open, onToggle, actions, children }) {
       </section>
     );
   }
-  // Dépliée : colonne pleine (en-tête + corps).
+  // Dépliée : colonne pleine. Le corps est aplati (display:contents en CSS) pour que ses
+  // bandes (titre de sous-parcours, tableau) participent à la grille subgrid de la zone,
+  // d'où l'alignement des lignes de trous d'une colonne à l'autre.
   return (
-    <section className="detail-zone open">
+    <section className="detail-zone open" style={style}>
       <div className="zone-head" onClick={onToggle}>
         <button className="zone-toggle" aria-expanded={open} title={`Replier « ${title} »`}>▾</button>
         <h2>{title}</h2>
@@ -180,6 +183,16 @@ export default function CoursePage() {
       })
     : [];
 
+  // Grille du body : une colonne par zone (48px repliée, sinon 1fr) + pistes de lignes
+  // partagées (en-tête, puis [titre, tableau] par sous-parcours) sur lesquelles les zones
+  // dépliées se calent via subgrid → trou N aligné entre OSM et carte.
+  const gridTemplateColumns = [openBase, openOsm, openCard]
+    .map(o => (o ? 'minmax(0, 1fr)' : '48px'))
+    .join(' ');
+  const gridTemplateRows = groups.length > 0
+    ? `auto repeat(${groups.length}, auto auto)`
+    : 'auto';
+
   return (
     <main className="page detail-page">
       <div className="detail-subheader">
@@ -206,15 +219,16 @@ export default function CoursePage() {
         <p className="delta-hint">Comparaison <strong>OSM ↔ carte</strong> : rouge = valeur absente d'un côté, orange = valeurs différentes.</p>
       )}
 
-      <div className="detail-body">
+      <div className="detail-body" style={{ gridTemplateColumns, gridTemplateRows }}>
         {/* ── Zone parcours en base ── */}
-        <Zone title="Parcours en base" open={openBase} onToggle={() => setOpenBase(o => !o)}>
+        <Zone title="Parcours en base" col={1} open={openBase} onToggle={() => setOpenBase(o => !o)}>
           <p className="zone-empty">Base non alimentée — ce parcours n'existe pas encore en base (Firestore à venir).</p>
         </Zone>
 
         {/* ── Zone parcours OSM ── */}
         <Zone
           title="Parcours OSM"
+          col={2}
           badge={holesData && <QualityBadge quality={holesData.quality} />}
           open={openOsm}
           onToggle={toggleOsm}
@@ -235,7 +249,9 @@ export default function CoursePage() {
           {holesError && <p className="error">{holesError}</p>}
           {holesData && groups.map(g => (
             <div key={g.courseKey} className="course-group">
-              {g.courseKey && <h3 className="course-key">{g.courseKey}</h3>}
+              {/* Bande titre toujours rendue (même vide) pour garder le même nombre de
+                  pistes que la colonne Carte → alignement subgrid. */}
+              <h3 className="course-key">{g.courseKey}</h3>
               <OsmUnifiedTable
                 holes={g.courseData.holes}
                 issues={g.courseData}
@@ -252,15 +268,16 @@ export default function CoursePage() {
         </Zone>
 
         {/* ── Zone carte de parcours (scorecard) ── */}
-        <Zone title="Carte de parcours" open={openCard} onToggle={toggleCard}>
-          {cgolfLoading && !cgolfData && <p className="loading">Analyse scorecard…</p>}
+        <Zone title="Carte de parcours" col={3} open={openCard} onToggle={toggleCard}>
           {!holesData && !holesLoading && (
             <p className="zone-empty">Déplie d'abord la zone OSM pour apparier les sous-parcours.</p>
           )}
           {holesData && groups.map(g => (
             <div key={g.courseKey} className="course-group">
-              {g.courseKey && <h3 className="course-key">{g.courseKey}</h3>}
+              {/* Titre du sous-parcours fusionné dans la bande source (même hauteur de
+                  piste que la bande titre OSM) ; CgolfPanel gère son propre état de chargement. */}
               <div className="card-source-head">
+                {g.courseKey && <span className="course-key">{g.courseKey}</span>}
                 <span className="card-source-name">{g.custom ? g.custom.sourceName : 'cgolf.fr'}</span>
                 {!g.custom && g.defaultMatch?.cgolfUrl && (
                   <a className="cgolf-link-btn" href={g.defaultMatch.cgolfUrl} target="_blank" rel="noopener noreferrer" title="Ouvrir la page cgolf.fr">↗</a>

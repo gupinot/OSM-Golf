@@ -1,17 +1,8 @@
-const { initializeApp, getApps } = require('firebase-admin/app');
 const { getAuth } = require('firebase-admin/auth');
+const { ensureApp } = require('../services/firebase-app');
 
-// Initialise l'Admin SDK une seule fois. Sur Cloud Run, les identifiants applicatifs
-// par défaut (ADC) et le projet sont fournis par l'environnement ; en local on peut
-// passer le projet explicitement via FIREBASE_PROJECT_ID.
-if (!getApps().length) {
-  initializeApp({
-    projectId:
-      process.env.FIREBASE_PROJECT_ID ||
-      process.env.GOOGLE_CLOUD_PROJECT ||
-      undefined,
-  });
-}
+// Initialise l'Admin SDK une seule fois (partagé avec Firestore/Storage).
+ensureApp();
 
 // Emails habilités (CSV). « Login obligatoire » ne suffit pas : sans allowlist,
 // n'importe quel compte Google entrerait. Fail-closed si non configuré.

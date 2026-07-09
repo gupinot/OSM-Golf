@@ -8,7 +8,8 @@ usage() { cat <<EOF
 Usage: <secrets + VITE_FIREBASE_* en variables d'env> \\
        $0 --project PROJECT_ID [--region REGION] [--service NAME]
 
-Enchaîne 00-enable-apis, 10-secrets, 20-deploy-backend, 30-deploy-frontend.
+Enchaîne 00-enable-apis, 40-provision-data, 10-secrets, 20-deploy-backend,
+45-deploy-firestore, 30-deploy-frontend.
 Variables d'environnement requises : voir 10-secrets.sh --help et 30-deploy-frontend.sh --help.
 EOF
 }
@@ -24,7 +25,9 @@ done
 [ -n "$PROJECT" ] || { usage; die "--project requis"; }
 
 "$DIR/00-enable-apis.sh" --project "$PROJECT"
+"$DIR/40-provision-data.sh" --project "$PROJECT"
 "$DIR/10-secrets.sh" --project "$PROJECT"
 "$DIR/20-deploy-backend.sh" --project "$PROJECT" --region "$REGION" --service "$SERVICE"
+"$DIR/45-deploy-firestore.sh" --project "$PROJECT"
 "$DIR/30-deploy-frontend.sh" --project "$PROJECT"
 echo "Déploiement complet ✓"

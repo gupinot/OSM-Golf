@@ -28,7 +28,8 @@ CLAUDE.md
 backend/*.traineddata
 
 # Large source assets (overlays, aerial views, PDFs) — hors git
-Data/
+# Ancré à la racine : ne doit pas ignorer les dossiers `data/` du code (ex. backend/src/data).
+/Data/
 
 # Cache de recherche Overpass (régénérable)
 scripts/output/overpass_search_cache.json

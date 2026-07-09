@@ -3,7 +3,7 @@
 Outil web de diagnostic et de comparaison des données golf OpenStreetMap avec les
 scorecards officielles. Déployable sur Firebase (Hosting + Cloud Run), accès protégé
 par authentification Google. La référence des données reste OpenStreetMap (mode proxy) ;
-la persistance Firestore est prévue dans un incrément ultérieur.
+la persistance Firestore est en cours d'introduction (socle posé, ingestion à venir).
 
 ## Fonctionnalités
 
@@ -41,24 +41,30 @@ Navigateur ──login Google──►  Firebase Hosting (IHM React/Vite, statiq
                                     │  vérif ID token Firebase + allowlist email
                                     ├─► Overpass / Nominatim / cgolf.fr
                                     ├─► Gemini Vision      (Secret Manager)
-                                    └─► OSM write API       (Secret Manager)
+                                    ├─► OSM write API       (Secret Manager)
+                                    └─► Firestore + Cloud Storage (couche données, Admin SDK)
 ```
+
+Le frontend ne parle jamais directement à Firestore/Storage : tout passe par `/api`
+(Admin SDK côté backend). Les règles Firestore/Storage sont donc *deny-all* fail-closed.
 
 ```
 OSM-Golf/
 ├── backend/        # Express (Node.js) — proxy Overpass, scraping cgolf.fr, analyse qualité, écriture OSM
 │   ├── Dockerfile  # image Cloud Run (node:22-slim, non-root)
 │   └── src/
-│       ├── routes/     # search, holes, cgolf-holes, osm-auth
-│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth
+│       ├── routes/     # search, holes, cgolf-holes, osm-auth, base (health)
+│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth, firestore, firebase-app
+│       ├── data/       # schema (chemins Firestore + provenance)
 │       └── middleware/ # auth (vérif ID token Firebase + allowlist)
 ├── frontend/       # React + Vite (react-router-dom, react-leaflet)
 │   └── src/
 │       ├── pages/      # HomePage, OsmProxyPage, SearchPage, CoursePage
 │       ├── components/ # Layout (header + nav), SearchPanel, CourseList, HolesTable
 │       └── services/   # api, http (apiFetch), firebase (auth)
-├── deploy/         # scripts de déploiement paramétrés (Cloud Run + Hosting + secrets)
-├── firebase.json   # config Hosting + rewrite /api → Cloud Run
+├── deploy/         # scripts de déploiement paramétrés (Cloud Run + Hosting + données + secrets)
+├── firebase.json   # config Hosting + rewrite /api → Cloud Run + Firestore/Storage
+├── firestore.rules / storage.rules / firestore.indexes.json   # couche données (deny-all client)
 └── scripts/        # outils Python batch (legacy) + caches générés (scripts/output/)
 ```
 
@@ -137,8 +143,10 @@ Ou étape par étape :
 ```bash
 cd deploy
 ./00-enable-apis.sh    --project osm-golf                                  # APIs GCP + projet
+./40-provision-data.sh --project osm-golf                                  # Firestore + bucket + IAM
 ./10-secrets.sh        --project osm-golf                                  # secrets → Secret Manager
 ./20-deploy-backend.sh --project osm-golf [--region europe-west1] [--service osm-golf-api]  # Cloud Run
+./45-deploy-firestore.sh --project osm-golf                                # règles/index Firestore + Storage
 ./30-deploy-frontend.sh --project osm-golf                                 # build + Hosting
 ```
 
@@ -160,7 +168,8 @@ cd deploy
 | `GEMINI_API_KEY` | Oui | Clé API Google Gemini (analyse des scorecards) |
 | `OSM_CLIENT_ID` / `OSM_CLIENT_SECRET` | Écriture OSM | OAuth de l'application OpenStreetMap |
 | `AUTHORIZED_EMAILS` | Oui (prod) | Emails habilités, séparés par des virgules |
-| `FIREBASE_PROJECT_ID` | Auto (prod) | Projet Firebase pour la vérif de token (posé par le script backend) |
+| `FIREBASE_PROJECT_ID` | Auto (prod) | Projet Firebase pour la vérif de token + Firestore (posé par le script backend) |
+| `DATA_BUCKET` | Couche données | Bucket Cloud Storage (géométries GeoJSON + scorecards ; posé par le script backend) |
 | `AUTH_DISABLED` | Non | `1` désactive l'auth (dev local uniquement) |
 | `CACHE_DIR` | Non | Dossier des caches disque (défaut `scripts/output`, `/tmp/osm-golf` en conteneur) |
 | `PORT` | Non | Port du backend (défaut `3001` ; Cloud Run injecte `8080`) |
@@ -192,6 +201,7 @@ Toutes les routes exigent un ID token Firebase valide (sauf en `AUTH_DISABLED=1`
 | `GET /api/cgolf-holes?osmId=…` | Scorecard cgolf.fr matchée dynamiquement |
 | `POST /api/cgolf-holes/analyze` | Analyse d'une scorecard image (Gemini Vision) |
 | `*/api/osm-auth/*` | Flux OAuth OpenStreetMap (login/exchange/status) |
+| `GET /api/base/health` | Health-check connectivité Firestore (couche données) |
 
 ## Cache
 
@@ -199,6 +209,38 @@ Les caches disque (recherches Overpass, régions et matchs cgolf, scorecards ana
 sont stockés dans `CACHE_DIR` : `scripts/output/` en local, `/tmp/osm-golf` sur Cloud Run.
 Sur Cloud Run le système de fichiers est éphémère : les caches sont donc **volatils**
 (perdus au redémarrage de l'instance), sans impact fonctionnel.
+
+## Couche données (Firestore + Cloud Storage)
+
+Persistance des golfs, parcours et scorecards. **Socle posé** (incrément ① : provisioning,
+règles, module d'accès, health-check) ; l'ingestion depuis OSM et le branchement de l'IHM
+suivent dans les incréments ultérieurs. Le backend est le **seul** client (Admin SDK) ;
+les règles Firestore/Storage sont *deny-all* (aucun accès client direct).
+
+**Modèle** (hiérarchie) :
+
+```
+golfs/{golfId}                     # nom, localisation, geohash, osm:{type,id,ref}, nameIndex
+  courses/{courseId}               # vue effective : holes[] à valeurs « emballées »
+    versions/{n}                   # snapshots immuables (historique)
+    sources/{sourceId}             # couches brutes (ex. dernier fetch OSM)
+  scorecards/{scorecardId}         # image + décodage, couvre 1..n parcours (coversCourses[])
+```
+
+**Provenance** — chaque information atomique est *emballée* `{ v, src, at }` où `src`
+identifie l'une des 4 origines : `osm`, `card-original:{id}`, `card-manual:{id}`, `manual`.
+Les **géométries** (tracés, fairways, greens, tees, bunkers) sont stockées hors Firestore,
+en **GeoJSON** dans Cloud Storage (une `FeatureCollection` par version), `properties`
+portant `ref`/`color` emballés. Le vocabulaire (chemins + provenance) est centralisé dans
+[backend/src/data/schema.js](backend/src/data/schema.js).
+
+**Provisioning** : `deploy/40-provision-data.sh` (base Firestore + bucket + IAM) puis
+`deploy/45-deploy-firestore.sh` (règles + index). Variables `deploy/.env` :
+`FIRESTORE_LOCATION`, `DATA_BUCKET`, `BUCKET_LOCATION`.
+
+**Vérifier la connectivité** (sans données) : `GET /api/base/health` → `{ ok, projectId, golfsEmpty }`.
+En local, nécessite des identifiants applicatifs (`gcloud auth application-default login`)
+et `FIREBASE_PROJECT_ID`.
 
 ## Scripts Python (batch, optionnel)
 

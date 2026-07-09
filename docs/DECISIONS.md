@@ -394,3 +394,30 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Choix :** Le body de `CoursePage` passe de 3 colonnes flex indépendantes à une **grille CSS** dont les colonnes (48px si repliée, sinon `1fr`) et les pistes de lignes (`auto repeat(N, auto auto)` = en-tête de zone + [bande titre, tableau] par sous-parcours) sont calculées inline. Les zones dépliées se calent sur ces pistes partagées via **`grid-template-rows: subgrid`** ; `.zone-body`/`.course-group` passent en `display:contents` pour que leurs bandes deviennent des items directs de la grille (padding de corps réinjecté sur chaque bande, séparateur déplacé sur `.zone-head`). Côté Carte, le titre du sous-parcours est **fusionné dans la bande source** (une seule bande titre, symétrique du `.course-key` OSM toujours rendu même vide). `.cgolf-panel-outer` passe en `justify-self:start` pour que le bouton *switch front/back* (positionné à droite du tableau) ne soit pas rogné par `overflow:hidden`.
 
 **Raison :** Les zones empilaient leur contenu indépendamment ; la rangée de contrôles source côté Carte décalait sa scorecard d'~une ligne, désalignant trou 1 OSM et trou 1 Carte. Les lignes de table étant **déjà à hauteur fixe** (`thead tr 28px`, `tbody tr 32px`, identiques des deux côtés), il suffit d'égaliser les bandes **au-dessus des tbody** pour que les tables démarrent au même Y → alignement trou à trou. Le subgrid (plutôt que des hauteurs fixes par ligne) auto-égalise ces bandes et gère le cas du panneau « Changer source » **inline** : quand il s'ouvre, la piste partagée grandit et fait descendre les deux colonnes ensemble, l'alignement tient. **Limite connue :** pour un golf multi-parcours dont un sous-parcours a un nombre de trous différent entre OSM et cgolf, les tables se calent en haut mais divergent en bas (inévitable), le sous-parcours suivant se réaligne.
+
+---
+
+## 2026-07-09 — Modèle de données Firestore : provenance, géométries, identité (analyse validée)
+
+**Choix :** Détail du modèle de persistance (affine l'architecture cible du 2026-07-07). Hiérarchie `golfs/{golfId} → courses/{courseId} → versions/{n}` + `courses/{courseId}/sources/{sourceId}` (couches brutes, ex. dernier fetch OSM) + `golfs/{golfId}/scorecards/{scorecardId}` (image + décodage, `coversCourses[]`).
+- **Provenance « champ emballé »** : toute information atomique = `{ v, src, at }`. `src` ∈ 4 origines encodées en clair : `osm`, `card-original:{scorecardId}`, `card-manual:{scorecardId}`, `manual`. Couvre la date de dernière MAJ au niveau champ **et** parcours (`updatedAt`).
+- **Géométries hors Firestore** : tracés de trous + fairways/greens/tees/bunkers en **GeoJSON dans Cloud Storage**, une `FeatureCollection` par version ; `properties` portent `ref`/`color` emballés. Évite la limite 1 MiB des docs Firestore et se branche direct sur Leaflet.
+- **Identité** : `golfId`/`courseId` **générés stables**, avec `golfs.osm.{type,id,ref}` **indexé** (lookup mono-champ sur `osm.ref`) pour une ré-ingestion idempotente.
+- **Merge / ré-ingestion** : écriture champ-par-champ selon une politique par famille (géométries/refs → OSM ; par/hcp/distances → cartes) ; un `src:"manual"` ou `card-*` n'est **jamais** écrasé par un re-fetch OSM.
+
+**Raison :** Tracer finement l'origine de chaque donnée (exigence : OSM / carte d'origine / carte modifiée / édition manuelle) + versioning par snapshots immuables. Le champ emballé rend la provenance lisible et locale ; GeoJSON/Storage contourne la limite de taille ; l'id généré résiste aux changements d'id OSM.
+
+**Découpage retenu (5 incréments) :** ① socle données, ② ingestion OSM, ③ scorecards, ④ merge & versioning, ⑤ branchement IHM.
+
+---
+
+## 2026-07-09 — Couche données : incrément ① (socle Firestore + Storage)
+
+**Choix :** Mise en place du socle, **collections vides** (aucune ingestion).
+- **Provisioning scripté** : `deploy/40-provision-data.sh` (APIs Firestore/Storage, base Firestore, bucket de données, IAM `datastore.user` + `storage.objectAdmin` au SA compute ; idempotent) et `deploy/45-deploy-firestore.sh` (déploie règles + index via `firebase deploy`). Intégrés à `deploy-all.sh` ; variables `FIRESTORE_LOCATION`/`DATA_BUCKET`/`BUCKET_LOCATION` dans `deploy/.env`.
+- **Accès backend uniquement** (Admin SDK) : `services/firebase-app.js` (init partagée avec l'auth), `services/firestore.js` (`getDb`/`getBucket`), `data/schema.js` (chemins + provenance). Règles `firestore.rules`/`storage.rules` **deny-all** fail-closed (aucun accès client direct) ; `firebase.json` étendu (sections `firestore`/`storage`).
+- **Health-check** : `GET /api/base/health` — pré-flight des identifiants ADC + timeout borné → **503 lisible sans crash** ; en prod (ADC Cloud Run), lecture Firestore réelle → `ok:true`.
+
+**Raison :** Découpler l'infra données du métier ; valider connectivité et sécurité avant toute ingestion. Le pré-flight ADC évite un retry gRPC non catché **fatal en Node ≥ 15** quand la base est injoignable (le timeout seul ne suffit pas : la rejection vient d'une promesse interne au SDK).
+
+**Aussi :** correctif `.gitignore` — motif `Data/` non ancré → ancré `/Data/` (il ignorait silencieusement tout dossier `data/`, dont `backend/src/data/`).

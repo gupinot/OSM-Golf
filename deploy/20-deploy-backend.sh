@@ -36,12 +36,16 @@ add_secret OSM_CLIENT_ID
 add_secret OSM_CLIENT_SECRET
 add_secret AUTHORIZED_EMAILS
 
+# Variables d'environnement : projet Firebase + bucket de données (si provisionné).
+ENV_VARS="FIREBASE_PROJECT_ID=${PROJECT}"
+[ -n "${DATA_BUCKET:-}" ] && ENV_VARS="${ENV_VARS},DATA_BUCKET=${DATA_BUCKET}"
+
 gcloud run deploy "$SERVICE" \
   --source "$ROOT/backend" \
   --project "$PROJECT" \
   --region "$REGION" \
   --allow-unauthenticated \
   --min-instances 1 --max-instances 1 \
-  --set-env-vars "FIREBASE_PROJECT_ID=${PROJECT}" \
+  --set-env-vars "$ENV_VARS" \
   --set-secrets "$SECRETS"
 echo "Backend déployé : service $SERVICE ($REGION) ✓"

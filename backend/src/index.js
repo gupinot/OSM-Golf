@@ -4,6 +4,7 @@ const searchRoutes = require('./routes/search');
 const holesRoutes = require('./routes/holes');
 const cgolfHolesRoutes = require('./routes/cgolf-holes');
 const osmAuthRoutes = require('./routes/osm-auth');
+const baseRoutes = require('./routes/base');
 const { requireAuth } = require('./middleware/auth');
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/search', searchRoutes);
 app.use('/api/holes', holesRoutes);
 app.use('/api/cgolf-holes', cgolfHolesRoutes);
 app.use('/api/osm-auth', osmAuthRoutes);
+app.use('/api/base', baseRoutes);
 
 app.listen(PORT, () => {
   const debugMode = process.env.DEBUG === 'osm-golf' || process.env.DEBUG === '*';

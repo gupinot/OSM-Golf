@@ -25,12 +25,16 @@ const versionPath = (golfId, courseId, n) =>
   `${coursePath(golfId, courseId)}/${COLLECTIONS.VERSIONS}/${n}`;
 const sourcePath = (golfId, courseId, sourceId) =>
   `${coursePath(golfId, courseId)}/${COLLECTIONS.SOURCES}/${sourceId}`;
-const scorecardPath = (golfId, scorecardId) =>
-  `${golfPath(golfId)}/${COLLECTIONS.SCORECARDS}/${scorecardId}`;
+// Scorecards : collection de premier niveau (une scorecard peut exister sans golf
+// persisté — rôle cache d'affichage). Lien souple par osm.golfOsmId.
+const scorecardPath = (scorecardId) => `${COLLECTIONS.SCORECARDS}/${scorecardId}`;
 
 // Chemin de l'objet géométrie dans Cloud Storage (une FeatureCollection par version).
 const geometryObjectPath = (golfId, courseId, version) =>
   `golfs/${golfId}/courses/${courseId}/v${version}.geojson`;
+
+// Chemin de l'image de scorecard (et documents archivés) dans Cloud Storage.
+const scorecardObjectPath = (scorecardId, ext) => `scorecards/${scorecardId}.${ext}`;
 
 // Provenance : 4 origines possibles pour toute information. Les cartes portent l'id de
 // la scorecard concernée (kind original vs manuel encodé dans le préfixe).
@@ -52,6 +56,7 @@ module.exports = {
   sourcePath,
   scorecardPath,
   geometryObjectPath,
+  scorecardObjectPath,
   SRC,
   wrap,
 };

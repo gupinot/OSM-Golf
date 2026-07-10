@@ -444,3 +444,16 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 - **Recadrage de l'incrément ④** → « **temps 2 : propagation vers base + moteur de merge** » : nouvel endpoint `POST /api/base/course` prenant **l'état local du client** (pas un re-fetch OSM), écriture **champ par champ selon la provenance** (osm n'écrase jamais `manual`/`card-*`) ; + `GET /api/base/course/:id` (lecture temps 1). ⑤ = branchement IHM du 2-temps (boutons « Propager base » / « Propager OSM »).
 
 **Raison :** Découpler l'édition (locale, réversible) de la propagation (base/OSM) et garantir qu'un import OSM automatique ne détruise pas le travail humain. Le vrai temps 2 (état local → base, merge-aware) est l'objet de ④ ; le garde-fou protège l'intervalle.
+
+---
+
+## 2026-07-10 — Couche données : incrément ③ (scorecards) + passage en collection top-level
+
+**Choix :** Persistance des scorecards (image + décodage) comme **artefact de première classe**, avec un ajustement du modèle : les scorecards passent en **collection top-level `scorecards/{scorecardId}`** (au lieu d'imbriquées sous `golfs/` comme prévu le 2026-07-09).
+- **Raison de l'ajustement** : une scorecard peut exister **sans golf persisté** — elle sert aussi de **cache d'affichage** IHM (parcours consulté sans enregistrement en base). L'imbrication sous un golf l'aurait empêché.
+- **Doc** : `source{kind,name,originUrl,uploadName}`, `imagePath` (Cloud Storage), `contentHash`, `decoded[]` (Gemini), `decodedBy/decodedAt`, `kind` (`original`=cgolf/auto | `manual`=fourni/corrigé), `osm.golfOsmId` (lien **souple**, toujours connu), `coversCourses[]`/`golfId` (renseignés **seulement** si associée à un parcours en base), `swapHalves`, timestamps.
+- **Persistance auto à chaque décodage** (cgolf ou upload) avec **dédup** par `scorecardId` déterministe (`cgolf-<n>` depuis l'URL image, `upload-<hash>`, `url-<hash>`) → pas de re-appel Gemini sur la même image. Cet id est celui référencé en provenance `card-*:{id}` au temps 2.
+- **Base = cache** : remplace le cache disque (le FS Cloud Run est éphémère). Intégration best-effort dans les chemins existants (`fetchScorecardForMatch` cgolf + route `/analyze`), **gardée** par `isBaseConfigured()` (émulateur/Cloud Run/GCP) → en dev sans émulateur, **repli sur le cache disque** (non-breaking).
+- **Endpoints** : `POST /api/base/scorecard` (décode+cache), `GET /api/base/scorecards?osmId=` (cache d'un golf), `GET /api/base/scorecard/:id/image` (**proxy** — Storage est deny-all/privé, servi par le backend).
+
+**Raison :** Archiver durablement l'image source + son décodage, tracer l'origine, et supprimer les re-appels Gemini (coût) grâce à un cache persistant partagé entre instances Cloud Run. Le remplissage des trous par la carte (provenance `card-*`) reste au temps 2 (merge, ④).

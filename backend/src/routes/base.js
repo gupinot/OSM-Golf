@@ -1,10 +1,21 @@
 const express = require('express');
 const { applicationDefault } = require('firebase-admin/app');
-const { getDb } = require('../services/firestore');
+const { getDb, isBaseConfigured } = require('../services/firestore');
 const { COLLECTIONS } = require('../data/schema');
 const { ingestGolf } = require('../services/ingest-osm');
+const { decodeAndCache, listCachedByOsm } = require('../services/scorecards');
+const { getScorecardImage } = require('../data/scorecards');
 
 const router = express.Router();
+
+// Garde d'environnement pour les endpoints qui écrivent/lisent la base : 503 lisible
+// quand la couche données n'est pas configurée (dev local sans émulateur).
+function requireBase(req, res, next) {
+  if (!isBaseConfigured()) {
+    return res.status(503).json({ error: 'Couche données non configurée (émulateur/ADC absent)' });
+  }
+  next();
+}
 
 // Borne l'attente : sans identifiants (ADC), le client Firestore boucle sur le metadata
 // server au lieu d'échouer vite → on renvoie un 503 lisible plutôt que de laisser pendre.
@@ -60,6 +71,54 @@ router.post('/ingest', async (req, res) => {
     res.json(summary);
   } catch (err) {
     console.error('[ingest]', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Décode une scorecard (URL cgolf/web ou upload base64) et la met en cache en base
+// (image en Storage + décodage). Dédup : même image → pas de re-décodage Gemini.
+router.post('/scorecard', requireBase, async (req, res) => {
+  const { url, fileData, mimeType, fileName, osmId, kind } = req.body || {};
+  if (!url && !fileData) return res.status(400).json({ error: 'url ou fileData requis' });
+  try {
+    const result = await decodeAndCache({
+      imageBuffer: fileData ? Buffer.from(fileData, 'base64') : null,
+      imageUrl: url || null,
+      mimeType: mimeType || 'image/jpeg',
+      source: {
+        kind: kind || (url ? (url.includes('cgolf.fr') ? 'cgolf' : 'url') : 'upload'),
+        name: fileName || url || null,
+        originUrl: url || null,
+        uploadName: fileName || null,
+      },
+      osm: osmId ? { golfOsmId: osmId } : null,
+    });
+    res.json(result);
+  } catch (err) {
+    console.error('[scorecard]', err);
+    res.status(502).json({ error: err.message });
+  }
+});
+
+// Scorecards en cache d'un golf (par osmId), même golf non persisté.
+router.get('/scorecards', requireBase, async (req, res) => {
+  const { osmId } = req.query;
+  if (!osmId) return res.status(400).json({ error: 'osmId requis' });
+  try {
+    res.json({ scorecards: await listCachedByOsm(osmId) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Proxy de l'image stockée (Storage est privé/deny-all → servie par le backend).
+router.get('/scorecard/:id/image', requireBase, async (req, res) => {
+  try {
+    const img = await getScorecardImage(req.params.id);
+    if (!img) return res.status(404).json({ error: 'scorecard introuvable' });
+    res.set('Content-Type', img.mimeType);
+    res.send(img.buffer);
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });

@@ -22,4 +22,15 @@ function getBucket() {
   return getStorage().bucket(name);
 }
 
-module.exports = { getDb, getBucket };
+// La couche données est-elle joignable dans cet environnement ? Vrai sur Cloud Run
+// (K_SERVICE), sur GCP (GOOGLE_CLOUD_PROJECT) ou avec l'émulateur Firestore local.
+// Permet aux chemins existants (cgolf) d'éviter un accès base coûteux quand non configuré.
+function isBaseConfigured() {
+  return !!(
+    process.env.FIRESTORE_EMULATOR_HOST ||
+    process.env.K_SERVICE ||
+    process.env.GOOGLE_CLOUD_PROJECT
+  );
+}
+
+module.exports = { getDb, getBucket, isBaseConfigured };

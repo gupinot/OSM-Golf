@@ -53,9 +53,9 @@ OSM-Golf/
 ├── backend/        # Express (Node.js) — proxy Overpass, scraping cgolf.fr, analyse qualité, écriture OSM
 │   ├── Dockerfile  # image Cloud Run (node:22-slim, non-root)
 │   └── src/
-│       ├── routes/     # search, holes, cgolf-holes, osm-auth, base (health + ingest)
-│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth, firestore, firebase-app, ingest-osm
-│       ├── data/       # schema (chemins + provenance), golfs (repository), geometry (GeoJSON)
+│       ├── routes/     # search, holes, cgolf-holes, osm-auth, base (health + ingest + scorecards)
+│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth, firestore, firebase-app, ingest-osm, scorecards
+│       ├── data/       # schema (chemins + provenance), golfs, geometry, scorecards (repositories)
 │       └── middleware/ # auth (vérif ID token Firebase + allowlist)
 ├── frontend/       # React + Vite (react-router-dom, react-leaflet)
 │   └── src/
@@ -203,6 +203,9 @@ Toutes les routes exigent un ID token Firebase valide (sauf en `AUTH_DISABLED=1`
 | `*/api/osm-auth/*` | Flux OAuth OpenStreetMap (login/exchange/status) |
 | `GET /api/base/health` | Health-check connectivité Firestore (couche données) |
 | `POST /api/base/ingest` | Ingestion OSM d'un golf en base (`{osmId, lat, lng, name}`) |
+| `POST /api/base/scorecard` | Décode + met en cache une scorecard (`{url\|fileData, osmId}`) |
+| `GET /api/base/scorecards?osmId=…` | Scorecards en cache d'un golf (même non persisté) |
+| `GET /api/base/scorecard/:id/image` | Image de scorecard stockée (proxy Storage) |
 
 ## Cache
 
@@ -216,8 +219,9 @@ Sur Cloud Run le système de fichiers est éphémère : les caches sont donc **v
 Persistance des golfs, parcours et scorecards. **Socle** (incrément ① : provisioning,
 règles, module d'accès, health-check) + **ingestion OSM** (incrément ② : `POST /api/base/ingest`
 → upsert golf/parcours, provenance `osm`, geohash/nameIndex, géométries GeoJSON en Storage,
-versioning par snapshot). Scorecards, merge multi-sources et branchement IHM suivent. Le
-backend est le **seul** client (Admin SDK) ; les règles Firestore/Storage sont *deny-all*.
+versioning par snapshot) + **scorecards** (incrément ③ : image en Storage + décodage + cache).
+Merge multi-sources et branchement IHM suivent. Le backend est le **seul** client (Admin SDK) ;
+les règles Firestore/Storage sont *deny-all*.
 
 **Modèle** (hiérarchie) :
 
@@ -226,8 +230,15 @@ golfs/{golfId}                     # nom, localisation, geohash, osm:{type,id,re
   courses/{courseId}               # vue effective : holes[] à valeurs « emballées »
     versions/{n}                   # snapshots immuables (historique)
     sources/{sourceId}             # couches brutes (ex. dernier fetch OSM)
-  scorecards/{scorecardId}         # image + décodage, couvre 1..n parcours (coversCourses[])
+scorecards/{scorecardId}           # TOP-LEVEL : image (Storage) + décodage Gemini,
+                                   #   lien souple osm.golfOsmId (peut exister sans golf
+                                   #   persisté → cache d'affichage), coversCourses[] si associée
 ```
+
+**Scorecards (cache)** — persistées **automatiquement à chaque décodage** (cgolf ou upload),
+avec **dédup** par `scorecardId` déterministe (même image → pas de re-appel Gemini). La base
+devient le cache (le FS Cloud Run est éphémère). En dev **sans émulateur**, `isBaseConfigured()`
+est faux → repli sur le cache disque existant (non-breaking).
 
 **Provenance** — chaque information atomique est *emballée* `{ v, src, at }` où `src`
 identifie l'une des 4 origines : `osm`, `card-original:{id}`, `card-manual:{id}`, `manual`.

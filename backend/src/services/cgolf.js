@@ -308,7 +308,25 @@ async function analyzeScorecard(imgBuffer, mimeType = 'image/jpeg') {
   return JSON.parse(raw);
 }
 
-async function fetchScorecardForMatch(match) {
+async function fetchScorecardForMatch(match, osmId) {
+  // Cache persistant en base (si configurée) : décode via Gemini au 1er accès puis
+  // sert le cache ensuite (image + décodage). Best-effort → fallback cache disque.
+  const { isBaseConfigured } = require('./firestore');
+  if (isBaseConfigured() && match.scorecardImgUrl) {
+    try {
+      const { decodeAndCache } = require('./scorecards');
+      const r = await decodeAndCache({
+        imageUrl: match.scorecardImgUrl,
+        mimeType: 'image/jpeg',
+        source: { kind: 'cgolf', name: match.cgolfName, originUrl: match.scorecardImgUrl },
+        osm: osmId ? { golfOsmId: osmId } : null,
+      });
+      return { holes: r.decoded, cgolfName: match.cgolfName, cgolfUrl: match.cgolfUrl };
+    } catch (e) {
+      debug(`[cgolf] base indispo pour scorecard, fallback disque: ${e.message}`);
+    }
+  }
+
   const slug = match.cgolfUrl.split('/').pop();
   const cacheFile = path.join(SCRIPTS_OUTPUT, `cgolf_holes_${slug}.json`);
 
@@ -341,7 +359,7 @@ async function fetchCgolfHoles(osmId, osmName, osmLat, osmLng) {
   const matches = await findCgolfMatches(osmId, osmName, osmLat, osmLng);
   if (!matches.length) return null;
 
-  const results = await Promise.all(matches.map(fetchScorecardForMatch));
+  const results = await Promise.all(matches.map((m) => fetchScorecardForMatch(m, osmId)));
   const valid = results.filter(Boolean);
   return valid.length ? valid : null;
 }

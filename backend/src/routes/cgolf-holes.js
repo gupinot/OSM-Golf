@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const fetch = require('node-fetch');
 const { fetchCgolfHoles, analyzeScorecard, getCustomSources, saveCustomSource, deleteCustomSource } = require('../services/cgolf');
+const { isBaseConfigured } = require('../services/firestore');
 
 const router = Router();
 
@@ -25,6 +26,31 @@ router.post('/analyze', async (req, res) => {
   if (!url && !fileData) return res.status(400).json({ error: 'url ou fileData requis' });
 
   try {
+    // Chemin base (si configurée) : décode + met en cache la scorecard (dédup, image en
+    // Storage). Best-effort → en cas d'échec, on retombe sur le décodage disque ci-dessous.
+    if (isBaseConfigured()) {
+      try {
+        const { decodeAndCache } = require('../services/scorecards');
+        const r = await decodeAndCache({
+          imageBuffer: fileData ? Buffer.from(fileData, 'base64') : null,
+          imageUrl: url || null,
+          mimeType: mimeType || 'image/jpeg',
+          source: {
+            kind: url ? (url.includes('cgolf.fr') ? 'cgolf' : 'url') : 'upload',
+            name: fileName || url || null,
+            originUrl: url || null,
+            uploadName: fileName || null,
+          },
+          osm: osmId ? { golfOsmId: osmId } : null,
+        });
+        const srcName = fileName || url || 'source';
+        if (osmId && courseKey) saveCustomSource(osmId, courseKey, r.decoded, srcName);
+        return res.json({ holes: r.decoded, sourceName: srcName, scorecardId: r.scorecardId, cached: r.cached });
+      } catch (e) {
+        console.error('[analyze] base indispo, fallback disque:', e.message);
+      }
+    }
+
     let imgBuffer;
     let sourceName;
 

@@ -2,6 +2,7 @@ const express = require('express');
 const { applicationDefault } = require('firebase-admin/app');
 const { getDb } = require('../services/firestore');
 const { COLLECTIONS } = require('../data/schema');
+const { ingestGolf } = require('../services/ingest-osm');
 
 const router = express.Router();
 
@@ -37,6 +38,29 @@ router.get('/health', async (req, res) => {
     });
   } catch (err) {
     res.status(503).json({ ok: false, error: err.message });
+  }
+});
+
+// Ingestion OSM d'un golf en base (provenance osm). Déclenchée par appel explicite ;
+// le bouton IHM viendra avec le branchement du détail parcours (incrément ultérieur).
+router.post('/ingest', async (req, res) => {
+  const { osmId, lat, lng, name, radiusKm, force } = req.body || {};
+  if (!osmId || lat == null || lng == null || !name) {
+    return res.status(400).json({ error: 'osmId, lat, lng et name requis' });
+  }
+  try {
+    const summary = await ingestGolf({
+      osmId,
+      lat: Number(lat),
+      lng: Number(lng),
+      name,
+      radiusKm: radiusKm != null ? Number(radiusKm) : undefined,
+      force: force === true || force === '1',
+    });
+    res.json(summary);
+  } catch (err) {
+    console.error('[ingest]', err);
+    res.status(500).json({ error: err.message });
   }
 });
 

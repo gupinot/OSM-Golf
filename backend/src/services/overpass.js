@@ -528,4 +528,45 @@ function haversine(lat1, lng1, lat2, lng2) {
 
 function toRad(deg) { return deg * Math.PI / 180; }
 
-module.exports = { searchByName, searchByZone, fetchHoles, fetchZoneStats };
+// Géométries des zones fairway/bunker d'un golf (absentes de fetchHoles). Requête
+// way+relation autour du centre, filtrée au polygone du golf (point représentatif dans
+// la limite) pour écarter les golfs voisins. Retourne les géométries (polygones) + ref.
+async function fetchGolfZones(osmId, lat, lng, radiusKm = 3) {
+  const radiusM = Math.round(radiusKm * 1000);
+  const ql = `
+[out:json][timeout:30];
+(
+  way["golf"="fairway"](around:${radiusM},${lat},${lng});
+  relation["golf"="fairway"](around:${radiusM},${lat},${lng});
+  way["golf"="bunker"](around:${radiusM},${lat},${lng});
+  relation["golf"="bunker"](around:${radiusM},${lat},${lng});
+);
+out body geom;
+`;
+  const data = await query(ql, `fetchGolfZones(${osmId})`);
+  const boundary = osmId ? await fetchBoundary(osmId) : null;
+
+  const fairways = [];
+  const bunkers = [];
+  for (const el of data.elements) {
+    const golf = el.tags?.golf;
+    if (golf !== 'fairway' && golf !== 'bunker') continue;
+    const polygon = extractPolygon(el);
+    if (!polygon?.length) continue;
+    if (boundary) {
+      const pt = representativePoint(el);
+      if (!pt || !pointInPolygon(pt.lat, pt.lon, boundary)) continue;
+    }
+    const rec = {
+      osmId: el.id,
+      osmType: el.type,
+      ref: (el.tags.ref || '').trim(),
+      course: (el.tags.course || '').trim(),
+      geometry: polygon,
+    };
+    (golf === 'fairway' ? fairways : bunkers).push(rec);
+  }
+  return { fairways, bunkers };
+}
+
+module.exports = { searchByName, searchByZone, fetchHoles, fetchZoneStats, fetchGolfZones };

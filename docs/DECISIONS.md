@@ -421,3 +421,26 @@ Chaque feature est attribuée au golf dont le polygone la contient (point-in-pol
 **Raison :** Découpler l'infra données du métier ; valider connectivité et sécurité avant toute ingestion. Le pré-flight ADC évite un retry gRPC non catché **fatal en Node ≥ 15** quand la base est injoignable (le timeout seul ne suffit pas : la rejection vient d'une promesse interne au SDK).
 
 **Aussi :** correctif `.gitignore` — motif `Data/` non ancré → ancré `/Data/` (il ignorait silencieusement tout dossier `data/`, dont `backend/src/data/`).
+
+---
+
+## 2026-07-10 — Couche données : incrément ② (ingestion OSM)
+
+**Choix :** Endpoint `POST /api/base/ingest {osmId, lat, lng, name, radiusKm?, force?}` qui persiste un golf et ses sous-parcours depuis OSM (provenance `osm`).
+- **Récupération** : `fetchHoles` (holes/tees/greens) + nouvelle `fetchGolfZones` (fairways/bunkers, requête way+relation filtrée au polygone du golf via `fetchBoundary` + point-in-polygon).
+- **Transformation** (`services/ingest-osm.js`) : groupement par sous-parcours (tag `course` ; features sans `course` rattachées au sous-parcours le plus proche par centroïde — trivial en mono-parcours) ; trous « emballés » `{v, src:"osm", at}` (ref/par/handicap/distances) ; compteurs de features ; GeoJSON `FeatureCollection` (holes=LineString, zones=Polygon, `properties.ref`/`color` emballées) ; bbox.
+- **Écriture** (`data/golfs.js`) : upsert **idempotent** (lookup `osm.ref`, sinon `golfId` = slug+hash) ; `geohash` (ngeohash, précision 9) ; `nameIndex` (tokens normalisés) ; GeoJSON → Cloud Storage (`data/geometry.js`) ; **versioning par hash de contenu** (nouvelle version uniquement si le contenu résolu change ; snapshot `versions/{n}`, reason `osm-ingest`).
+- **Test local** : émulateurs Firestore/Storage (bloc `emulators` dans `firebase.json`) — l'Admin SDK détecte `FIRESTORE_EMULATOR_HOST`/`STORAGE_EMULATOR_HOST` (aucune credential). Dépendance `ngeohash`.
+
+**Raison :** Peupler la base depuis la référence OSM avec traçabilité (provenance) et versioning, sans marteler Overpass (réutilise le code validé). GeoJSON/Storage contourne la limite 1 MiB des docs. L'émulateur permet un test de bout en bout sans toucher le vrai projet.
+
+---
+
+## 2026-07-10 — Alimentation de la base « toujours en 2 temps » + garde-fou de l'import OSM
+
+**Choix :** Principe de process : toute alimentation se fait en **2 temps** — (1) charger les 3 sources dans l'IHM (base / OSM / carte) et éditer **localement sans propager**, (2) propager l'état local modifié vers la base et/ou OSM. « Différentes manières » = quelle source amorce la copie de travail au temps 1, **pas** un contournement du temps 2.
+- `POST /api/base/ingest` **repositionné** en voie d'amorçage **opt-in** (import direct OSM→base, hors IHM), et non le chemin interactif du temps 2.
+- **Garde-fou** ajouté à `ingest` : ne jamais écraser un parcours (ou un nom de golf) portant une information éditée (provenance ≠ `osm` : `manual`/`card-*`) → renvoyé `skipped:"protected"` ; contournement explicite par `force:true`. Rend ② **non destructeur** même en ré-import.
+- **Recadrage de l'incrément ④** → « **temps 2 : propagation vers base + moteur de merge** » : nouvel endpoint `POST /api/base/course` prenant **l'état local du client** (pas un re-fetch OSM), écriture **champ par champ selon la provenance** (osm n'écrase jamais `manual`/`card-*`) ; + `GET /api/base/course/:id` (lecture temps 1). ⑤ = branchement IHM du 2-temps (boutons « Propager base » / « Propager OSM »).
+
+**Raison :** Découpler l'édition (locale, réversible) de la propagation (base/OSM) et garantir qu'un import OSM automatique ne détruise pas le travail humain. Le vrai temps 2 (état local → base, merge-aware) est l'objet de ④ ; le garde-fou protège l'intervalle.

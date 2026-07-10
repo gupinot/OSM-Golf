@@ -17,6 +17,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "firebase-admin": "^14.1.0",
+    "ngeohash": "^0.6.3",
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {

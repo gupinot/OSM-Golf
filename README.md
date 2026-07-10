@@ -53,9 +53,9 @@ OSM-Golf/
 ├── backend/        # Express (Node.js) — proxy Overpass, scraping cgolf.fr, analyse qualité, écriture OSM
 │   ├── Dockerfile  # image Cloud Run (node:22-slim, non-root)
 │   └── src/
-│       ├── routes/     # search, holes, cgolf-holes, osm-auth, base (health)
-│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth, firestore, firebase-app
-│       ├── data/       # schema (chemins Firestore + provenance)
+│       ├── routes/     # search, holes, cgolf-holes, osm-auth, base (health + ingest)
+│       ├── services/   # overpass, cgolf, quality, nominatim, osm-write, osm-auth, firestore, firebase-app, ingest-osm
+│       ├── data/       # schema (chemins + provenance), golfs (repository), geometry (GeoJSON)
 │       └── middleware/ # auth (vérif ID token Firebase + allowlist)
 ├── frontend/       # React + Vite (react-router-dom, react-leaflet)
 │   └── src/
@@ -202,6 +202,7 @@ Toutes les routes exigent un ID token Firebase valide (sauf en `AUTH_DISABLED=1`
 | `POST /api/cgolf-holes/analyze` | Analyse d'une scorecard image (Gemini Vision) |
 | `*/api/osm-auth/*` | Flux OAuth OpenStreetMap (login/exchange/status) |
 | `GET /api/base/health` | Health-check connectivité Firestore (couche données) |
+| `POST /api/base/ingest` | Ingestion OSM d'un golf en base (`{osmId, lat, lng, name}`) |
 
 ## Cache
 
@@ -212,10 +213,11 @@ Sur Cloud Run le système de fichiers est éphémère : les caches sont donc **v
 
 ## Couche données (Firestore + Cloud Storage)
 
-Persistance des golfs, parcours et scorecards. **Socle posé** (incrément ① : provisioning,
-règles, module d'accès, health-check) ; l'ingestion depuis OSM et le branchement de l'IHM
-suivent dans les incréments ultérieurs. Le backend est le **seul** client (Admin SDK) ;
-les règles Firestore/Storage sont *deny-all* (aucun accès client direct).
+Persistance des golfs, parcours et scorecards. **Socle** (incrément ① : provisioning,
+règles, module d'accès, health-check) + **ingestion OSM** (incrément ② : `POST /api/base/ingest`
+→ upsert golf/parcours, provenance `osm`, geohash/nameIndex, géométries GeoJSON en Storage,
+versioning par snapshot). Scorecards, merge multi-sources et branchement IHM suivent. Le
+backend est le **seul** client (Admin SDK) ; les règles Firestore/Storage sont *deny-all*.
 
 **Modèle** (hiérarchie) :
 
@@ -238,9 +240,38 @@ portant `ref`/`color` emballés. Le vocabulaire (chemins + provenance) est centr
 `deploy/45-deploy-firestore.sh` (règles + index). Variables `deploy/.env` :
 `FIRESTORE_LOCATION`, `DATA_BUCKET`, `BUCKET_LOCATION`.
 
-**Vérifier la connectivité** (sans données) : `GET /api/base/health` → `{ ok, projectId, golfsEmpty }`.
-En local, nécessite des identifiants applicatifs (`gcloud auth application-default login`)
-et `FIREBASE_PROJECT_ID`.
+**Développement local — émulateurs** (aucune credential, aucune écriture sur le vrai projet) :
+
+```bash
+# Terminal 1 — émulateurs Firestore + Storage (+ UI sur http://localhost:4000)
+firebase emulators:start --only firestore,storage --project osm-golf
+
+# Terminal 2 — backend pointé sur les émulateurs (l'Admin SDK détecte ces variables)
+cd backend
+AUTH_DISABLED=1 FIREBASE_PROJECT_ID=osm-golf DATA_BUCKET=osm-golf-data \
+  FIRESTORE_EMULATOR_HOST=localhost:8080 STORAGE_EMULATOR_HOST=http://localhost:9199 \
+  GEMINI_API_KEY=x npm run dev
+```
+
+Vérifs : `GET /api/base/health` → `{ ok:true, golfsEmpty:true }` ; puis ingérer un golf :
+
+```bash
+curl -X POST localhost:3001/api/base/ingest -H 'Content-Type: application/json' \
+  -d '{"osmId":"way/…","lat":48.11,"lng":-1.20,"name":"Golf des Rochers Sévigné"}'
+```
+
+Contrôler dans l'UI émulateur : golf (`geohash`/`nameIndex`/`osm.ref`), `courses/{id}` (trous
+emballés `{v,src:"osm",at}`, `version:1`, `geometryPath`), `versions/1`, et le GeoJSON en Storage.
+Ré-ingestion à contenu identique → **pas** de nouvelle version.
+
+`ingest` est une **voie d'amorçage opt-in** (import direct depuis OSM). Garde-fou 2-temps :
+un parcours (ou un nom de golf) portant une information éditée (provenance ≠ `osm` :
+`manual`/`card-*`) n'est **pas écrasé** — il est renvoyé `skipped:"protected"`. Ajouter
+`"force":true` au corps pour forcer le réécrasement. La propagation des éditions locales
+vers la base (2ᵉ temps) passera par un endpoint dédié + moteur de merge (incrément ultérieur).
+
+En prod (Cloud Run), les identifiants (ADC) et `DATA_BUCKET` sont fournis par l'environnement ;
+aucune variable d'émulateur n'est posée.
 
 ## Scripts Python (batch, optionnel)
 
